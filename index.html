@@ -428,6 +428,23 @@
                 <div class="test-card"><div class="test-image" style="background:#3b82f6">🎯</div><div class="test-info"><h3>Acquisition</h3><button class="start-btn" onclick="openQuiz('Acquisition')">Start Test</button></div></div>
                 <div class="test-card"><div class="test-image" style="background:#f59e0b">👑</div><div class="test-info"><h3>VIP Care</h3><button class="start-btn" onclick="openQuiz('VIP Care')">Start Test</button></div></div>
                 <div class="test-card"><div class="test-image" style="background:#10b981">📈</div><div class="test-info"><h3>Retention</h3><button class="start-btn" onclick="openQuiz('Retention')">Start Test</button></div></div>
+                <div class="test-card">
+    <div class="test-image" style="background: #ef4444;">📋</div>
+    <div class="test-info">
+        <h3>KAM SOP</h3>
+        <p>Operational flows & safety.</p>
+        <button class="start-btn" onclick="openQuiz('KAM SOP')">Start Test</button>
+    </div>
+</div>
+
+<div class="test-card">
+    <div class="test-image" style="background: #0f172a;">💬</div>
+    <div class="test-info">
+        <h3>Objection Handling</h3>
+        <p>Turning NO into YES.</p>
+        <button class="start-btn" onclick="openQuiz('Objection Handling')">Start Test</button>
+    </div>
+</div>
             </div>
         </div>
 
@@ -545,6 +562,30 @@
             { q: "Why is CRM (myflow) critical for retention?", options: ["Store data", "Replace Excel", "Enable tracking, insight, and action visibility", "Reduce staff"], correct: 2, feedback: "Correct. Visibility leads to better strategic decisions." },
             { q: "What is the purpose of segmentation (HVP, HFTD, etc.)?", options: ["Reporting only", "Label players", "Enable targeted strategy execution", "Reduce workload"], correct: 2, feedback: "Correct. Segmentation allows you to treat different players correctly." },
             { q: "What defines a TRUE VIP experience?", options: ["Expensive rewards", "Fast replies", "Feeling personally valued and remembered", "Frequent campaigns"], correct: 2, feedback: "Correct! Being remembered is the ultimate 'Bespoke' touch." }]
+    "KAM SOP": [
+            { q: "A member transferred funds but they aren't received. What is the MOST critical first step?", options: ["Escalate to IT", "Get a signed/verbal refund agreement", "Check the weather", "Ignore it"], correct: 1, feedback: "Correct! Protect against double-crediting." },
+            { q: "When is a Dedicated Bank Account assigned to a VIP?", options: ["Every deposit", "Only for deposits RM50k+", "When the VIP is angry", "Weekly"], correct: 1, feedback: "Correct. High-value transactions justify a dedicated account." },
+            { q: "A VIP wants a higher betting limit. What determines if this is possible?", options: ["KAM's mood", "Total losses", "Provider eligibility + CMP risk check", "Daily turnover"], correct: 2, feedback: "Correct. Compliance must verify provider eligibility first." },
+            { q: "What is the key rule for VIP Account Migration?", options: ["Unlimited migrations", "Bonus reset", "One-time only + valid reason + no bonus", "Only for new players"], correct: 2, feedback: "Correct. Migration is controlled to prevent abuse." },
+            { q: "A member didn't receive their withdrawal. What must they agree to before a re-transfer?", options: ["To deposit more", "To return excess if double paid", "To wait 7 days", "To change their bank"], correct: 1, feedback: "Correct. This protects the company if the original bank bounce clears later." },
+            { q: "Who must review a Third-Party Bank Whitelist request?", options: ["CX only", "The VIP's friend", "Team Lead + Compliance (CMP)", "No one"], correct: 2, feedback: "Correct. Security is priority for 3rd party accounts." },
+            { q: "Which department justifies a Withdrawal Limit Adjustment?", options: ["IT", "Marketing (MKT)", "Cleaning Dept", "Security Guard"], correct: 1, feedback: "Correct. MKT must justify the player's value." },
+            { q: "What must be collected for a Game/Provider complaint?", options: ["Proof (Recording/Screenshot)", "The member's phone number", "A apology letter", "Nothing"], correct: 0, feedback: "Correct. Evidence is required for IT/Provider investigation." },
+            { q: "If a member breaks a refund agreement after an early credit, what is the penalty?", options: ["Give another bonus", "Waive the amount + Remove VIP status", "Ignore it", "Call their parents"], correct: 1, feedback: "Correct. Zero tolerance for broken financial trust." },
+            { q: "SOP for Withdrawal Issues: What comes after 'Verify Proof'?", options: ["Ignore", "Retransfer immediately", "Get 'Return Excess' Agreement", "Ask for a deposit"], correct: 2, feedback: "Correct. Secure the agreement before the money moves." },
+            { q: "What is the primary mindset for SOP execution?", options: ["Speed only", "Control + Documentation", "Laziness", "Asking for bonuses"], correct: 1, feedback: "Correct. Documentation is key to tracking." },
+            { q: "Which category does 'Bank Whitelist' fall under?", options: ["Payment", "Account Control", "Account Structure", "Gameplay"], correct: 1, feedback: "Correct. It is an Account Control privilege." }],
+        "Objection Handling": [
+            { q: "A VIP says: 'Your platform very hard to win.' What is the best strategy?", options: ["Offer 100% bonus", "Defend the system", "Acknowledge -> Reframe -> Soft support", "Tell them to try another day"], correct: 2, feedback: "Correct. Stabilize emotions first." },
+            { q: "How should you handle a 'Bonus Hunter'?", options: ["Reject harshly", "Give small bonus every time", "Set boundaries + Redirect to overall value", "Ignore"], correct: 2, feedback: "Correct. Control expectations early." },
+            { q: "What is the 'Curiosity' approach for a 'Not Interested' member?", options: ["Ask what offers or experiences catch their attention", "Offer bigger bonus", "Ask why they are rude", "Call again"], correct: 0, feedback: "Correct. Discovery questions re-open the conversation." },
+            { q: "A VIP compares your platform to a competitor. Best response?", options: ["Match the bonus", "Differentiate by service, stability, and speed", "Say competitor is bad", "Offer free spins"], correct: 1, feedback: "Correct. Compete on experience, not price." },
+            { q: "What is the Objection Handling Formula?", options: ["Bonus + Call + Wait", "Acknowledge -> Diagnose -> Reposition -> Action", "Listen -> Pay -> Close", "Ignore -> Wait"], correct: 1, feedback: "Correct! The KAM Signature formula." },
+            { q: "A VIP says: 'Other platform give better bonus.' You reply by focusing on:", options: ["Matching the offer", "Long-term experience and withdrawal speed", "Giving 10% more", "Telling them to go"], correct: 1, feedback: "Correct. Reposition the value." },
+            { q: "When a VIP is silent but still playing, what is the best touch-point?", options: ["Call every hour", "Send a massive bonus", "Light-touch presence (Saying Hi)", "Ignore them"], correct: 2, feedback: "Correct. Don't over-contact a 'Quiet Whale'." },
+            { q: "A VIP is demanding a Rolex. What do you do first?", options: ["Buy it immediately", "Say No", "Evaluate ROI + Behavioral pattern", "Tell them to deposit 1 million"], correct: 2, feedback: "Correct. Evaluate before promising luxury." },
+            { q: "What does 'Acknowledge Emotion' mean in a loss complaint?", options: ["Saying 'Don't cry'", "Saying 'I understand how that feels after a tough run'", "Giving $1000", "Laughing"], correct: 1, feedback: "Correct. Empathy stabilizes the situation." },
+            { q: "A member says 'Don't call me'. What is the respect-based response?", options: ["Call again tomorrow", "Delete their account", "Understood. If anything changes, I'm here.", "Get angry"], correct: 2, feedback: "Correct. Respect the boundary but leave the door open." }],
     };
 
     let currentCat = ""; let currentQ = 0; let score = 0; let mistakes = [];
