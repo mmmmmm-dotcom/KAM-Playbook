@@ -59,14 +59,19 @@
         .test-info { padding: 20px; }
         .start-btn { background: var(--accent); color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; }
 
-        /* Quiz Overlay */
+        /* Quiz Overlay & Results */
         .quiz-overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:white; z-index: 2000; padding: 40px; box-sizing: border-box; overflow-y: auto; }
-        .quiz-box { max-width: 600px; margin: 0 auto; }
+        .quiz-box { max-width: 700px; margin: 0 auto; }
         .option { background: #f1f5f9; padding: 15px; border: 2px solid #e2e8f0; margin-bottom: 12px; border-radius: 10px; cursor: pointer; }
         .option:hover { border-color: var(--accent); }
-        .correct { background: #dcfce7 !important; border-color: var(--success) !important; }
-        .wrong { background: #fee2e2 !important; border-color: var(--danger) !important; }
+        .correct { background: #dcfce7 !important; border-color: var(--success) !important; color: #166534; }
+        .wrong { background: #fee2e2 !important; border-color: var(--danger) !important; color: #991b1b; }
         
+        .review-item { border-bottom: 1px solid #e2e8f0; padding: 15px 0; }
+        .review-q { font-weight: bold; color: var(--primary); margin-bottom: 5px; }
+        .review-a { color: var(--success); font-size: 0.9rem; font-weight: bold; }
+        .review-wrong { color: var(--danger); text-decoration: line-through; font-size: 0.9rem; }
+
         .script-box { background: #1e293b; color: #cbd5e1; padding: 25px; border-radius: 10px; font-family: monospace; }
         footer { text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 0.8rem; }
     </style>
@@ -151,7 +156,7 @@
             <h2>Assessment Center</h2>
             <div class="assessment-grid">
                 <div class="test-card"><div class="test-image" style="background:#3b82f6">🎯</div><div class="test-info"><h3>Acquisition</h3><button class="start-btn" onclick="openQuiz('Acquisition')">Start Test</button></div></div>
-                <div class="test-card"><div class="test-image" style="background:#f59e0b">👑</div><div class="test-info"><h3>VIP Program</h3><button class="start-btn" onclick="openQuiz('VIP Program')">Start Test</button></div></div>
+                <div class="test-card"><div class="test-image" style="background:#f59e0b">👑</div><div class="test-info"><h3>VIP Care</h3><button class="start-btn" onclick="openQuiz('VIP Care')">Start Test</button></div></div>
                 <div class="test-card"><div class="test-image" style="background:#10b981">📈</div><div class="test-info"><h3>Retention</h3><button class="start-btn" onclick="openQuiz('Retention')">Start Test</button></div></div>
             </div>
         </div>
@@ -161,11 +166,34 @@
     <div id="quiz-overlay" class="quiz-overlay">
         <div class="quiz-box">
             <h2 id="active-quiz-title">Test</h2>
-            <div id="q-text" style="font-size: 1.2rem; margin: 20px 0; font-weight: bold;"></div>
-            <div id="options-container"></div>
-            <div id="feedback" style="margin-top:20px; font-weight:bold; color:var(--accent);"></div>
-            <button id="next-btn" onclick="nextQuestion()" style="display:none; width:100%; padding:15px; margin-top:20px; background:var(--primary); color:white; border:none; border-radius:8px; cursor:pointer;">Next Question</button>
-            <button onclick="closeQuiz()" style="margin-top:10px; width:100%; background:none; border:none; color:#94a3b8; cursor:pointer;">Cancel Test</button>
+            
+            <div id="quiz-intro">
+                <p>Enter your full name to begin certification:</p>
+                <input type="text" id="candidate-name" placeholder="Name" style="width:100%; padding:15px; margin-bottom:20px; border:1px solid #ccc; border-radius:8px; box-sizing: border-box;">
+                <button class="start-btn" onclick="startQuizLogic()">Begin Test</button>
+            </div>
+
+            <div id="quiz-content" style="display:none;">
+                <div id="q-text" style="font-size: 1.2rem; margin: 20px 0; font-weight: bold;"></div>
+                <div id="options-container"></div>
+                <div id="feedback" style="margin-top:20px; font-weight:bold; color:var(--accent);"></div>
+                <button id="next-btn" onclick="nextQuestion()" style="display:none; width:100%; padding:15px; margin-top:20px; background:var(--primary); color:white; border:none; border-radius:8px; cursor:pointer;">Next Question</button>
+            </div>
+
+            <div id="quiz-result" style="display:none;">
+                <h3 id="score-display"></h3>
+                <div id="review-area" style="margin-top:20px; background:#fff; padding:20px; border:1px solid #ddd; border-radius:8px; max-height:300px; overflow-y:auto;">
+                    <h4>Review Your Mistakes:</h4>
+                    <div id="mistakes-list"></div>
+                </div>
+                <form action="https://formspree.io/f/xkokygga" method="POST" style="margin-top:20px;">
+                    <input type="hidden" name="Candidate" id="form-name">
+                    <input type="hidden" name="Score" id="form-score">
+                    <input type="hidden" name="Category" id="form-category">
+                    <button type="submit" class="start-btn" style="background:var(--success)">Submit Results to Team Leader</button>
+                </form>
+                <button onclick="closeQuiz()" style="margin-top:10px; width:100%; background:none; border:none; color:#94a3b8; cursor:pointer;">Cancel and Exit</button>
+            </div>
         </div>
     </div>
 
@@ -186,7 +214,6 @@
         window.scrollTo(0,0);
     }
 
-    // QUIZ LOGIC
     const allQuizzes = {
         "Acquisition": [{ q: "What is the biggest risk of running business without VIP acquisition?", options: ["Lower bonuses", "Higher churn dependency risk", "Slower CX response", "Less campaigns"], correct: 1, feedback: "Correct! Without new VIPs, the business slowly dies when old whales stop playing." },
             { q: "A healthy business MUST have:", options: ["Strong retention only", "Strong acquisition only", "Balanced acquisition + retention", "High bonus budget"], correct: 2, feedback: "Correct. Acquisition feeds the funnel, Retention keeps the revenue stable." },
@@ -250,28 +277,69 @@
             { q: "What defines a TRUE VIP experience?", options: ["Expensive rewards", "Fast replies", "Feeling personally valued and remembered", "Frequent campaigns"], correct: 2, feedback: "Correct! Being remembered is the ultimate 'Bespoke' touch." }]
     };
 
-    let currentCat = ""; let currentQ = 0; let score = 0;
-    function openQuiz(cat) { currentCat = cat; currentQ = 0; score = 0; document.getElementById('active-quiz-title').innerText = cat; document.getElementById('quiz-overlay').style.display = 'block'; loadQuestion(); }
+    let currentCat = ""; let currentQ = 0; let score = 0; let mistakes = [];
+
+    function openQuiz(cat) { 
+        currentCat = cat; 
+        document.getElementById('active-quiz-title').innerText = cat; 
+        document.getElementById('quiz-overlay').style.display = 'block'; 
+        document.getElementById('quiz-intro').style.display = 'block';
+        document.getElementById('quiz-content').style.display = 'none';
+        document.getElementById('quiz-result').style.display = 'none';
+    }
+
+    function startQuizLogic() {
+        if(!document.getElementById('candidate-name').value) return alert("Enter name");
+        currentQ = 0; score = 0; mistakes = [];
+        document.getElementById('quiz-intro').style.display = 'none';
+        document.getElementById('quiz-content').style.display = 'block';
+        loadQuestion();
+    }
+
     function closeQuiz() { document.getElementById('quiz-overlay').style.display = 'none'; }
+
     function loadQuestion() {
         const qData = allQuizzes[currentCat][currentQ];
-        document.getElementById('q-text').innerText = qData.q;
+        document.getElementById('q-text').innerText = (currentQ + 1) + ". " + qData.q;
         const container = document.getElementById('options-container');
         container.innerHTML = "";
         qData.options.forEach((opt, i) => { container.innerHTML += `<div class="option" onclick="submitAns(${i})">${opt}</div>`; });
         document.getElementById('feedback').innerText = ""; document.getElementById('next-btn').style.display = "none";
     }
+
     function submitAns(idx) {
         const qData = allQuizzes[currentCat][currentQ];
         const opts = document.getElementsByClassName('option');
-        if (idx === qData.correct) { opts[idx].classList.add('correct'); score++; } else { opts[idx].classList.add('wrong'); opts[qData.correct].classList.add('correct'); }
+        if (idx === qData.correct) { 
+            opts[idx].classList.add('correct'); 
+            score++; 
+        } else { 
+            opts[idx].classList.add('wrong'); 
+            opts[qData.correct].classList.add('correct'); 
+            mistakes.push({ q: qData.q, c: qData.options[qData.correct], u: qData.options[idx] });
+        }
         for (let o of opts) o.style.pointerEvents = 'none';
         document.getElementById('feedback').innerText = qData.feedback; document.getElementById('next-btn').style.display = "block";
     }
+
     function nextQuestion() {
         currentQ++;
         if (currentQ < allQuizzes[currentCat].length) { loadQuestion(); } 
-        else { document.getElementById('q-text').innerText = "Test Complete! Score: " + score; document.getElementById('options-container').innerHTML = ""; document.getElementById('next-btn').innerText = "Finish"; document.getElementById('next-btn').onclick = closeQuiz; }
+        else { 
+            document.getElementById('quiz-content').style.display = 'none';
+            document.getElementById('quiz-result').style.display = 'block';
+            document.getElementById('score-display').innerText = "Test Complete! Score: " + score + "/" + allQuizzes[currentCat].length;
+            
+            const list = document.getElementById('mistakes-list');
+            list.innerHTML = mistakes.length ? "" : "Perfect Score!";
+            mistakes.forEach(m => {
+                list.innerHTML += `<div class="review-item"><p class="review-q">${m.q}</p><p class="review-wrong">Your Answer: ${m.u}</p><p class="review-a">Correct Answer: ${m.c}</p></div>`;
+            });
+
+            document.getElementById('form-name').value = document.getElementById('candidate-name').value;
+            document.getElementById('form-score').value = score;
+            document.getElementById('form-category').value = currentCat;
+        }
     }
 </script>
 
