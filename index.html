@@ -31,19 +31,16 @@
 
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; min-height: 70vh; }
         
-        /* Page Logic */
         .page { display: none; animation: fadeIn 0.4s; }
         .page.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .content-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 5px solid var(--accent); margin-bottom: 30px; }
         
-        /* Home Page Styles */
         .vision-mission { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
         .vm-box { background: var(--primary); color: white; padding: 30px; border-radius: 12px; border-bottom: 4px solid var(--gold); }
         .vm-box h3 { color: var(--gold); text-transform: uppercase; margin-top: 0; letter-spacing: 1px; }
 
-        /* Caring Values Grid */
         .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
         .value-card { background: white; display: flex; align-items: flex-start; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0; transition: 0.3s; }
         .value-card:hover { border-color: var(--accent); transform: scale(1.02); }
@@ -51,7 +48,6 @@
         .value-text h4 { margin: 0; color: var(--primary); font-size: 1.1rem; }
         .value-text p { margin: 5px 0 0 0; font-size: 0.85rem; color: #64748b; }
 
-        /* Assessment Dashboard */
         .assessment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .test-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; transition: 0.3s; text-align: center; }
         .test-card:hover { transform: translateY(-5px); }
@@ -59,11 +55,9 @@
         .test-info { padding: 20px; }
         .start-btn { background: var(--accent); color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; }
 
-        /* Quiz Overlay & Results */
         .quiz-overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:white; z-index: 2000; padding: 40px; box-sizing: border-box; overflow-y: auto; }
         .quiz-box { max-width: 700px; margin: 0 auto; }
         .option { background: #f1f5f9; padding: 15px; border: 2px solid #e2e8f0; margin-bottom: 12px; border-radius: 10px; cursor: pointer; }
-        .option:hover { border-color: var(--accent); }
         .correct { background: #dcfce7 !important; border-color: var(--success) !important; color: #166534; }
         .wrong { background: #fee2e2 !important; border-color: var(--danger) !important; color: #991b1b; }
         
@@ -72,7 +66,14 @@
         .review-a { color: var(--success); font-size: 0.9rem; font-weight: bold; }
         .review-wrong { color: var(--danger); text-decoration: line-through; font-size: 0.9rem; }
 
-        .script-box { background: #1e293b; color: #cbd5e1; padding: 25px; border-radius: 10px; font-family: monospace; }
+        .sop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .sop-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .sop-card.open .sop-details { display: block; }
+        .sop-details { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #e2e8f0; }
+
+        .objection-trigger { background: #f1f5f9; color: var(--primary); cursor: pointer; padding: 18px; width: 100%; text-align: left; border: none; border-radius: 8px; margin-bottom: 10px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        .objection-panel { padding: 0 18px; background-color: white; display: none; overflow: hidden; border-left: 2px solid var(--accent); margin-bottom: 20px; }
+
         footer { text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 0.8rem; }
     </style>
 </head>
@@ -92,6 +93,7 @@
 
     <nav>
         <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('onboarding')">Onboarding</a>
         <a onclick="showPage('acquisition')">Acquisition</a>
         <a onclick="showPage('retention')">Retention</a>
         <a onclick="showPage('objections')">Objections</a>
@@ -100,27 +102,31 @@
     </nav>
 
     <div class="container">
-
         <div id="home" class="page active">
             <div class="vision-mission">
-                <div class="vm-box">
-                    <h3>Our Vision</h3>
-                    <p>To be the No.1 Key Account Management Team in the Industry.</p>
-                </div>
-                <div class="vm-box">
-                    <h3>Our Mission</h3>
-                    <p>To craft unforgettable experiences that impress our clients, surpass expectations, and deliver a wow through every bespoke touchpoint we create.</p>
-                </div>
+                <div class="vm-box"><h3>Our Vision</h3><p>To be the No.1 Key Account Management Team in the Industry.</p></div>
+                <div class="vm-box"><h3>Our Mission</h3><p>To deliver a WOW through every bespoke touchpoint that surpasses expectations.</p></div>
             </div>
-
             <h2 style="text-align: center; border: none; margin-bottom: 30px;">Core Values: <span style="color:var(--accent)">CARING</span></h2>
             <div class="values-grid">
-                <div class="value-card"><div class="letter-circle">C</div><div class="value-text"><h4>Client-Centric</h4><p>Going beyond expectations to deliver personalized experiences that build lasting loyalty.</p></div></div>
-                <div class="value-card"><div class="letter-circle">A</div><div class="value-text"><h4>Accountability</h4><p>Taking ownership of actions and outcomes—upholding integrity in every decision.</p></div></div>
-                <div class="value-card"><div class="letter-circle">R</div><div class="value-text"><h4>Resourcefulness</h4><p>Finding ways to make things happen through creative thinking and strong networks.</p></div></div>
-                <div class="value-card"><div class="letter-circle">I</div><div class="value-text"><h4>Integrity</h4><p>Doing the right thing even when no one is watching—ensuring fairness and honesty.</p></div></div>
-                <div class="value-card"><div class="letter-circle">N</div><div class="value-text"><h4>Nurture</h4><p>Growing relationships, not just results. Building stronger partnerships every day.</p></div></div>
-                <div class="value-card"><div class="letter-circle">G</div><div class="value-text"><h4>Gratefulness</h4><p>Valuing every client and challenge as a chance to learn, appreciate, and grow together.</p></div></div>
+                <div class="value-card"><div class="letter-circle">C</div><div class="value-text"><h4>Client-Centric</h4><p>Going beyond expectations to deliver personalized experiences.</p></div></div>
+                <div class="value-card"><div class="letter-circle">A</div><div class="value-text"><h4>Accountability</h4><p>Taking ownership of actions and outcomes.</p></div></div>
+                <div class="value-card"><div class="letter-circle">R</div><div class="value-text"><h4>Resourcefulness</h4><p>Finding creative ways to make things happen.</p></div></div>
+                <div class="value-card"><div class="letter-circle">I</div><div class="value-text"><h4>Integrity</h4><p>Doing the right thing even when no one is watching.</p></div></div>
+                <div class="value-card"><div class="letter-circle">N</div><div class="value-text"><h4>Nurture</h4><p>Growing relationships, not just results.</p></div></div>
+                <div class="value-card"><div class="letter-circle">G</div><div class="value-text"><h4>Gratefulness</h4><p>Valuing every challenge as a chance to grow.</p></div></div>
+            </div>
+        </div>
+
+        <div id="onboarding" class="page">
+            <div class="content-card">
+                <h2>Onboarding Fundamentals</h2>
+                <p>Ensure you understand the "WOW" factor required in every bespoke touchpoint.</p>
+                <ul>
+                    <li>Understand player tiers (VIP Bronze to Platinum).</li>
+                    <li>Master the CRM and Communication tools.</li>
+                    <li>Strict Security: Never leak player lists or VIP details.</li>
+                </ul>
             </div>
         </div>
 
@@ -128,6 +134,11 @@
             <div class="content-card">
                 <h2>Acquisition Mastery</h2>
                 <p>Strategies for identifying and onboarding new High-Value Accounts.</p>
+                <ul>
+                    <li>Spotting HFTD and HVP profiles.</li>
+                    <li>Open-ended discovery questions.</li>
+                    <li>Qualifying value before the pitch.</li>
+                </ul>
             </div>
         </div>
 
@@ -135,455 +146,201 @@
             <div class="content-card">
                 <h2>Retention Excellence</h2>
                 <p>Building trust and lasting loyalty through client-centric care.</p>
+                <ul>
+                    <li>Personalized life moment experiences.</li>
+                    <li>Managing reward dependency.</li>
+                    <li>Consistent service standards.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="objections" class="page">
+            <div class="content-card">
+                <h2>Master Objection Handling</h2>
+                <p>Acknowledge -> Diagnose -> Reposition -> Action.</p>
+                <button class="objection-trigger" onclick="togglePanel(this)">1. Losses Complaints</button>
+                <div class="objection-panel"><p>Script: "I understand how that feels... Many players reset their strategy after a tough run."</p></div>
+                <button class="objection-trigger" onclick="togglePanel(this)">2. Bonus Hunting</button>
+                <div class="objection-panel"><p>Script: "Support is based on overall consistency. Let me review your profile for meaningful plans."</p></div>
             </div>
         </div>
 
         <div id="KAM SOP" class="page">
-    <div class="content-card" style="border-top-color: var(--gold);">
-        <h2 style="color: var(--primary); margin-bottom: 5px;">KAM Standard Operating Procedures (SOP)</h2>
-        <p style="color: #64748b; font-style: italic; margin-bottom: 25px;">"Speed + Control + Documentation = Trust. Follow the flow to minimize risk."</p>
-
-        <style>
-            .sop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-            .sop-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; }
-            .sop-card:hover { border-color: var(--gold); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-            .sop-category-tag { font-size: 0.7rem; font-weight: bold; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: block; }
-            .sop-card h4 { margin: 0 0 10px 0; color: var(--primary); font-size: 1.1rem; display: flex; align-items: center; justify-content: space-between; }
-            .sop-card .arrow { font-size: 1.2rem; color: #cbd5e1; transition: transform 0.3s; }
-            
-            .sop-details { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #e2e8f0; animation: slideDown 0.3s ease-out; }
-            .sop-card.open .sop-details { display: block; }
-            .sop-card.open .arrow { transform: rotate(90deg); color: var(--gold); }
-
-            .rule-box { background: #fff7ed; border-left: 3px solid var(--gold); padding: 10px; font-size: 0.85rem; margin-bottom: 15px; }
-            .flow-step { display: flex; align-items: center; font-size: 0.85rem; margin-bottom: 5px; color: #475569; }
-            .flow-step i { color: var(--success); margin-right: 8px; font-style: normal; font-weight: bold; }
-            
-            .mistake-banner { background: #fef2f2; border: 1px solid #fee2e2; padding: 20px; border-radius: 12px; margin-top: 40px; }
-            .mistake-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
-            .mistake-item { color: #991b1b; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; }
-
-            @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        </style>
-
-        <div class="sop-grid">
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Payment Issues (Critical)</span>
-                <h4>Deposit Issue <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> TL review required. Must get refund agreement. If broken → waive + remove VIP.</div>
-                    <div class="flow-step"><i>1.</i> Check System</div>
-                    <div class="flow-step"><i>2.</i> Get Member Agreement</div>
-                    <div class="flow-step"><i>3.</i> Escalate to CX & PMT</div>
-                    <div class="flow-step"><i>4.</i> Credit early / Close case</div>
-                </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Payment Issues (Critical)</span>
-                <h4>Withdrawal Issue <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> TL review. Member must agree to return excess if double paid.</div>
-                    <div class="flow-step"><i>1.</i> Check Bounce Status</div>
-                    <div class="flow-step"><i>2.</i> Ask for Proof</div>
-                    <div class="flow-step"><i>3.</i> Get Return Agreement</div>
-                    <div class="flow-step"><i>4.</i> Retransfer & Follow up</div>
-                </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Payment Issues (Critical)</span>
-                <h4>Dedicated Bank Acc <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> TL review. Only for high-value (RM50K+) transactions.</div>
-                    <div class="flow-step"><i>1.</i> Review Value</div>
-                    <div class="flow-step"><i>2.</i> Submit Request to PMT</div>
-                    <div class="flow-step"><i>3.</i> Assign & Notify VIP</div>
-                    <div class="flow-step"><i>4.</i> Confirm Deposit Receipt</div>
-                </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Account Privileges</span>
-                <h4>Bank Whitelist <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> TL review. Must pass Compliance (CMP) check.</div>
-                    <div class="flow-step"><i>1.</i> Collect Bank Details</div>
-                    <div class="flow-step"><i>2.</i> Run CMP Security Check</div>
-                    <div class="flow-step"><i>3.</i> Approve & Update Whitelist</div>
-                </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Account Privileges</span>
-                <h4>Withdrawal Limit <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> Only for high-value + trusted VIP. TL + MKT Approval needed.</div>
-                    <div class="flow-step"><i>1.</i> Justify Reason</div>
-                    <div class="flow-step"><i>2.</i> MKT + CMP Approval</div>
-                    <div class="flow-step"><i>3.</i> Payment Dept Update</div>
-                </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Account Privileges</span>
-                <h4>Bet Limit Adjustment <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> Provider-dependent. CMP must verify risk level first.</div>
-                    <div class="flow-step"><i>1.</i> Check Provider Eligibility</div>
-                    <div class="flow-step"><i>2.</i> CMP Risk Verification</div>
-                    <div class="flow-step"><i>3.</i> Approve/Reject Update</div>
-                </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Account Structure</span>
-                <h4>VIP Account Migration <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rules:</b> Valid reasons only. No bonus entitlement. One-time only.</div>
-                    <div class="flow-step"><i>1.</i> Verify Reason (Luck/Privacy)</div>
-                    <div class="flow-step"><i>2.</i> MKT + CMP Approval</div>
-                    <div class="flow-step"><i>3.</i> Migrate & Deactivate Old</div>
-                </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Gameplay Issues</span>
-                <h4>Provider Complaints <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> Must collect proof (recording/screenshot) before escalation.</div>
-                    <div class="flow-step"><i>1.</i> Collect Evidence</div>
-                    <div class="flow-step"><i>2.</i> Check Internal History</div>
-                    <div class="flow-step"><i>3.</i> IT/Provider Investigation</div>
-                    <div class="flow-step"><i>4.</i> Update & Compensate</div>
+            <div class="content-card">
+                <h2>KAM SOP</h2>
+                <div class="sop-grid">
+                    <div class="sop-card" onclick="this.classList.toggle('open')">
+                        <h4>Payment Issues ›</h4>
+                        <div class="sop-details">Check system -> Get agreement -> Escalate -> Credit.</div>
+                    </div>
+                    <div class="sop-card" onclick="this.classList.toggle('open')">
+                        <h4>Account Privileges ›</h4>
+                        <div class="sop-details">Bank Whitelist, Withdrawal Adjustments, Bet Limits.</div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="mistake-banner">
-            <h3 style="margin-top: 0; color: #991b1b;">🚫 Common KAM Mistakes (HIGH RISK)</h3>
-            <div class="mistake-grid">
-                <div class="mistake-item">✖ Acting before agreement</div>
-                <div class="mistake-item">✖ No proof collection</div>
-                <div class="mistake-item">✖ Weak follow-up (Lost trust)</div>
-                <div class="mistake-item">✖ No documentation (Cannot track)</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    function toggleSOP(card) {
-        card.classList.toggle('open');
-    }
-</script>
-
-        <div id="objections" class="page">
-    <div class="content-card">
-        <h2 style="color: var(--primary); margin-bottom: 5px;">Master Objection Handling</h2>
-        <p style="color: #64748b; font-style: italic; margin-bottom: 25px;">"A VIP objection is not rejection — it is a signal. Your job is not to respond, but to diagnose and reposition."</p>
-
-        <div style="background: var(--primary); color: white; padding: 20px; border-radius: 10px; margin-bottom: 30px; border-left: 5px solid var(--gold);">
-            <h4 style="margin-top: 0; color: var(--gold);">🎯 Core Principle</h4>
-            <p style="margin-bottom: 0; font-size: 0.95rem;">A VIP objection is a signal. Don't just answer; <b>diagnose and reposition</b>. Move from emotion to strategic action.</p>
-        </div>
-
-        <style>
-            .objection-trigger { background: #f1f5f9; color: var(--primary); cursor: pointer; padding: 18px; width: 100%; text-align: left; border: none; outline: none; transition: 0.4s; border-radius: 8px; margin-bottom: 10px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-            .objection-trigger:after { content: '\002B'; font-size: 20px; color: var(--accent); }
-            .objection-active:after { content: "\2212"; }
-            .objection-panel { padding: 0 18px; background-color: white; display: none; overflow: hidden; border-left: 2px solid var(--accent); margin-bottom: 20px; }
-            .strategy-tag { background: #eff6ff; color: var(--accent); padding: 4px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; display: inline-block; }
-            .script-line { background: #f8fafc; border-left: 3px solid #cbd5e1; padding: 10px; margin: 10px 0; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; color: #1e293b; }
-        </style>
-
-        <div id="objection-accordion">
-            <button class="objection-trigger">1. Losses Complaints (Emotion: Frustration/Pain)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "I keep losing", "Your platform hard to win", "Other platform better"</p>
-                <div class="strategy-tag">Strategy: Acknowledge → Stabilize emotion → Reframe → Soft support</div>
-                <div class="script-line">"I understand how that feels, especially after a tough run. Actually, many players will pause after a losing phase to reset their strategy. Let me see if there’s something we can support you with to ease the situation slightly."</div>
-            </div>
-
-            <button class="objection-trigger">2. Bonus Hunting / Always Asking</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "Got bonus?", "I deposit if you give", Repeated requests after every loss</p>
-                <div class="strategy-tag">Strategy: Set positioning → Control expectation → Redirect value</div>
-                <div class="script-line">"We do have special support, but it’s usually based on overall activity and consistency. Let me review your profile and see what meaningful support we can plan instead of one-time offers."</div>
-            </div>
-
-            <button class="objection-trigger">3. Not Interested / Cold Response</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "Not interested", Short replies, Passive engagement</p>
-                <div class="strategy-tag">Strategy: Curiosity → Discovery → Re-engage interest</div>
-                <div class="script-line">"No worries at all — just curious, what kind of offers or experiences usually catch your attention? Previously when you were active, what did you enjoy most?"</div>
-            </div>
-
-            <button class="objection-trigger">4. No Pickup / Avoiding Contact</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> Ignore calls, Seen but no reply</p>
-                <div class="strategy-tag">Strategy: Switch channel → Add context → Reduce pressure</div>
-                <div class="script-line"><b>WhatsApp:</b> "Hi, just tried reaching you earlier — nothing urgent. Wanted to check in and share something that might be relevant to you. Let me know when you’re free, I’ll keep it short."</div>
-            </div>
-
-            <button class="objection-trigger">5. Competitor Comparison</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "Other platform give better", "Their bonus higher"</p>
-                <div class="strategy-tag">Strategy: Differentiate → Reposition → Elevate experience</div>
-                <div class="script-line">"Yes, many platforms offer aggressive promos… But what we focus more on is long-term experience — stability, faster withdrawals, and personalized support."</div>
-            </div>
-
-            <button class="objection-trigger">6. Withdrawal / Trust Concerns</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "Can withdraw or not?", "Last time delay"</p>
-                <div class="strategy-tag">Strategy: Confidence + Clarity + Control</div>
-                <div class="script-line">"I understand that’s important. Our withdrawal process is structured to ensure safety and consistency — if there’s any delay, I’ll personally monitor it for you."</div>
-            </div>
-
-            <button class="objection-trigger">7. Platform / Technical Complaints</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> Lagging, Game error, Deposit delay</p>
-                <div class="strategy-tag">Strategy: Ownership → Action → Follow-up</div>
-                <div class="script-line">"Thanks for highlighting this — I’ll get this checked immediately and update you once I have clarity. In the meantime, let me make sure this doesn’t affect your experience moving forward."</div>
-            </div>
-
-            <button class="objection-trigger">8. High Expectations VIP (Demanding)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> Asking for luxury items, Special treatment expectation</p>
-                <div class="strategy-tag">Strategy: Position value → Evaluate → Control</div>
-                <div class="script-line">"That’s definitely something we can explore — usually we plan these based on overall engagement to make it more meaningful."</div>
-            </div>
-
-            <button class="objection-trigger">9. Silent VIP (Depositing but disengaged)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> No reply but still playing</p>
-                <div class="strategy-tag">Strategy: Light-touch presence</div>
-                <div class="script-line">"Just dropping by to say hi — no action needed, but if there’s anything you need, I’m always here."</div>
-            </div>
-
-            <button class="objection-trigger">10. Reactivation (Inactive VIP)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> 30–90 days inactive</p>
-                <div class="strategy-tag">Strategy: Emotional reconnection → Memory trigger</div>
-                <div class="script-line">"Noticed you’ve been away for a bit — hope everything’s been good on your side. Last time you were quite active in [sports/slots], thought I’d check if anything interesting might bring you back."</div>
-            </div>
-
-            <button class="objection-trigger">11. New HFTD (High First Deposit)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> Big first deposit but unknown intent</p>
-                <div class="strategy-tag">Strategy: Qualify → Understand → Anchor early relationship</div>
-                <div class="script-line">"Great to see your strong start — usually players at your level have specific preferences, what do you enjoy most?"</div>
-            </div>
-
-            <button class="objection-trigger">12. HVP (High Value Player)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> Big but irregular deposits</p>
-                <div class="strategy-tag">Strategy: Stability + Relationship anchoring</div>
-                <div class="script-line">"I notice your activity comes in strong phases — I’d like to understand your style better so we can support you properly."</div>
-            </div>
-
-            <button class="objection-trigger">13. Immediate Rejection (Fast Pushback)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "No need", "Don’t call"</p>
-                <div class="strategy-tag">Strategy: Respect → Leave door open</div>
-                <div class="script-line">"Understood — I won’t take your time. If anything changes, feel free to reach out anytime."</div>
-            </div>
-
-            <button class="objection-trigger">14. Asking for Better Deals Before Deposit</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "What can you give first?"</p>
-                <div class="strategy-tag">Strategy: Reverse qualification</div>
-                <div class="script-line">"We usually tailor based on activity — once I understand your style, I can structure something more meaningful for you."</div>
-            </div>
-        </div>
-
-        <div style="margin-top: 40px; padding: 30px; background: #fff7ed; border-radius: 15px; border: 1px solid #fed7aa;">
-            <h3 style="color: #9a3412; margin-top: 0;">🧠 Objection Handling Formula</h3>
-            <p style="font-weight: bold; margin-bottom: 10px;">1. Acknowledge emotion | 2. Diagnose intent | 3. Reposition value | 4. Offer controlled action</p>
-            <hr style="border: 0; border-top: 1px solid #fed7aa; margin: 20px 0;">
-            <p><b style="color: #c2410c;">⚡ Management Insight:</b> Most teams memorize scripts. <b>Top teams understand WHY</b> the objection exists. Use this bank to identify the 'Pain Point' and provide the 'Antidote'.</p>
-        </div>
-    </div>
-
-    <script>
-        // JS for Accordion
-        var acc = document.getElementsByClassName("objection-trigger");
-        for (var i = 0; i < acc.length; i++) {
-            acc[i].onclick = function() {
-                this.classList.toggle("objection-active");
-                var panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
-                    panel.style.display = "none";
-                } else {
-                    panel.style.display = "block";
-                }
-            }
-        }
-    </script>
-</div>
 
         <div id="assessment" class="page">
-            <h2>Assessment Center</h2>
+            <h2>Assessments</h2>
             <div class="assessment-grid">
-                <div class="test-card"><div class="test-image" style="background:#3b82f6">🎯</div><div class="test-info"><h3>Acquisition</h3><button class="start-btn" onclick="openQuiz('Acquisition')">Start Test</button></div></div>
-                <div class="test-card"><div class="test-image" style="background:#f59e0b">👑</div><div class="test-info"><h3>VIP Care</h3><button class="start-btn" onclick="openQuiz('VIP Care')">Start Test</button></div></div>
-                <div class="test-card"><div class="test-image" style="background:#10b981">📈</div><div class="test-info"><h3>Retention</h3><button class="start-btn" onclick="openQuiz('Retention')">Start Test</button></div></div>
-                <div class="test-card">
-    <div class="test-image" style="background: #ef4444;">📋</div>
-    <div class="test-info">
-        <h3>KAM SOP</h3>
-        <p>Operational flows & safety.</p>
-        <button class="start-btn" onclick="openQuiz('KAM SOP')">Start Test</button>
-    </div>
-</div>
-
-<div class="test-card">
-    <div class="test-image" style="background: #0f172a;">💬</div>
-    <div class="test-info">
-        <h3>Objection Handling</h3>
-        <p>Turning NO into YES.</p>
-        <button class="start-btn" onclick="openQuiz('Objection Handling')">Start Test</button>
-    </div>
-</div>
+                <div class="test-card"><div class="test-image">🎯</div><div class="test-info"><h3>Acquisition</h3><button class="start-btn" onclick="openQuiz('Acquisition')">Start</button></div></div>
+                <div class="test-card"><div class="test-image">👑</div><div class="test-info"><h3>VIP Care</h3><button class="start-btn" onclick="openQuiz('VIP Care')">Start</button></div></div>
+                <div class="test-card"><div class="test-image">📈</div><div class="test-info"><h3>Retention</h3><button class="start-btn" onclick="openQuiz('Retention')">Start</button></div></div>
+                <div class="test-card"><div class="test-image">📋</div><div class="test-info"><h3>KAM SOP</h3><button class="start-btn" onclick="openQuiz('KAM SOP')">Start</button></div></div>
+                <div class="test-card"><div class="test-image">💬</div><div class="test-info"><h3>Objections</h3><button class="start-btn" onclick="openQuiz('Objection Handling')">Start</button></div></div>
             </div>
         </div>
-
     </div>
 
     <div id="quiz-overlay" class="quiz-overlay">
         <div class="quiz-box">
             <h2 id="active-quiz-title">Test</h2>
-            
             <div id="quiz-intro">
-                <p>Enter your full name to begin certification:</p>
-                <input type="text" id="candidate-name" placeholder="Name" style="width:100%; padding:15px; margin-bottom:20px; border:1px solid #ccc; border-radius:8px; box-sizing: border-box;">
+                <p>Enter your full name to begin:</p>
+                <input type="text" id="candidate-name" placeholder="Name" style="width:100%; padding:15px; margin-bottom:20px; border:1px solid #ccc; border-radius:8px;">
                 <button class="start-btn" onclick="startQuizLogic()">Begin Test</button>
             </div>
-
             <div id="quiz-content" style="display:none;">
                 <div id="q-text" style="font-size: 1.2rem; margin: 20px 0; font-weight: bold;"></div>
                 <div id="options-container"></div>
                 <div id="feedback" style="margin-top:20px; font-weight:bold; color:var(--accent);"></div>
                 <button id="next-btn" onclick="nextQuestion()" style="display:none; width:100%; padding:15px; margin-top:20px; background:var(--primary); color:white; border:none; border-radius:8px; cursor:pointer;">Next Question</button>
             </div>
-
             <div id="quiz-result" style="display:none;">
                 <h3 id="score-display"></h3>
-                <div id="review-area" style="margin-top:20px; background:#fff; padding:20px; border:1px solid #ddd; border-radius:8px; max-height:300px; overflow-y:auto;">
-                    <h4>Review Your Mistakes:</h4>
+                <div id="review-area" style="margin-top:20px; background:#f8fafc; padding:20px; border:1px solid #ddd; border-radius:8px; max-height:300px; overflow-y:auto;">
+                    <h4>Mistake Review:</h4>
                     <div id="mistakes-list"></div>
                 </div>
                 <form action="https://formspree.io/f/xaqavnbq" method="POST" style="margin-top:20px;">
                     <input type="hidden" name="Candidate" id="form-name">
                     <input type="hidden" name="Score" id="form-score">
                     <input type="hidden" name="Category" id="form-category">
-                    <button type="submit" class="start-btn" style="background:var(--success)">Submit Results to Team Leader</button>
+                    <button type="submit" class="start-btn" style="background:var(--success)">Submit Results</button>
                 </form>
-                <button onclick="closeQuiz()" style="margin-top:10px; width:100%; background:none; border:none; color:#94a3b8; cursor:pointer;">Cancel and Exit</button>
+                <button onclick="closeQuiz()" style="margin-top:10px; width:100%; background:none; border:none; color:#94a3b8; cursor:pointer;">Exit</button>
             </div>
         </div>
     </div>
 
-    <footer>&copy; 2026 VIP KAM Master Academy | Confidential</footer>
+    <footer>&copy; 2026 VIP KAM Academy</footer>
 </div>
 
 <script>
     function checkPass() {
-        if (document.getElementById('pass-input').value === "VIP777") {
+        const pass = document.getElementById('pass-input').value;
+        if (pass === "VIP777") {
             document.getElementById('lock-screen').style.display = 'none';
             document.getElementById('main-app').style.display = 'block';
-        }
+        } else { alert("Wrong Access Code"); }
     }
 
     function showPage(pageId) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(pageId).classList.add('active');
+        const target = document.getElementById(pageId);
+        if(target) target.classList.add('active');
         window.scrollTo(0,0);
     }
 
+    function togglePanel(btn) {
+        const panel = btn.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+    }
+
     const allQuizzes = {
-        "Acquisition": [{ q: "What is the biggest risk of running business without VIP acquisition?", options: ["Lower bonuses", "Higher churn dependency risk", "Slower CX response", "Less campaigns"], correct: 1, feedback: "Correct! Without new VIPs, the business slowly dies when old whales stop playing." },
-            { q: "A healthy business MUST have:", options: ["Strong retention only", "Strong acquisition only", "Balanced acquisition + retention", "High bonus budget"], correct: 2, feedback: "Correct. Acquisition feeds the funnel, Retention keeps the revenue stable." },
-            { q: "Which profile is HFTD?", options: ["Member with RM3,000 monthly deposit", "New member with first deposit RM1,000+", "Long-term inactive player", "Member with high losses"], correct: 1, feedback: "Correct! HFTD is about spotting early high-intent behavior in new members." },
-            { q: "Which profile is HVP?", options: ["New user with RM1,000 deposit", "Member with one-time RM500 deposit", "Long-term member with large irregular deposits", "Member who logs in daily"], correct: 2, feedback: "Correct. HVPs have shown long-term high value but may be irregular." },
-            { q: "HFTD key characteristic is:", options: ["Loyalty", "Long-term value", "Early-stage potential", "High withdrawal"], correct: 2, feedback: "Correct. HFTD is the 'spark' that turns into a whale." },
-            { q: "HVP key characteristic is:", options: ["New registration", "Stable behavior", "High-value but unpredictable activity", "Bonus-driven"], correct: 2, feedback: "Correct. They are big players who haven't yet committed to a stable pattern." },
-            { q: "Based on your criteria, HFTD threshold is:", options: ["RM500", "RM800", "RM1,000", "RM2,000"], correct: 2, feedback: "Correct. RM1,000 is our standard high-frequency trigger." },
-            { q: "HVP qualification (avg deposit):", options: ["Avg deposit RM3,000", "Avg deposit RM5,000", "Avg deposit RM9,000", "Avg deposit RM15,000"], correct: 2, feedback: "Correct. RM9,000 (~$2k USD) is the elite tier marker." },
-            { q: "Total deposit threshold for HVP (~RM20,000+):", options: ["RM10,000", "RM15,000", "RM20,000+", "RM30,000"], correct: 2, feedback: "Correct. RM20k is the gateway to High Value status." },
-            { q: "Win/Loss threshold for elite tracking:", options: ["RM20,000", "RM30,000", "RM40,000+", "RM60,000"], correct: 2, feedback: "Correct. RM40k (~$10k USD) signifies a player with serious capital." },
-            { q: "What is the CORE objective of acquisition call?", options: ["Push deposit", "Sell bonus", "Understand + qualify + position value", "Close fast"], correct: 2, feedback: "Correct. You are a consultant, not a salesperson. Qualify the value first." },
-            { q: "Which is part of 'Core of the Call'?", options: ["Ask for deposit amount", "Ask open-ended discovery questions", "Offer bonus immediately", "Explain rules"], correct: 1, feedback: "Correct. Discovery questions reveal what the VIP actually wants." },
-            { q: "Best opening question:", options: ["'Want bonus?'", "'Deposit today?'", "'What type of games or benefits do you usually prefer?'", "'We have promotion'"], correct: 2, feedback: "Correct. This builds a profile of the player's preferences immediately." },
-            { q: "A player gives short answers. What should you do?", options: ["End call", "Push offer", "Use open-ended probing questions", "Transfer to CX"], correct: 2, feedback: "Correct. Probing questions (How, Why, Tell me about...) get them talking." },
-            { q: "Member doesn’t pick up calls (3 times). Best action?", options: ["Stop outreach", "Keep calling repeatedly", "Switch to WhatsApp with context", "Remove from list"], correct: 2, feedback: "Correct. Use WhatsApp to show you are a real person offering value." },
-            { q: "Member says 'not interested'. Best response?", options: ["Accept and close", "Push harder", "Ask what benefits they value / past experience", "Offer bigger bonus"], correct: 2, feedback: "Correct. 'Not interested' is usually a defense mechanism. Discover the 'Why'." },
-            { q: "What is WRONG remark writing?", options: ["'No pickup'", "'Called 3x, sent WhatsApp, pending reply'", "'Asked preference, interested in sports'", "'Follow up tomorrow'"], correct: 0, feedback: "Correct. 'No pickup' is a lazy remark. It doesn't help the next person who sees the file." },
-            { q: "What makes a GOOD remark?", options: ["Short", "Generic", "Action-based and traceable", "Emotional"], correct: 2, feedback: "Correct. Good remarks allow any KAM to pick up where you left off." },
-            { q: "Which is strongest VIP program USP?", options: ["Bonus size", "Free spins", "Lifetime value + experience + limits", "Daily promotion"], correct: 2, feedback: "Correct. Whales care about limits, trust, and the long-term experience." },
-            { q: "What is TRUE about acquisition mindset?", options: ["Close fast", "Push offers", "Build curiosity and qualify value", "Focus on volume only"], correct: 2, feedback: "Correct. Curiosity and Qualification lead to much higher conversion rates." }],
-        "VIP Care": [{ q: "What differentiates TOP VIPs from normal VIPs most?", options: ["Higher deposit", "Higher betting volume", "Expectations of treatment and control", "More complaints"], correct: 2, feedback: "Correct! High-rollers pay for the feeling of being in control and superior service." },
-            { q: "A Diamond VIP suddenly reduces activity. First interpretation?", options: ["Churn risk", "Financial issue", "Emotional or strategic shift", "Platform dissatisfaction"], correct: 2, feedback: "Correct. Always look for the emotional or strategic shift first." },
-            { q: "What is the biggest mistake when handling TOP VIPs?", options: ["Slow response", "Giving too little", "Treating them like normal VIPs", "Escalating too much"], correct: 2, feedback: "Correct! Treating a Whale like a minnow is the fastest way to lose them." },
-            { q: "What does a TOP VIP value MOST during losses?", options: ["Immediate cashback", "Higher rebate", "Emotional understanding + controlled support", "Free spins"], correct: 2, feedback: "Correct. They need to feel 'heard' and supported, not just bought off." },
-            { q: "When offering compensation, what is the key principle?", options: ["Match competitor", "Maximize satisfaction", "Align with ROI and long-term behavior", "Follow SOP strictly"], correct: 2, feedback: "Correct. All compensation must be a strategic investment in long-term behavior." },
-            { q: "A TOP VIP requests a luxury item (e.g. Rolex). What should you assess FIRST?", options: ["Budget availability", "Stock availability", "ROI + behavioral pattern", "Approval process"], correct: 2, feedback: "Correct. Data and ROI justify the luxury, not just the request." },
-            { q: "What signals TRUE loyalty in a TOP VIP?", options: ["High deposits", "Daily activity", "Staying despite better offers elsewhere", "Frequent communication"], correct: 2, feedback: "Correct! Resistance to competitor offers is the ultimate test of loyalty." },
-            { q: "Why should TOP VIP interactions NOT be overly transactional?", options: ["Time consuming", "Hard to track", "Reduces emotional connection", "Not scalable"], correct: 2, feedback: "Correct. If it feels like a transaction, they will go to the highest bidder. Connection keeps them." },
-            { q: "A TOP VIP is silent but still depositing. What does it mean?", options: ["Disengaged", "Loyal", "Neutral but stable", "Preparing to churn"], correct: 2, feedback: "Correct. Stability without noise is a good sign, but requires careful monitoring." },
-            { q: "What is the correct approach for birthday / life events?", options: ["Send bonus", "Send generic gift", "Curate meaningful personalized experience", "Skip if inactive"], correct: 2, feedback: "Correct. Personalization proves you are paying attention." },
-            { q: "What is the danger of over-contacting TOP VIPs?", options: ["Waste time", "Seen as spam", "Reduces exclusivity perception", "Operational burden"], correct: 2, feedback: "Correct. You are a VIP Manager, not a telemarketer. Keep it exclusive." },
-            { q: "Best communication style for TOP VIP?", options: ["Friendly casual", "Formal corporate", "Personalized, confident, and respectful", "Promotional"], correct: 2, feedback: "Correct. Confidence and respect build a 'peer-to-peer' relationship." },
-            { q: "A TOP VIP wins big. What is the best move?", options: ["Stay silent", "Offer bonus immediately", "Celebrate + reinforce relationship", "Reduce engagement"], correct: 2, feedback: "Correct. Celebrating their win builds the 'partner' mindset." },
-            { q: "What defines a 'premium experience'?", options: ["Expensive", "Fast", "Thoughtful, seamless, and exclusive", "Frequent"], correct: 2, feedback: "Correct. Thoughtfulness is the hallmark of luxury." },
-            { q: "Why is consistency more important than intensity?", options: ["Easier to manage", "Less cost", "Builds trust over time", "Reduces workload"], correct: 2, feedback: "Correct. Trust is built by showing up exactly the same way every time." },
-            { q: "A TOP VIP compares your platform to competitor. Best response?", options: ["Match competitor offer", "Defend platform", "Reinforce your unique experience value", "Ignore"], correct: 2, feedback: "Correct. Don't fight on price; fight on value and experience." },
-            { q: "What is the key role of a KAM for TOP VIPs?", options: ["Service provider", "Bonus approver", "Trusted advisor and relationship anchor", "Campaign executor"], correct: 2, feedback: "Correct. You are their anchor on the platform." },
-            { q: "When should you escalate TOP VIP issues?", options: ["Every issue", "Only when requested", "When impact affects trust or experience", "When CX cannot handle"], correct: 2, feedback: "Correct. Protect the trust at all costs." },
-            { q: "What is the correct mindset for gifting strategy?", options: ["Reward losses", "Impress VIP", "Create memorable moments tied to relationship", "Spend budget"], correct: 2, feedback: "Correct. Gifts are memories, not just items." },
-            { q: "What is the ultimate goal of TOP VIP care?", options: ["Increase deposits", "Reduce complaints", "Build long-term emotional and financial loyalty", "Maintain activity"], correct: 2, feedback: "Correct! Emotional + Financial loyalty = Unstoppable Retention." }],
-        "Retention": [{ q: "What is the PRIMARY driver of VIP retention today?", options: ["High bonus frequency", "Exclusive games", "Trust, consistency, and experience", "Faster deposits"], correct: 2, feedback: "Correct! Experience and trust keep whales loyal long-term." },
-            { q: "A VIP plays on 3 platforms. What is the correct interpretation?", options: ["Disloyal player", "Bonus hunter", "Normal market behavior", "Risky account"], correct: 2, feedback: "Correct. High-rollers often diversify; your job is to win the largest share of their wallet." },
-            { q: "A VIP threatens to close account after losing. Best approach?", options: ["Immediately offer bonus", "Ignore request", "Understand intent + assess ROI + respond strategically", "Transfer to CX"], correct: 2, feedback: "Correct. Strategic response beats blind bonus giving every time." },
-            { q: "What is the biggest risk of over-rewarding VIPs?", options: ["Budget overrun", "Lower brand value", "Conditioning dependency on rewards", "Slower operations"], correct: 2, feedback: "Correct. Reward dependency kills long-term profitability." },
-            { q: "What does 'Fairly Rewarded' ROI status mean?", options: ["VIP is profitable", "VIP is overcompensated", "Rewards are aligned with contribution", "VIP is inactive"], correct: 2, feedback: "Correct. It means the value given matches the value received." },
-            { q: "Why should Bronze/Silver be handled mainly by CX?", options: ["They are low value", "Reduce KAM workload only", "Scale efficiency + allow KAM focus on high-impact tiers", "CX needs more work"], correct: 2, feedback: "Correct. KAMs must protect their time for high-impact 'Whale' accounts." },
-            { q: "Which action builds LONG-TERM loyalty the most?", options: ["Weekly cashback", "Personalized life moment experience", "High deposit bonus", "Free spins"], correct: 1, feedback: "Correct! Personalized 'Bespoke' touches create emotional locks." },
-            { q: "A VIP stops depositing after big loss. Most likely reason?", options: ["No bonus", "Platform issue", "Emotional cooling-off period", "Competitor offer"], correct: 2, feedback: "Correct. High-rollers often need a cooling-off period before returning." },
-            { q: "Best retention strategy during inactive phase (30+ days)?", options: ["Push deposit bonus", "Silent waiting", "Soft emotional re-engagement", "Remove VIP status"], correct: 2, feedback: "Correct. Emotional re-engagement is more effective than cold hard-selling." },
-            { q: "What is WRONG about leaderboard reward redemption today?", options: ["Too many rewards", "Too automated", "Too many teams involved, poor UX", "Too expensive"], correct: 2, feedback: "Correct. Poor UX in rewards causes frustration for high-value players." },
-            { q: "Why do VIPs value withdrawal speed?", options: ["Convenience only", "Signals platform trust and safety", "Helps betting speed", "Reduces complaints"], correct: 1, feedback: "Correct. Speed equals safety in the mind of a VIP." },
-            { q: "What is the ideal KAM mindset?", options: ["Bonus distributor", "Problem solver", "Relationship + revenue architect", "Customer support"], correct: 2, feedback: "Correct! You architect the relationship to drive revenue." },
-            { q: "Which KPI BEST reflects retention quality?", options: ["Number of bonuses given", "Deposit volume only", "Active VIP consistency over time", "Number of messages sent"], correct: 2, feedback: "Correct. Consistency over time is the true measure of loyalty." },
-            { q: "When should a VIP receive high-value gift (e.g. Rolex)?", options: ["When requested", "When loss is high", "When ROI + loyalty + intent justify", "Quarterly automatically"], correct: 2, feedback: "Correct. High-value gifts must be strategically justified by ROI." },
-            { q: "What is the biggest flaw in manual KAM operations?", options: ["Slow response", "No personalization", "Lack of tracking & scalability", "Too many meetings"], correct: 2, feedback: "Correct. Systems enable you to handle more VIPs without losing quality." },
-            { q: "A VIP keeps asking for bonus after every loss. This indicates:", options: ["High engagement", "Loyalty", "Reward dependency pattern", "Platform issue"], correct: 2, feedback: "Correct. This is a pattern that needs to be managed, not just fed." },
-            { q: "Best way to differentiate from competitors?", options: ["Higher bonus", "More promotions", "Higher service standards + consistency", "More games"], correct: 2, feedback: "Correct. Consistency in service is harder to copy than a bonus percentage." },
-            { q: "Why is CRM (myflow) critical for retention?", options: ["Store data", "Replace Excel", "Enable tracking, insight, and action visibility", "Reduce staff"], correct: 2, feedback: "Correct. Visibility leads to better strategic decisions." },
-            { q: "What is the purpose of segmentation (HVP, HFTD, etc.)?", options: ["Reporting only", "Label players", "Enable targeted strategy execution", "Reduce workload"], correct: 2, feedback: "Correct. Segmentation allows you to treat different players correctly." },
-            { q: "What defines a TRUE VIP experience?", options: ["Expensive rewards", "Fast replies", "Feeling personally valued and remembered", "Frequent campaigns"], correct: 2, feedback: "Correct! Being remembered is the ultimate 'Bespoke' touch." }]
-    "KAM SOP": [{ q: "A member transferred funds but they aren't received. What is the MOST critical first step?", options: ["Escalate to IT", "Get a signed/verbal refund agreement", "Check the weather", "Ignore it"], correct: 1, feedback: "Correct! Protect against double-crediting." },
-            { q: "When is a Dedicated Bank Account assigned to a VIP?", options: ["Every deposit", "Only for deposits RM50k+", "When the VIP is angry", "Weekly"], correct: 1, feedback: "Correct. High-value transactions justify a dedicated account." },
-            { q: "A VIP wants a higher betting limit. What determines if this is possible?", options: ["KAM's mood", "Total losses", "Provider eligibility + CMP risk check", "Daily turnover"], correct: 2, feedback: "Correct. Compliance must verify provider eligibility first." },
-            { q: "What is the key rule for VIP Account Migration?", options: ["Unlimited migrations", "Bonus reset", "One-time only + valid reason + no bonus", "Only for new players"], correct: 2, feedback: "Correct. Migration is controlled to prevent abuse." },
-            { q: "A member didn't receive their withdrawal. What must they agree to before a re-transfer?", options: ["To deposit more", "To return excess if double paid", "To wait 7 days", "To change their bank"], correct: 1, feedback: "Correct. This protects the company if the original bank bounce clears later." },
-            { q: "Who must review a Third-Party Bank Whitelist request?", options: ["CX only", "The VIP's friend", "Team Lead + Compliance (CMP)", "No one"], correct: 2, feedback: "Correct. Security is priority for 3rd party accounts." },
-            { q: "Which department justifies a Withdrawal Limit Adjustment?", options: ["IT", "Marketing (MKT)", "Cleaning Dept", "Security Guard"], correct: 1, feedback: "Correct. MKT must justify the player's value." },
-            { q: "What must be collected for a Game/Provider complaint?", options: ["Proof (Recording/Screenshot)", "The member's phone number", "A apology letter", "Nothing"], correct: 0, feedback: "Correct. Evidence is required for IT/Provider investigation." },
-            { q: "If a member breaks a refund agreement after an early credit, what is the penalty?", options: ["Give another bonus", "Waive the amount + Remove VIP status", "Ignore it", "Call their parents"], correct: 1, feedback: "Correct. Zero tolerance for broken financial trust." },
-            { q: "SOP for Withdrawal Issues: What comes after 'Verify Proof'?", options: ["Ignore", "Retransfer immediately", "Get 'Return Excess' Agreement", "Ask for a deposit"], correct: 2, feedback: "Correct. Secure the agreement before the money moves." },
-            { q: "What is the primary mindset for SOP execution?", options: ["Speed only", "Control + Documentation", "Laziness", "Asking for bonuses"], correct: 1, feedback: "Correct. Documentation is key to tracking." },
-            { q: "Which category does 'Bank Whitelist' fall under?", options: ["Payment", "Account Control", "Account Structure", "Gameplay"], correct: 1, feedback: "Correct. It is an Account Control privilege." }],
-        "Objection Handling": [{ q: "A VIP says: 'Your platform very hard to win.' What is the best strategy?", options: ["Offer 100% bonus", "Defend the system", "Acknowledge -> Reframe -> Soft support", "Tell them to try another day"], correct: 2, feedback: "Correct. Stabilize emotions first." },
-            { q: "How should you handle a 'Bonus Hunter'?", options: ["Reject harshly", "Give small bonus every time", "Set boundaries + Redirect to overall value", "Ignore"], correct: 2, feedback: "Correct. Control expectations early." },
-            { q: "What is the 'Curiosity' approach for a 'Not Interested' member?", options: ["Ask what offers or experiences catch their attention", "Offer bigger bonus", "Ask why they are rude", "Call again"], correct: 0, feedback: "Correct. Discovery questions re-open the conversation." },
-            { q: "A VIP compares your platform to a competitor. Best response?", options: ["Match the bonus", "Differentiate by service, stability, and speed", "Say competitor is bad", "Offer free spins"], correct: 1, feedback: "Correct. Compete on experience, not price." },
-            { q: "What is the Objection Handling Formula?", options: ["Bonus + Call + Wait", "Acknowledge -> Diagnose -> Reposition -> Action", "Listen -> Pay -> Close", "Ignore -> Wait"], correct: 1, feedback: "Correct! The KAM Signature formula." },
-            { q: "A VIP says: 'Other platform give better bonus.' You reply by focusing on:", options: ["Matching the offer", "Long-term experience and withdrawal speed", "Giving 10% more", "Telling them to go"], correct: 1, feedback: "Correct. Reposition the value." },
-            { q: "When a VIP is silent but still playing, what is the best touch-point?", options: ["Call every hour", "Send a massive bonus", "Light-touch presence (Saying Hi)", "Ignore them"], correct: 2, feedback: "Correct. Don't over-contact a 'Quiet Whale'." },
-            { q: "A VIP is demanding a Rolex. What do you do first?", options: ["Buy it immediately", "Say No", "Evaluate ROI + Behavioral pattern", "Tell them to deposit 1 million"], correct: 2, feedback: "Correct. Evaluate before promising luxury." },
-            { q: "What does 'Acknowledge Emotion' mean in a loss complaint?", options: ["Saying 'Don't cry'", "Saying 'I understand how that feels after a tough run'", "Giving $1000", "Laughing"], correct: 1, feedback: "Correct. Empathy stabilizes the situation." },
-            { q: "A member says 'Don't call me'. What is the respect-based response?", options: ["Call again tomorrow", "Delete their account", "Understood. If anything changes, I'm here.", "Get angry"], correct: 2, feedback: "Correct. Respect the boundary but leave the door open." }],
+        "Acquisition": [
+            { q: "What is the biggest risk of running business without VIP acquisition?", options: ["Lower bonuses", "Higher churn dependency risk", "Slower CX response", "Less campaigns"], correct: 1, feedback: "Without new VIPs, business dies when old whales stop." },
+            { q: "A healthy business MUST have:", options: ["Strong retention only", "Strong acquisition only", "Balanced acquisition + retention", "High bonus budget"], correct: 2, feedback: "Acquisition feeds the funnel, Retention keeps revenue stable." },
+            { q: "Which profile is HFTD?", options: ["Member with RM3,000 monthly deposit", "New member with first deposit RM1,000+", "Long-term inactive player", "Member with high losses"], correct: 1, feedback: "HFTD is High Frequency Top Depositor." },
+            { q: "Which profile is HVP?", options: ["New user with RM1,000 deposit", "Member with one-time RM500 deposit", "Long-term member with large irregular deposits", "Member who logs in daily"], correct: 2, feedback: "HVPs show long-term high value but irregular behavior." },
+            { q: "HFTD key characteristic is:", options: ["Loyalty", "Long-term value", "Early-stage potential", "High withdrawal"], correct: 2, feedback: "HFTD is the 'spark' for future whales." },
+            { q: "HVP key characteristic is:", options: ["New registration", "Stable behavior", "High-value but unpredictable activity", "Bonus-driven"], correct: 2, feedback: "Big players not yet committed to stable patterns." },
+            { q: "Based on your criteria, HFTD threshold is:", options: ["RM500", "RM800", "RM1,000", "RM2,000"], correct: 2, feedback: "RM1,000 is the standard high-frequency trigger." },
+            { q: "HVP qualification (avg deposit):", options: ["Avg deposit RM3,000", "Avg deposit RM5,000", "Avg deposit RM9,000", "Avg deposit RM15,000"], correct: 2, feedback: "RM9,000 is the elite tier marker." },
+            { q: "Total deposit threshold for HVP (~RM20,000+):", options: ["RM10,000", "RM15,000", "RM20,000+", "RM30,000"], correct: 2, feedback: "RM20k is the gateway to High Value status." },
+            { q: "Win/Loss threshold for elite tracking:", options: ["RM20,000", "RM30,000", "RM40,000+", "RM60,000"], correct: 2, feedback: "RM40k signifies a player with serious capital." },
+            { q: "What is the CORE objective of acquisition call?", options: ["Push deposit", "Sell bonus", "Understand + qualify + position value", "Close fast"], correct: 2, feedback: "Qualify value before you pitch." },
+            { q: "Which is part of 'Core of the Call'?", options: ["Ask for deposit amount", "Ask open-ended discovery questions", "Offer bonus immediately", "Explain rules"], correct: 1, feedback: "Discovery questions reveal what the VIP wants." },
+            { q: "Best opening question:", options: ["'Want bonus?'", "'Deposit today?'", "'What type of games or benefits do you prefer?'", "'We have promotion'"], correct: 2, feedback: "This builds a profile immediately." },
+            { q: "A player gives short answers. What should you do?", options: ["End call", "Push offer", "Use open-ended probing questions", "Transfer to CX"], correct: 2, feedback: "Probing questions get them talking." },
+            { q: "Member doesn't pick up calls (3 times). Best action?", options: ["Stop outreach", "Keep calling repeatedly", "Switch to WhatsApp with context", "Remove from list"], correct: 2, feedback: "Show you are a person offering value via WA." },
+            { q: "Member says 'not interested'. Best response?", options: ["Accept and close", "Push harder", "Ask what benefits they value / past experience", "Offer bigger bonus"], correct: 2, feedback: "Discover the 'Why' behind the pushback." },
+            { q: "What is WRONG remark writing?", options: ["'No pickup'", "'Called 3x, WA sent, pending'", "'Asked preference, sports fan'", "'Follow up tomorrow'"], correct: 0, feedback: "'No pickup' is lazy and doesn't help the team." },
+            { q: "What makes a GOOD remark?", options: ["Short", "Generic", "Action-based and traceable", "Emotional"], correct: 2, feedback: "Allows any KAM to pick up the case." },
+            { q: "Which is strongest VIP program USP?", options: ["Bonus size", "Free spins", "Lifetime value + experience + limits", "Daily promotion"], correct: 2, feedback: "Whales care about limits and trust." },
+            { q: "What is TRUE about acquisition mindset?", options: ["Close fast", "Push offers", "Build curiosity and qualify value", "Focus on volume only"], correct: 2, feedback: "Qualification leads to higher conversion." }
+        ],
+        "VIP Care": [
+            { q: "What differentiates TOP VIPs from normal VIPs most?", options: ["Higher deposit", "Higher betting volume", "Expectations of treatment and control", "More complaints"], correct: 2, feedback: "High-rollers pay for the feeling of control." },
+            { q: "A Diamond VIP suddenly reduces activity. First interpretation?", options: ["Churn risk", "Financial issue", "Emotional or strategic shift", "Platform dissatisfaction"], correct: 2, feedback: "Look for the emotional shift first." },
+            { q: "What is the biggest mistake when handling TOP VIPs?", options: ["Slow response", "Giving too little", "Treating them like normal VIPs", "Escalating too much"], correct: 2, feedback: "Treating a Whale like a minnow is fatal." },
+            { q: "What does a TOP VIP value MOST during losses?", options: ["Immediate cashback", "Higher rebate", "Emotional understanding + controlled support", "Free spins"], correct: 2, feedback: "They need to feel heard and supported." },
+            { q: "When offering compensation, what is the key principle?", options: ["Match competitor", "Maximize satisfaction", "Align with ROI and long-term behavior", "Follow SOP strictly"], correct: 2, feedback: "Compensation is a strategic investment." },
+            { q: "A TOP VIP requests a luxury item (e.g. Rolex). What check FIRST?", options: ["Budget", "Stock", "ROI + behavioral pattern", "Approval"], correct: 2, feedback: "Data justifies the luxury." },
+            { q: "What signals TRUE loyalty in a TOP VIP?", options: ["High deposits", "Daily activity", "Staying despite better offers elsewhere", "Frequent communication"], correct: 2, feedback: "Resistance to competitors is the ultimate test." },
+            { q: "Why should TOP VIP interactions NOT be overly transactional?", options: ["Time consuming", "Hard to track", "Reduces emotional connection", "Not scalable"], correct: 2, feedback: "Connection keeps them from jumping for a higher bonus." },
+            { q: "A TOP VIP is silent but still depositing. What does it mean?", options: ["Disengaged", "Loyal", "Neutral but stable", "Preparing to churn"], correct: 2, feedback: "Stable but needs careful monitoring." },
+            { q: "What is the correct approach for birthday / life events?", options: ["Send bonus", "Send generic gift", "Curate meaningful personalized experience", "Skip if inactive"], correct: 2, feedback: "Personalization proves you are paying attention." },
+            { q: "What is the danger of over-contacting TOP VIPs?", options: ["Waste time", "Seen as spam", "Reduces exclusivity perception", "Operational burden"], correct: 2, feedback: "You are a Manager, not a telemarketer." },
+            { q: "Best communication style for TOP VIP?", options: ["Friendly casual", "Formal corporate", "Personalized, confident, and respectful", "Promotional"], correct: 2, feedback: "Confidence and respect build peers." },
+            { q: "A TOP VIP wins big. What is the best move?", options: ["Stay silent", "Offer bonus", "Celebrate + reinforce relationship", "Reduce engagement"], correct: 2, feedback: "Celebrating wins builds a partner mindset." },
+            { q: "What defines a 'premium experience'?", options: ["Expensive", "Fast", "Thoughtful, seamless, and exclusive", "Frequent"], correct: 2, feedback: "Thoughtfulness is the hallmark of luxury." },
+            { q: "Why is consistency more important than intensity?", options: ["Easier to manage", "Less cost", "Builds trust over time", "Reduces workload"], correct: 2, feedback: "Trust is built by showing up exactly the same way." },
+            { q: "A TOP VIP compares platform to competitor. Best response?", options: ["Match offer", "Defend platform", "Reinforce your unique experience value", "Ignore"], correct: 2, feedback: "Fight on value, not price." },
+            { q: "What is the key role of a KAM for TOP VIPs?", options: ["Service provider", "Bonus approver", "Trusted advisor and relationship anchor", "Campaign executor"], correct: 2, feedback: "You are their anchor on the platform." },
+            { q: "When should you escalate TOP VIP issues?", options: ["Every issue", "Only when requested", "When impact affects trust or experience", "When CX cannot handle"], correct: 2, feedback: "Protect the trust at all costs." },
+            { q: "What is the correct mindset for gifting strategy?", options: ["Reward losses", "Impress VIP", "Create memorable moments tied to relationship", "Spend budget"], correct: 2, feedback: "Gifts are memories, not just items." },
+            { q: "What is the ultimate goal of TOP VIP care?", options: ["Increase deposits", "Reduce complaints", "Build long-term emotional and financial loyalty", "Maintain activity"], correct: 2, feedback: "Loyalty = Unstoppable Retention." }
+        ],
+        "Retention": [
+            { q: "What is the PRIMARY driver of VIP retention today?", options: ["High bonus frequency", "Exclusive games", "Trust, consistency, and experience", "Faster deposits"], correct: 2, feedback: "Experience and trust keep whales loyal." },
+            { q: "A VIP plays on 3 platforms. Correct interpretation?", options: ["Disloyal", "Bonus hunter", "Normal market behavior", "Risky"], correct: 2, feedback: "High-rollers diversify; win their share of wallet." },
+            { q: "A VIP threatens to close account after losing. Best approach?", options: ["Immediately offer bonus", "Ignore", "Understand intent + assess ROI + respond strategically", "Transfer"], correct: 2, feedback: "Strategic response beats blind bonuses." },
+            { q: "What is the biggest risk of over-rewarding VIPs?", options: ["Budget overrun", "Lower brand value", "Conditioning dependency on rewards", "Slower operations"], correct: 2, feedback: "Dependency kills long-term profitability." },
+            { q: "What does 'Fairly Rewarded' ROI status mean?", options: ["VIP is profitable", "VIP is overcompensated", "Rewards are aligned with contribution", "VIP is inactive"], correct: 2, feedback: "Value given matches value received." },
+            { q: "Why should Bronze/Silver be handled mainly by CX?", options: ["They are low value", "Reduce KAM workload", "Scale efficiency + allow KAM focus on high-impact", "CX needs work"], correct: 2, feedback: "Protect KAM time for High-Impact accounts." },
+            { q: "Which action builds LONG-TERM loyalty the most?", options: ["Weekly cashback", "Personalized life moment experience", "High deposit bonus", "Free spins"], correct: 1, feedback: "Personalized touches create emotional locks." },
+            { q: "A VIP stops depositing after big loss. Most likely reason?", options: ["No bonus", "Platform issue", "Emotional cooling-off period", "Competitor"], correct: 2, feedback: "They need space before returning." },
+            { q: "Best retention strategy during inactive phase (30+ days)?", options: ["Push deposit bonus", "Silent waiting", "Soft emotional re-engagement", "Remove status"], correct: 2, feedback: "Emotional re-engagement beats hard-selling." },
+            { q: "What is WRONG about leaderboard reward redemption?", options: ["Too many rewards", "Too automated", "Too many teams involved, poor UX", "Expensive"], correct: 2, feedback: "Poor UX causes whale frustration." },
+            { q: "Why do VIPs value withdrawal speed?", options: ["Convenience", "Signals platform trust and safety", "Betting speed", "Reduces complaints"], correct: 1, feedback: "Speed equals safety in their mind." },
+            { q: "What is the ideal KAM mindset?", options: ["Bonus distributor", "Problem solver", "Relationship + revenue architect", "Customer support"], correct: 2, feedback: "Architect relationships to drive revenue." },
+            { q: "Which KPI BEST reflects retention quality?", options: ["Number of bonuses", "Deposit volume", "Active VIP consistency over time", "Messages sent"], correct: 2, feedback: "Consistency is the true measure." },
+            { q: "When should a VIP receive high-value gift (e.g. Rolex)?", options: ["When requested", "When loss is high", "When ROI + loyalty + intent justify", "Quarterly"], correct: 2, feedback: "Gifts must be strategically justified." },
+            { q: "What is the biggest flaw in manual KAM operations?", options: ["Slow response", "No personalization", "Lack of tracking & scalability", "Meetings"], correct: 2, feedback: "Systems enable scale without losing quality." },
+            { q: "A VIP asks for bonus after every loss. This indicates:", options: ["High engagement", "Loyalty", "Reward dependency pattern", "Platform issue"], correct: 2, feedback: "Manage the pattern, don't just feed it." },
+            { q: "Best way to differentiate from competitors?", options: ["Higher bonus", "More promos", "Higher service standards + consistency", "More games"], correct: 2, feedback: "Consistency is harder to copy than price." },
+            { q: "Why is CRM critical for retention?", options: ["Store data", "Replace Excel", "Enable tracking, insight, and action visibility", "Reduce staff"], correct: 2, feedback: "Visibility leads to strategic decisions." },
+            { q: "What is the purpose of segmentation (HVP, HFTD, etc.)?", options: ["Reporting", "Label players", "Enable targeted strategy execution", "Reduce workload"], correct: 2, feedback: "Segmentation allows correct treatment." },
+            { q: "What defines a TRUE VIP experience?", options: ["Expensive rewards", "Fast replies", "Feeling personally valued and remembered", "Campaigns"], correct: 2, feedback: "Being remembered is the ultimate touch." }
+        ],
+        "KAM SOP": [
+            { q: "Member transferred but funds not received. First step?", options: ["Escalate IT", "Get refund agreement", "Check weather", "Ignore"], correct: 1, feedback: "Never credit without a refund agreement." },
+            { q: "When is a Dedicated Bank Account assigned?", options: ["Every deposit", "Only RM50k+", "When angry", "Weekly"], correct: 1, feedback: "RM50k+ justifies a dedicated account." },
+            { q: "VIP wants higher betting limit. What to check?", options: ["Mood", "Losses", "Provider eligibility + CMP risk check", "Turnover"], correct: 2, feedback: "Compliance must verify first." },
+            { q: "VIP Account Migration key rule?", options: ["Unlimited", "Bonus reset", "One-time + valid reason + no bonus", "New players"], correct: 2, feedback: "Controlled process to prevent abuse." },
+            { q: "Member didn't receive withdrawal. What must they agree to?", options: ["Deposit more", "Return excess if double paid", "Wait 7 days", "Change bank"], correct: 1, feedback: "Protects against double-clearing." },
+            { q: "Who reviews Bank Whitelist?", options: ["CX", "Friend", "TL + Compliance", "No one"], correct: 2, feedback: "Security priority for 3rd party." },
+            { q: "Which dept justifies Withdrawal Limit Adjustment?", options: ["IT", "Marketing", "Cleaning", "Security"], correct: 1, feedback: "MKT must justify player value." },
+            { q: "What to collect for Game/Provider complaint?", options: ["Proof (Recording/Screen)", "Phone number", "Apology", "Nothing"], correct: 0, feedback: "Evidence is required for investigation." },
+            { q: "Penalty for broken refund agreement?", options: ["Bonus", "Waive + Remove VIP", "Ignore", "Call parents"], correct: 1, feedback: "Zero tolerance for financial trust breach." },
+            { q: "Withdrawal Issue SOP: After 'Verify Proof'?", options: ["Ignore", "Retransfer", "Get 'Return Excess' Agreement", "Deposit"], correct: 2, feedback: "Secure the agreement before money moves." },
+            { q: "Primary mindset for SOP?", options: ["Speed", "Control + Documentation", "Laziness", "Asking bonus"], correct: 1, feedback: "Documentation is key." },
+            { q: "Which category is 'Bank Whitelist'?", options: ["Payment", "Account Control", "Account Structure", "Gameplay"], correct: 1, feedback: "It is an Account Control privilege." }
+        ],
+        "Objection Handling": [
+            { q: "VIP says 'Platform hard to win'. Strategy?", options: ["Offer 100%", "Defend system", "Acknowledge -> Reframe -> Soft support", "Try later"], correct: 2, feedback: "Stabilize emotions first." },
+            { q: "How to handle a 'Bonus Hunter'?", options: ["Reject", "Small bonus", "Set boundaries + Redirect value", "Ignore"], correct: 2, feedback: "Control expectations early." },
+            { q: "Curiosity approach for 'Not Interested'?", options: ["Ask what offers catch attention", "Offer bigger bonus", "Ask why rude", "Call again"], correct: 0, feedback: "Discovery questions re-open dialogue." },
+            { q: "VIP compares to competitor. Best response?", options: ["Match bonus", "Differentiate by service/speed", "Say competitor bad", "Free spins"], correct: 1, feedback: "Compete on experience." },
+            { q: "Objection Handling Formula?", options: ["Bonus-Call-Wait", "Acknowledge-Diagnose-Reposition-Action", "Listen-Pay-Close", "Ignore-Wait"], correct: 1, feedback: "The KAM Signature formula." },
+            { q: "VIP says 'Other platform give better'. Focus on:", options: ["Matching", "Experience and speed", "10% more", "Telling to go"], correct: 1, feedback: "Reposition the value." },
+            { q: "Silent VIP still playing. Best touch?", options: ["Call hourly", "Massive bonus", "Light-touch presence (Hi)", "Ignore"], correct: 2, feedback: "Don't over-contact a quiet whale." },
+            { q: "VIP demands Rolex. First step?", options: ["Buy it", "Say No", "Evaluate ROI + Behavioral pattern", "Deposit 1M"], correct: 2, feedback: "Evaluate before promising." },
+            { q: "Acknowledge Emotion in loss complaint?", options: ["Don't cry", "I understand how that feels", "$1000", "Laugh"], correct: 1, feedback: "Empathy stabilizes the situation." },
+            { q: "VIP says 'Don't call'. Respect response?", options: ["Call tomorrow", "Delete account", "Understood. If anything changes, I'm here.", "Get angry"], correct: 2, feedback: "Leave the door open." }
+        ]
     };
 
     let currentCat = ""; let currentQ = 0; let score = 0; let mistakes = [];
@@ -598,20 +355,18 @@
     }
 
     function startQuizLogic() {
-        if(!document.getElementById('candidate-name').value) return alert("Enter name");
+        if(!document.getElementById('candidate-name').value) { alert("Enter Name"); return; }
         currentQ = 0; score = 0; mistakes = [];
         document.getElementById('quiz-intro').style.display = 'none';
         document.getElementById('quiz-content').style.display = 'block';
         loadQuestion();
     }
 
-    function closeQuiz() { document.getElementById('quiz-overlay').style.display = 'none'; }
-
     function loadQuestion() {
-        const qData = allQuizzes[currentCat][currentQ];
+        const quiz = allQuizzes[currentCat];
+        const qData = quiz[currentQ];
         document.getElementById('q-text').innerText = (currentQ + 1) + ". " + qData.q;
-        const container = document.getElementById('options-container');
-        container.innerHTML = "";
+        const container = document.getElementById('options-container'); container.innerHTML = "";
         qData.options.forEach((opt, i) => { container.innerHTML += `<div class="option" onclick="submitAns(${i})">${opt}</div>`; });
         document.getElementById('feedback').innerText = ""; document.getElementById('next-btn').style.display = "none";
     }
@@ -619,12 +374,9 @@
     function submitAns(idx) {
         const qData = allQuizzes[currentCat][currentQ];
         const opts = document.getElementsByClassName('option');
-        if (idx === qData.correct) { 
-            opts[idx].classList.add('correct'); 
-            score++; 
-        } else { 
-            opts[idx].classList.add('wrong'); 
-            opts[qData.correct].classList.add('correct'); 
+        if (idx === qData.correct) { opts[idx].classList.add('correct'); score++; } 
+        else { 
+            opts[idx].classList.add('wrong'); opts[qData.correct].classList.add('correct'); 
             mistakes.push({ q: qData.q, c: qData.options[qData.correct], u: qData.options[idx] });
         }
         for (let o of opts) o.style.pointerEvents = 'none';
@@ -637,20 +389,16 @@
         else { 
             document.getElementById('quiz-content').style.display = 'none';
             document.getElementById('quiz-result').style.display = 'block';
-            document.getElementById('score-display').innerText = "Test Complete! Score: " + score + "/" + allQuizzes[currentCat].length;
-            
-            const list = document.getElementById('mistakes-list');
-            list.innerHTML = mistakes.length ? "" : "Perfect Score!";
+            document.getElementById('score-display').innerText = "Score: " + score + "/" + allQuizzes[currentCat].length;
+            const list = document.getElementById('mistakes-list'); list.innerHTML = mistakes.length ? "" : "Perfect Score!";
             mistakes.forEach(m => {
                 list.innerHTML += `<div class="review-item"><p class="review-q">${m.q}</p><p class="review-wrong">Your Answer: ${m.u}</p><p class="review-a">Correct Answer: ${m.c}</p></div>`;
             });
-
             document.getElementById('form-name').value = document.getElementById('candidate-name').value;
-            document.getElementById('form-score').value = score;
-            document.getElementById('form-category').value = currentCat;
+            document.getElementById('form-score').value = score; document.getElementById('form-category').value = currentCat;
         }
     }
+    function closeQuiz() { document.getElementById('quiz-overlay').style.display = 'none'; }
 </script>
-
 </body>
 </html>
