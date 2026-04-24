@@ -146,11 +146,148 @@
         </div>
 
         <div id="objections" class="page">
-            <div class="content-card">
-                <h2>Objection Handling</h2>
-                <div class="script-box">Example Script: "I hear your concern. Let's find a resourceful solution together..."</div>
+    <div class="content-card">
+        <h2 style="color: var(--primary); margin-bottom: 5px;">Master Objection Handling</h2>
+        <p style="color: #64748b; font-style: italic; margin-bottom: 25px;">"A VIP objection is not rejection — it is a signal. Your job is not to respond, but to diagnose and reposition."</p>
+
+        <div style="background: var(--primary); color: white; padding: 20px; border-radius: 10px; margin-bottom: 30px; border-left: 5px solid var(--gold);">
+            <h4 style="margin-top: 0; color: var(--gold);">🎯 Core Principle</h4>
+            <p style="margin-bottom: 0; font-size: 0.95rem;">A VIP objection is a signal. Don't just answer; <b>diagnose and reposition</b>. Move from emotion to strategic action.</p>
+        </div>
+
+        <style>
+            .objection-trigger { background: #f1f5f9; color: var(--primary); cursor: pointer; padding: 18px; width: 100%; text-align: left; border: none; outline: none; transition: 0.4s; border-radius: 8px; margin-bottom: 10px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+            .objection-trigger:after { content: '\002B'; font-size: 20px; color: var(--accent); }
+            .objection-active:after { content: "\2212"; }
+            .objection-panel { padding: 0 18px; background-color: white; display: none; overflow: hidden; border-left: 2px solid var(--accent); margin-bottom: 20px; }
+            .strategy-tag { background: #eff6ff; color: var(--accent); padding: 4px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; display: inline-block; }
+            .script-line { background: #f8fafc; border-left: 3px solid #cbd5e1; padding: 10px; margin: 10px 0; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; color: #1e293b; }
+        </style>
+
+        <div id="objection-accordion">
+            <button class="objection-trigger">1. Losses Complaints (Emotion: Frustration/Pain)</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> "I keep losing", "Your platform hard to win", "Other platform better"</p>
+                <div class="strategy-tag">Strategy: Acknowledge → Stabilize emotion → Reframe → Soft support</div>
+                <div class="script-line">"I understand how that feels, especially after a tough run. Actually, many players will pause after a losing phase to reset their strategy. Let me see if there’s something we can support you with to ease the situation slightly."</div>
+            </div>
+
+            <button class="objection-trigger">2. Bonus Hunting / Always Asking</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> "Got bonus?", "I deposit if you give", Repeated requests after every loss</p>
+                <div class="strategy-tag">Strategy: Set positioning → Control expectation → Redirect value</div>
+                <div class="script-line">"We do have special support, but it’s usually based on overall activity and consistency. Let me review your profile and see what meaningful support we can plan instead of one-time offers."</div>
+            </div>
+
+            <button class="objection-trigger">3. Not Interested / Cold Response</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> "Not interested", Short replies, Passive engagement</p>
+                <div class="strategy-tag">Strategy: Curiosity → Discovery → Re-engage interest</div>
+                <div class="script-line">"No worries at all — just curious, what kind of offers or experiences usually catch your attention? Previously when you were active, what did you enjoy most?"</div>
+            </div>
+
+            <button class="objection-trigger">4. No Pickup / Avoiding Contact</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> Ignore calls, Seen but no reply</p>
+                <div class="strategy-tag">Strategy: Switch channel → Add context → Reduce pressure</div>
+                <div class="script-line"><b>WhatsApp:</b> "Hi, just tried reaching you earlier — nothing urgent. Wanted to check in and share something that might be relevant to you. Let me know when you’re free, I’ll keep it short."</div>
+            </div>
+
+            <button class="objection-trigger">5. Competitor Comparison</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> "Other platform give better", "Their bonus higher"</p>
+                <div class="strategy-tag">Strategy: Differentiate → Reposition → Elevate experience</div>
+                <div class="script-line">"Yes, many platforms offer aggressive promos… But what we focus more on is long-term experience — stability, faster withdrawals, and personalized support."</div>
+            </div>
+
+            <button class="objection-trigger">6. Withdrawal / Trust Concerns</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> "Can withdraw or not?", "Last time delay"</p>
+                <div class="strategy-tag">Strategy: Confidence + Clarity + Control</div>
+                <div class="script-line">"I understand that’s important. Our withdrawal process is structured to ensure safety and consistency — if there’s any delay, I’ll personally monitor it for you."</div>
+            </div>
+
+            <button class="objection-trigger">7. Platform / Technical Complaints</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> Lagging, Game error, Deposit delay</p>
+                <div class="strategy-tag">Strategy: Ownership → Action → Follow-up</div>
+                <div class="script-line">"Thanks for highlighting this — I’ll get this checked immediately and update you once I have clarity. In the meantime, let me make sure this doesn’t affect your experience moving forward."</div>
+            </div>
+
+            <button class="objection-trigger">8. High Expectations VIP (Demanding)</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> Asking for luxury items, Special treatment expectation</p>
+                <div class="strategy-tag">Strategy: Position value → Evaluate → Control</div>
+                <div class="script-line">"That’s definitely something we can explore — usually we plan these based on overall engagement to make it more meaningful."</div>
+            </div>
+
+            <button class="objection-trigger">9. Silent VIP (Depositing but disengaged)</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> No reply but still playing</p>
+                <div class="strategy-tag">Strategy: Light-touch presence</div>
+                <div class="script-line">"Just dropping by to say hi — no action needed, but if there’s anything you need, I’m always here."</div>
+            </div>
+
+            <button class="objection-trigger">10. Reactivation (Inactive VIP)</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> 30–90 days inactive</p>
+                <div class="strategy-tag">Strategy: Emotional reconnection → Memory trigger</div>
+                <div class="script-line">"Noticed you’ve been away for a bit — hope everything’s been good on your side. Last time you were quite active in [sports/slots], thought I’d check if anything interesting might bring you back."</div>
+            </div>
+
+            <button class="objection-trigger">11. New HFTD (High First Deposit)</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> Big first deposit but unknown intent</p>
+                <div class="strategy-tag">Strategy: Qualify → Understand → Anchor early relationship</div>
+                <div class="script-line">"Great to see your strong start — usually players at your level have specific preferences, what do you enjoy most?"</div>
+            </div>
+
+            <button class="objection-trigger">12. HVP (High Value Player)</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> Big but irregular deposits</p>
+                <div class="strategy-tag">Strategy: Stability + Relationship anchoring</div>
+                <div class="script-line">"I notice your activity comes in strong phases — I’d like to understand your style better so we can support you properly."</div>
+            </div>
+
+            <button class="objection-trigger">13. Immediate Rejection (Fast Pushback)</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> "No need", "Don’t call"</p>
+                <div class="strategy-tag">Strategy: Respect → Leave door open</div>
+                <div class="script-line">"Understood — I won’t take your time. If anything changes, feel free to reach out anytime."</div>
+            </div>
+
+            <button class="objection-trigger">14. Asking for Better Deals Before Deposit</button>
+            <div class="objection-panel">
+                <p><b>Scenarios:</b> "What can you give first?"</p>
+                <div class="strategy-tag">Strategy: Reverse qualification</div>
+                <div class="script-line">"We usually tailor based on activity — once I understand your style, I can structure something more meaningful for you."</div>
             </div>
         </div>
+
+        <div style="margin-top: 40px; padding: 30px; background: #fff7ed; border-radius: 15px; border: 1px solid #fed7aa;">
+            <h3 style="color: #9a3412; margin-top: 0;">🧠 Objection Handling Formula</h3>
+            <p style="font-weight: bold; margin-bottom: 10px;">1. Acknowledge emotion | 2. Diagnose intent | 3. Reposition value | 4. Offer controlled action</p>
+            <hr style="border: 0; border-top: 1px solid #fed7aa; margin: 20px 0;">
+            <p><b style="color: #c2410c;">⚡ Management Insight:</b> Most teams memorize scripts. <b>Top teams understand WHY</b> the objection exists. Use this bank to identify the 'Pain Point' and provide the 'Antidote'.</p>
+        </div>
+    </div>
+
+    <script>
+        // JS for Accordion
+        var acc = document.getElementsByClassName("objection-trigger");
+        for (var i = 0; i < acc.length; i++) {
+            acc[i].onclick = function() {
+                this.classList.toggle("objection-active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            }
+        }
+    </script>
+</div>
 
         <div id="assessment" class="page">
             <h2>Assessment Center</h2>
