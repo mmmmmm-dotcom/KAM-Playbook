@@ -3,235 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KAM Master Academy</title>
+    <title>VIP KAM Master Academy</title>
     <style>
         :root {
             --primary: #0f172a; --secondary: #1e293b; --accent: #3b82f6;
             --text-light: #f8fafc; --success: #22c55e; --danger: #ef4444;
+            --card-bg: #ffffff;
         }
         /* Lock Screen */
         #lock-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--primary); color: white;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 9999;
+            z-index: 10000;
         }
         #lock-screen input { padding: 12px; border-radius: 8px; border: none; margin-top: 20px; width: 250px; text-align: center; font-size: 1.1rem;}
         #lock-screen button { margin-top: 15px; padding: 10px 25px; background: var(--accent); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
-        #main-content { display: none; }
+        
+        #main-app { display: none; }
 
         /* General Styles */
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #334155; margin: 0; background-color: #f1f5f9; scroll-behavior: smooth; }
-        header { background: var(--primary); color: var(--text-light); padding: 50px 20px; text-align: center; border-bottom: 4px solid var(--accent); }
-        nav { background: white; padding: 15px; position: sticky; top: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; z-index: 1000; }
-        nav a { margin: 0 10px; text-decoration: none; color: var(--secondary); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; }
-        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
-        .section { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 5px solid var(--accent); }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #334155; margin: 0; background-color: #f8fafc; }
+        header { background: var(--primary); color: var(--text-light); padding: 40px 20px; text-align: center; border-bottom: 4px solid var(--accent); }
         
-        h2 { color: var(--primary); border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-top: 0; }
-        .badge { background: var(--accent); color: white; padding: 3px 10px; border-radius: 12px; font-size: 11px; vertical-align: middle; }
+        /* Sidebar Navigation */
+        nav { background: white; padding: 15px; position: sticky; top: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: center; z-index: 1000; }
+        nav a { margin: 0 15px; text-decoration: none; color: var(--secondary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; cursor: pointer; transition: 0.3s; }
+        nav a:hover { color: var(--accent); }
+
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; min-height: 70vh; }
         
-        /* Table Styles */
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th { background: #f8fafc; padding: 12px; text-align: left; border-bottom: 2px solid #e2e8f0; }
-        td { padding: 12px; border-bottom: 1px solid #f1f5f9; }
+        /* Page Logic */
+        .page { display: none; animation: fadeIn 0.4s; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Quiz UI */
-        .quiz-selector { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
-        .quiz-btn { padding: 10px 15px; background: #e2e8f0; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.8rem; }
-        .quiz-btn.active { background: var(--accent); color: white; }
-        .quiz-box { background: #f8fafc; padding: 25px; border-radius: 8px; border: 1px solid #e2e8f0; }
-        .option { background: white; padding: 12px; border: 1px solid #cbd5e1; margin-bottom: 10px; border-radius: 6px; cursor: pointer; }
-        .option:hover { background: #f0f7ff; }
-        .correct { background: #dcfce7 !important; border-color: var(--success) !important; }
-        .wrong { background: #fee2e2 !important; border-color: var(--danger) !important; }
+        .content-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 5px solid var(--accent); }
+        h2 { color: var(--primary); font-size: 2rem; margin-top: 0; margin-bottom: 25px; }
 
-        .script-box { background: #1e293b; color: #cbd5e1; padding: 20px; border-radius: 8px; font-family: monospace; }
-        .important-note { background: #fff7ed; border-left: 4px solid #f97316; padding: 15px; margin: 20px 0; font-weight: 600; }
-        footer { text-align: center; padding: 40px; color: #94a3b8; font-size: 0.8rem; }
+        /* Assessment Dashboard */
+        .assessment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
+        .test-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; transition: 0.3s; text-align: center; }
+        .test-card:hover { transform: translateY(-5px); }
+        .test-image { height: 120px; background: var(--secondary); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; }
+        .test-info { padding: 20px; }
+        .test-info h3 { margin: 0 0 10px 0; font-size: 1.2rem; }
+        .start-btn { background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
+
+        /* Quiz Box */
+        .quiz-overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:white; z-index: 2000; padding: 40px; box-sizing: border-box; overflow-y: auto; }
+        .quiz-box { max-width: 600px; margin: 0 auto; }
+        .option { background: #f1f5f9; padding: 15px; border: 2px solid #e2e8f0; margin-bottom: 12px; border-radius: 10px; cursor: pointer; font-weight: 500; }
+        .option:hover { border-color: var(--accent); background: #eff6ff; }
+        .correct { background: #dcfce7 !important; border-color: var(--success) !important; color: #166534; }
+        .wrong { background: #fee2e2 !important; border-color: var(--danger) !important; color: #991b1b; }
+        
+        .script-box { background: #1e293b; color: #cbd5e1; padding: 25px; border-radius: 10px; font-family: 'Courier New', Courier, monospace; margin: 20px 0; line-height: 1.8; }
+        footer { text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
 <div id="lock-screen">
-    <h1 style="margin-bottom: 0;">VIP KAM ACADEMY</h1>
-    <p>Authentication Required</p>
-    <input type="password" id="pass-input" placeholder="Team Access Code">
-    <button onclick="checkPass()">Unlock Academy</button>
+    <h1 style="letter-spacing: 2px;">VIP KAM ACADEMY</h1>
+    <p>Internal Team Access Only</p>
+    <input type="password" id="pass-input" placeholder="Access Code">
+    <button onclick="checkPass()">ENTER ACADEMY</button>
 </div>
 
-<div id="main-content">
+<div id="main-app">
     <header>
-        <h1>VIP KAM MASTER PLAYBOOK</h1>
-        <p>The Complete Guide to iGaming Excellence</p>
+        <h1>VIP ACADEMY PORTAL</h1>
+        <p>Expert Training for Key Account Management</p>
     </header>
 
     <nav>
-        <a href="#onboarding">Onboarding</a>
-        <a href="#acquisition">Acquisition</a>
-        <a href="#retention">Retention</a>
-        <a href="#objections">Objection Bank</a>
-        <a href="#assessment">Assessment Center</a>
+        <a onclick="showPage('onboarding')">Onboarding</a>
+        <a onclick="showPage('acquisition')">Acquisition</a>
+        <a onclick="showPage('retention')">Retention</a>
+        <a onclick="showPage('objections')">Objection Bank</a>
+        <a onclick="showPage('assessment')">Assessment Center</a>
     </nav>
 
     <div class="container">
 
-        <div id="onboarding" class="section">
-            <h2>1. Onboarding <span class="badge">Day 1</span></h2>
-            <p>Your primary goal is to drive <b>Monthly Deposit</b> and <b>Revenue</b> from high-value players.</p>
-            <ul>
-                <li>Understand player tiers (VIP Bronze to Platinum).</li>
-                <li>Master the CRM and Communication tools (Floating, WhatsApp, Telegram).</li>
-                <li>Strict Security: Never leak player lists or VIP balance details.</li>
-            </ul>
-        </div>
-
-        <div id="acquisition" class="section">
-            <h2>2. Acquisition Strategy <span class="badge">Sales</span></h2>
-            <p>Spotting potential whales and upgrading them.</p>
-            <table>
-                <tr><th>Target</th><th>Signal</th><th>Action</th></tr>
-                <tr><td>Potential VIP</td><td>Deposit >$1000 in one go</td><td>Call/Message with VIP Welcome Pack</td></tr>
-                <tr><td>Frequent Player</td><td>Logs in 5+ times daily</td><td>Invite to Private Telegram Channel</td></tr>
-            </table>
-        </div>
-
-        <div id="retention" class="section">
-            <h2>3. Retention & Care <span class="badge">Profit</span></h2>
-            <p>Keeping players active through personalized attention.</p>
-            <ul>
-                <li><b>Friday Chasing:</b> Prepare them for the weekend games.</li>
-                <li><b>Loss Comfort:</b> Reach out after a big loss to offer a "Care Bonus".</li>
-                <li><b>Holiday/Birthday:</b> Send gifts to top 1% of VIPs.</li>
-            </ul>
-        </div>
-
-        <div id="objections" class="section">
-            <h2>4. Objection Bank <span class="badge">Scripts</span></h2>
-            <div class="script-box">
-                <b>Scenario: "Bonus too low"</b><br>
-                Reply: "I understand you want more, but as your manager, I prioritize your withdrawal speed. Let me add [Amount] extra and I will personally push your next withdrawal to be instant."
+        <div id="onboarding" class="page active">
+            <div class="content-card">
+                <h2>1. Onboarding Fundamentals</h2>
+                <p>Welcome to the Elite VIP Desk. As a Key Account Manager (KAM), you are the face of the company for our most valuable members.</p>
+                <h3>Core Responsibilities:</h3>
+                <ul>
+                    <li>Maintain daily contact with assigned VIPs.</li>
+                    <li>Monitor betting behavior and potential churn.</li>
+                    <li>Ensure 100% security of player data.</li>
+                </ul>
             </div>
         </div>
 
-        <div id="assessment" class="section">
-            <h2>5. KAM Assessment Center <span class="badge">Certify</span></h2>
-            <p>Select a category to test your knowledge.</p>
+        <div id="acquisition" class="page">
+            <div class="content-card">
+                <h2>2. Acquisition: The Art of Upgrading</h2>
+                <p>Identifying "Whales" hidden in the normal member list.</p>
+                <div class="script-box">
+                    <b>Acquisition Tip:</b> Never ask for a deposit directly during the first call. Focus on "Upgrading their experience" to VIP status first.
+                </div>
+                <h3>High-Value Signals:</h3>
+                <ul>
+                    <li>Single deposits over $500.</li>
+                    <li>High turnover in Live Baccarat or Sports.</li>
+                    <li>Professional/Calm tone in chat support.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="retention" class="page">
+            <div class="content-card">
+                <h2>3. Strategic Retention</h2>
+                <p>Retention is about emotional connection. A happy player stays longer.</p>
+                <h3>Retention Pillars:</h3>
+                <p><b>Reactive:</b> Resolving withdrawal issues or failed deposits instantly.</p>
+                <p><b>Proactive:</b> Sending weekend match reminders or new game sneak peeks.</p>
+                <p><b>Surprise:</b> Sending a small bonus "just because" it's their local holiday.</p>
+            </div>
+        </div>
+
+        <div id="objections" class="page">
+            <div class="content-card">
+                <h2>4. Master Objection Bank</h2>
+                <p>How to flip a "No" into a "Deposit".</p>
+                <div class="script-box">
+                    <b>"The site is laggy":</b> <br>
+                    "I am so sorry to hear that. I've personally reported this to our technical team for your account. While they fix it, I’ve added a $20 apology bonus for you."
+                </div>
+            </div>
+        </div>
+
+        <div id="assessment" class="page">
+            <h2>KAM Assessment Center</h2>
+            <p>Select a module to test your knowledge. Pass all tests to become a Certified Senior KAM.</p>
             
-            <div class="quiz-selector">
-                <button class="quiz-btn active" onclick="loadQuiz('Acquisition')">Acquisition</button>
-                <button class="quiz-btn" onclick="loadQuiz('VIP Program')">VIP Program</button>
-                <button class="quiz-btn" onclick="loadQuiz('Retention')">Retention</button>
-                <button class="quiz-btn" onclick="loadQuiz('Games')">Games</button>
-                <button class="quiz-btn" onclick="loadQuiz('Crypto')">Crypto</button>
-            </div>
+            <div class="assessment-grid">
+                <div class="test-card">
+                    <div class="test-image" style="background: #3b82f6;">🎯</div>
+                    <div class="test-info">
+                        <h3>Acquisition Test</h3>
+                        <p>Testing whale spotting skills.</p>
+                        <button class="start-btn" onclick="openQuiz('Acquisition')">Start Test</button>
+                    </div>
+                </div>
 
-            <div class="quiz-box">
-                <div id="quiz-title" style="font-weight:bold; margin-bottom:10px; color:var(--accent);">Category: Acquisition</div>
-                <div id="q-text" class="question" style="font-weight:bold; margin-bottom:15px;">Please select a quiz category above to start.</div>
-                <div id="options-container"></div>
-                <div id="quiz-feedback" style="margin-top:15px; font-weight:bold;"></div>
-                <button id="next-btn" onclick="nextQuestion()" style="display:none; margin-top:15px; padding:8px 20px; background:var(--primary); color:white; border:none; border-radius:5px; cursor:pointer;">Next Question</button>
+                <div class="test-card">
+                    <div class="test-image" style="background: #f59e0b;">👑</div>
+                    <div class="test-info">
+                        <h3>VIP Program</h3>
+                        <p>Benefits & Tier logic.</p>
+                        <button class="start-btn" onclick="openQuiz('VIP Program')">Start Test</button>
+                    </div>
+                </div>
+
+                <div class="test-card">
+                    <div class="test-image" style="background: #10b981;">📈</div>
+                    <div class="test-info">
+                        <h3>Retention Care</h3>
+                        <p>Handling churn & recovery.</p>
+                        <button class="start-btn" onclick="openQuiz('Retention')">Start Test</button>
+                    </div>
+                </div>
+                
+                 <div class="test-card">
+                    <div class="test-image" style="background: #8b5cf6;">🎰</div>
+                    <div class="test-info">
+                        <h3>Games & Payouts</h3>
+                        <p>RTP & Game knowledge.</p>
+                        <button class="start-btn" onclick="openQuiz('Games')">Start Test</button>
+                    </div>
+                </div>
             </div>
         </div>
 
+    </div> <div id="quiz-overlay" class="quiz-overlay">
+        <button onclick="closeQuiz()" style="float:right; background:none; border:none; font-size:2rem; cursor:pointer;">&times;</button>
+        <div class="quiz-box">
+            <h2 id="active-quiz-title">Test</h2>
+            <hr>
+            <div id="q-text" style="font-size: 1.3rem; margin: 30px 0; font-weight: 600;"></div>
+            <div id="options-container"></div>
+            <div id="feedback" style="margin-top:20px; font-weight:bold; color:var(--accent);"></div>
+            <button id="next-btn" onclick="nextQuestion()" style="display:none; width:100%; padding:15px; margin-top:20px; background:var(--primary); color:white; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Next Question</button>
+        </div>
     </div>
 
-    <footer>&copy; 2026 VIP KAM Master Academy | Confidential</footer>
+    <footer>&copy; 2026 VIP KAM Master Academy | Confidential & Proprietary</footer>
 </div>
 
 <script>
     function checkPass() {
-        const input = document.getElementById('pass-input').value;
-        if (input === "VIP777") {
+        if (document.getElementById('pass-input').value === "VIP777") {
             document.getElementById('lock-screen').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('main-app').style.display = 'block';
         }
     }
 
-    // ALL QUIZ DATA - You can edit questions here
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    // QUIZ SYSTEM
     const allQuizzes = {
         "Acquisition": [
-            { q: "What is the best trigger for a VIP upgrade call?", options: ["User lost $5", "User deposited $2000", "User changed password"], correct: 1, feedback: "High deposits are the #1 signal." },
-            { q: "What should you focus on during the first call?", options: ["Technical issues", "Personalized benefits", "Asking for more money"], correct: 1, feedback: "Benefits and service win VIPs." }
+            { q: "A player deposits $5,000 but only plays once a month. Is this a VIP?", options: ["No, low frequency", "Yes, high potential", "Maybe, ask them to deposit more"], correct: 1, feedback: "Correct! High deposits indicate huge potential regardless of current frequency." }
         ],
         "VIP Program": [
-            { q: "What is the main benefit of VIP Bronze?", options: ["Private jet", "Monthly rebate", "Nothing"], correct: 1, feedback: "Most programs start with tiered rebates." }
+            { q: "What is the primary psychological driver for a VIP?", options: ["Free bonuses", "Feeling Important/Exclusivity", "Fast games"], correct: 1, feedback: "Correct. VIPs stay for the status and the service." }
         ],
         "Retention": [
-            { q: "When is the best time for Retention Chasing?", options: ["Monday morning", "Friday afternoon", "Midnight"], correct: 1, feedback: "Friday is key to capture weekend volume." }
+            { q: "A VIP says they are leaving for a competitor. What is your first move?", options: ["Say goodbye", "Immediately offer 100% bonus", "Listen to their complaint and offer a tailored solution"], correct: 2, feedback: "Correct. Understanding the 'Why' is the first step to saving a whale." }
         ],
         "Games": [
-            { q: "Which game type usually has the highest VIP turnover?", options: ["Slots", "Live Baccarat", "Sports"], correct: 1, feedback: "Baccarat is usually the top choice for high-rollers." }
-        ],
-        "Crypto": [
-            { q: "Why do VIPs prefer Crypto deposits?", options: ["Faster withdrawals", "It's cheaper", "They like the icons"], correct: 0, feedback: "Speed and high limits are the main reasons." }
+            { q: "Which game usually has the highest 'Hold' for the house?", options: ["Baccarat", "Slots", "Blackjack"], correct: 1, feedback: "Correct. Slots generally have a higher house edge than table games." }
         ]
     };
 
-    let currentCategory = "Acquisition";
+    let currentCat = "";
     let currentQ = 0;
     let score = 0;
 
-    function loadQuiz(cat) {
-        currentCategory = cat;
+    function openQuiz(cat) {
+        currentCat = cat;
         currentQ = 0;
         score = 0;
-        
-        // Update UI
-        document.querySelectorAll('.quiz-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
-        document.getElementById('quiz-title').innerText = "Category: " + cat;
-        
-        showQuestion();
+        document.getElementById('active-quiz-title').innerText = cat + " Certification";
+        document.getElementById('quiz-overlay').style.display = 'block';
+        loadQuestion();
     }
 
-    function showQuestion() {
-        const quiz = allQuizzes[currentCategory];
-        const qData = quiz[currentQ];
-        
-        document.getElementById('q-text').innerText = (currentQ + 1) + ". " + qData.q;
+    function closeQuiz() { document.getElementById('quiz-overlay').style.display = 'none'; }
+
+    function loadQuestion() {
+        const qData = allQuizzes[currentCat][currentQ];
+        document.getElementById('q-text').innerText = qData.q;
         const container = document.getElementById('options-container');
         container.innerHTML = "";
-        
         qData.options.forEach((opt, i) => {
-            container.innerHTML += `<div class="option" onclick="handleAnswer(${i})">${opt}</div>`;
+            container.innerHTML += `<div class="option" onclick="submitAns(${i})">${opt}</div>`;
         });
-        
-        document.getElementById('quiz-feedback').innerText = "";
+        document.getElementById('feedback').innerText = "";
         document.getElementById('next-btn').style.display = "none";
     }
 
-    function handleAnswer(idx) {
-        const quiz = allQuizzes[currentCategory];
-        const options = document.getElementsByClassName('option');
-        
-        if (idx === quiz[currentQ].correct) {
-            options[idx].classList.add('correct');
+    function submitAns(idx) {
+        const qData = allQuizzes[currentCat][currentQ];
+        const opts = document.getElementsByClassName('option');
+        if (idx === qData.correct) {
+            opts[idx].classList.add('correct');
             score++;
         } else {
-            options[idx].classList.add('wrong');
-            options[quiz[currentQ].correct].classList.add('correct');
+            opts[idx].classList.add('wrong');
+            opts[qData.correct].classList.add('correct');
         }
-        
-        for (let opt of options) { opt.style.pointerEvents = 'none'; }
-        document.getElementById('quiz-feedback').innerText = quiz[currentQ].feedback;
+        for (let o of opts) o.style.pointerEvents = 'none';
+        document.getElementById('feedback').innerText = qData.feedback;
         document.getElementById('next-btn').style.display = "block";
     }
 
     function nextQuestion() {
         currentQ++;
-        if (currentQ < allQuizzes[currentCategory].length) {
-            showQuestion();
+        if (currentQ < allQuizzes[currentCat].length) {
+            loadQuestion();
         } else {
-            document.getElementById('q-text').innerText = "Assessment Complete!";
-            document.getElementById('options-container').innerHTML = `<p>You scored ${score} out of ${allQuizzes[currentCategory].length}!</p>`;
-            document.getElementById('next-btn').style.display = "none";
+            document.getElementById('q-text').innerText = "Quiz Finished!";
+            document.getElementById('options-container').innerHTML = `<h3>Your Final Score: ${score} / ${allQuizzes[currentCat].length}</h3>`;
+            document.getElementById('next-btn').innerText = "Finish & Return";
+            document.getElementById('next-btn').onclick = closeQuiz;
         }
     }
-
-    // Start with first quiz
-    window.onload = () => { loadQuiz('Acquisition'); };
 </script>
 
 </body>
