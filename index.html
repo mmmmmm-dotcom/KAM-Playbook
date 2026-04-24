@@ -139,11 +139,144 @@
         </div>
 
         <div id="KAM SOP" class="page">
-            <div class="content-card">
-                <h2>KAM SOP</h2>
-                <p>KAM SOP ensures consistent, accurate, and high-quality handling of VIP incidents.</p>
+    <div class="content-card" style="border-top-color: var(--gold);">
+        <h2 style="color: var(--primary); margin-bottom: 5px;">KAM Standard Operating Procedures (SOP)</h2>
+        <p style="color: #64748b; font-style: italic; margin-bottom: 25px;">"Speed + Control + Documentation = Trust. Follow the flow to minimize risk."</p>
+
+        <style>
+            .sop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+            .sop-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; }
+            .sop-card:hover { border-color: var(--gold); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+            .sop-category-tag { font-size: 0.7rem; font-weight: bold; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: block; }
+            .sop-card h4 { margin: 0 0 10px 0; color: var(--primary); font-size: 1.1rem; display: flex; align-items: center; justify-content: space-between; }
+            .sop-card .arrow { font-size: 1.2rem; color: #cbd5e1; transition: transform 0.3s; }
+            
+            .sop-details { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #e2e8f0; animation: slideDown 0.3s ease-out; }
+            .sop-card.open .sop-details { display: block; }
+            .sop-card.open .arrow { transform: rotate(90deg); color: var(--gold); }
+
+            .rule-box { background: #fff7ed; border-left: 3px solid var(--gold); padding: 10px; font-size: 0.85rem; margin-bottom: 15px; }
+            .flow-step { display: flex; align-items: center; font-size: 0.85rem; margin-bottom: 5px; color: #475569; }
+            .flow-step i { color: var(--success); margin-right: 8px; font-style: normal; font-weight: bold; }
+            
+            .mistake-banner { background: #fef2f2; border: 1px solid #fee2e2; padding: 20px; border-radius: 12px; margin-top: 40px; }
+            .mistake-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
+            .mistake-item { color: #991b1b; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; }
+
+            @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        </style>
+
+        <div class="sop-grid">
+            <div class="sop-card" onclick="toggleSOP(this)">
+                <span class="sop-category-tag">Payment Issues (Critical)</span>
+                <h4>Deposit Issue <span class="arrow">›</span></h4>
+                <div class="sop-details">
+                    <div class="rule-box"><b>Key Rule:</b> TL review required. Must get refund agreement. If broken → waive + remove VIP.</div>
+                    <div class="flow-step"><i>1.</i> Check System</div>
+                    <div class="flow-step"><i>2.</i> Get Member Agreement</div>
+                    <div class="flow-step"><i>3.</i> Escalate to CX & PMT</div>
+                    <div class="flow-step"><i>4.</i> Credit early / Close case</div>
+                </div>
+            </div>
+
+            <div class="sop-card" onclick="toggleSOP(this)">
+                <span class="sop-category-tag">Payment Issues (Critical)</span>
+                <h4>Withdrawal Issue <span class="arrow">›</span></h4>
+                <div class="sop-details">
+                    <div class="rule-box"><b>Key Rule:</b> TL review. Member must agree to return excess if double paid.</div>
+                    <div class="flow-step"><i>1.</i> Check Bounce Status</div>
+                    <div class="flow-step"><i>2.</i> Ask for Proof</div>
+                    <div class="flow-step"><i>3.</i> Get Return Agreement</div>
+                    <div class="flow-step"><i>4.</i> Retransfer & Follow up</div>
+                </div>
+            </div>
+
+            <div class="sop-card" onclick="toggleSOP(this)">
+                <span class="sop-category-tag">Payment Issues (Critical)</span>
+                <h4>Dedicated Bank Acc <span class="arrow">›</span></h4>
+                <div class="sop-details">
+                    <div class="rule-box"><b>Key Rule:</b> TL review. Only for high-value (RM50K+) transactions.</div>
+                    <div class="flow-step"><i>1.</i> Review Value</div>
+                    <div class="flow-step"><i>2.</i> Submit Request to PMT</div>
+                    <div class="flow-step"><i>3.</i> Assign & Notify VIP</div>
+                    <div class="flow-step"><i>4.</i> Confirm Deposit Receipt</div>
+                </div>
+            </div>
+
+            <div class="sop-card" onclick="toggleSOP(this)">
+                <span class="sop-category-tag">Account Privileges</span>
+                <h4>Bank Whitelist <span class="arrow">›</span></h4>
+                <div class="sop-details">
+                    <div class="rule-box"><b>Key Rule:</b> TL review. Must pass Compliance (CMP) check.</div>
+                    <div class="flow-step"><i>1.</i> Collect Bank Details</div>
+                    <div class="flow-step"><i>2.</i> Run CMP Security Check</div>
+                    <div class="flow-step"><i>3.</i> Approve & Update Whitelist</div>
+                </div>
+            </div>
+
+            <div class="sop-card" onclick="toggleSOP(this)">
+                <span class="sop-category-tag">Account Privileges</span>
+                <h4>Withdrawal Limit <span class="arrow">›</span></h4>
+                <div class="sop-details">
+                    <div class="rule-box"><b>Key Rule:</b> Only for high-value + trusted VIP. TL + MKT Approval needed.</div>
+                    <div class="flow-step"><i>1.</i> Justify Reason</div>
+                    <div class="flow-step"><i>2.</i> MKT + CMP Approval</div>
+                    <div class="flow-step"><i>3.</i> Payment Dept Update</div>
+                </div>
+            </div>
+
+            <div class="sop-card" onclick="toggleSOP(this)">
+                <span class="sop-category-tag">Account Privileges</span>
+                <h4>Bet Limit Adjustment <span class="arrow">›</span></h4>
+                <div class="sop-details">
+                    <div class="rule-box"><b>Key Rule:</b> Provider-dependent. CMP must verify risk level first.</div>
+                    <div class="flow-step"><i>1.</i> Check Provider Eligibility</div>
+                    <div class="flow-step"><i>2.</i> CMP Risk Verification</div>
+                    <div class="flow-step"><i>3.</i> Approve/Reject Update</div>
+                </div>
+            </div>
+
+            <div class="sop-card" onclick="toggleSOP(this)">
+                <span class="sop-category-tag">Account Structure</span>
+                <h4>VIP Account Migration <span class="arrow">›</span></h4>
+                <div class="sop-details">
+                    <div class="rule-box"><b>Key Rules:</b> Valid reasons only. No bonus entitlement. One-time only.</div>
+                    <div class="flow-step"><i>1.</i> Verify Reason (Luck/Privacy)</div>
+                    <div class="flow-step"><i>2.</i> MKT + CMP Approval</div>
+                    <div class="flow-step"><i>3.</i> Migrate & Deactivate Old</div>
+                </div>
+            </div>
+
+            <div class="sop-card" onclick="toggleSOP(this)">
+                <span class="sop-category-tag">Gameplay Issues</span>
+                <h4>Provider Complaints <span class="arrow">›</span></h4>
+                <div class="sop-details">
+                    <div class="rule-box"><b>Key Rule:</b> Must collect proof (recording/screenshot) before escalation.</div>
+                    <div class="flow-step"><i>1.</i> Collect Evidence</div>
+                    <div class="flow-step"><i>2.</i> Check Internal History</div>
+                    <div class="flow-step"><i>3.</i> IT/Provider Investigation</div>
+                    <div class="flow-step"><i>4.</i> Update & Compensate</div>
+                </div>
             </div>
         </div>
+
+        <div class="mistake-banner">
+            <h3 style="margin-top: 0; color: #991b1b;">🚫 Common KAM Mistakes (Avoid at all costs!)</h3>
+            <div class="mistake-grid">
+                <div class="mistake-item">✖ Acting before agreement (HIGH RISK)</div>
+                <div class="mistake-item">✖ No proof collection (No IT support)</div>
+                <div class="mistake-item">✖ Weak follow-up (Lost trust)</div>
+                <div class="mistake-item">✖ No documentation (Cannot track)</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleSOP(card) {
+        card.classList.toggle('open');
+    }
+</script>
 
         <div id="objections" class="page">
     <div class="content-card">
