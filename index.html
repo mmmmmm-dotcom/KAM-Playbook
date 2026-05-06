@@ -72,7 +72,29 @@
         .sop-details { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #e2e8f0; }
 
         .objection-trigger { background: #f1f5f9; color: var(--primary); cursor: pointer; padding: 18px; width: 100%; text-align: left; border: none; border-radius: 8px; margin-bottom: 10px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        .objection-trigger:after { content: '\002B'; font-size: 20px; color: var(--accent); }
+        .objection-active:after { content: "\2212"; }
         .objection-panel { padding: 0 18px; background-color: white; display: none; overflow: hidden; border-left: 2px solid var(--accent); margin-bottom: 20px; }
+
+        .ret-tab-btn { flex: 1; padding: 18px; border: none; background: none; cursor: pointer; font-weight: bold; color: #94a3b8; transition: 0.3s; border-bottom: 3px solid transparent; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .ret-tab-btn.active { color: var(--success); border-bottom-color: var(--success); background: #f0fdf4; }
+        .ret-tab-content { display: none; padding: 40px; animation: fadeIn 0.3s; }
+        .ret-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
+        .ret-table th, .ret-table td { padding: 15px; border: 1px solid #e2e8f0; text-align: left; }
+        .ret-table th { background: #f8fafc; color: #475569; }
+        .script-box-final { font-family: 'Courier New', Courier, monospace; background: #f1f5f9; padding: 20px; border-left: 4px solid var(--success); display: block; margin-top: 10px; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; color: #1e293b; border-radius: 0 8px 8px 0; }
+        .badge-ret { background: #dcfce7; color: #166534; padding: 3px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+
+        .reac-tab-btn { flex: 1; padding: 18px; border: none; background: none; cursor: pointer; font-weight: bold; color: #94a3b8; transition: 0.3s; border-bottom: 3px solid transparent; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .reac-tab-btn.active { color: #92400e; border-bottom-color: #f59e0b; background: #fffbeb; }
+        .reac-tab-content { display: none; padding: 40px; animation: fadeIn 0.3s; }
+        .reac-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.85rem; }
+        .reac-table th, .reac-table td { padding: 12px; border: 1px solid #e2e8f0; text-align: left; }
+        .reac-table th { background: #fffbeb; color: #92400e; }
+        .script-box-reac { font-family: 'Courier New', Courier, monospace; background: #fefce8; padding: 25px; border-left: 4px solid #f59e0b; display: block; margin-top: 15px; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; color: #1e293b; border-radius: 0 8px 8px 0; }
+        .badge-reac { background: #fef3c7; color: #92400e; padding: 3px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+        .sop-step-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 10px; margin-bottom: 15px; }
+        .sop-step-card b { color: #92400e; display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 0.75rem; }
 
         footer { text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 0.8rem; }
     </style>
@@ -102,6 +124,7 @@
     </nav>
 
     <div class="container">
+        <!-- HOME PAGE -->
         <div id="home" class="page active">
             <div class="vision-mission">
                 <div class="vm-box"><h3>Our Vision</h3><p>To be the No.1 Key Account Management Team in the Industry.</p></div>
@@ -142,625 +165,216 @@
             </div>
         </div>
 
-<div id="retention" class="page">
-    <div class="content-card" style="border-top-color: var(--success); padding: 0; background: none; box-shadow: none;">
-        
-        <!-- MAIN CTA BUTTONS (MANAGEMENT DASHBOARD STYLE) -->
-        <div id="rr-cta-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
-            <!-- Retention CTA -->
-            <div onclick="showRRSection('retention-pillar')" style="background: white; padding: 45px 20px; border-radius: 12px; text-align: center; cursor: pointer; border: 1px solid #e2e8f0; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02);" onmouseover="this.style.borderColor='var(--success)'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='#e2e8f0'; this.style.transform='translateY(0)'">
-                <div style="width: 60px; height: 60px; background: #f0fdf4; color: #166534; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem; font-weight: bold; border: 1px solid #dcfce7;">↻</div>
-                <h2 style="margin: 0; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; font-size: 1.2rem;">Retention</h2>
-                <p style="color: #64748b; font-size: 0.85rem; margin-top: 10px;">LTV & Loyalty Management</p>
-            </div>
-            
-            <!-- Reactivation CTA -->
-            <div onclick="showRRSection('reactivation-pillar')" style="background: white; padding: 45px 20px; border-radius: 12px; text-align: center; cursor: pointer; border: 1px solid #e2e8f0; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02);" onmouseover="this.style.borderColor='var(--gold)'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='#e2e8f0'; this.style.transform='translateY(0)'">
-                <div style="width: 60px; height: 60px; background: #fffbeb; color: #92400e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem; font-weight: bold; border: 1px solid #fef3c7;">⚡</div>
-                <h2 style="margin: 0; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; font-size: 1.2rem;">Reactivation</h2>
-                <p style="color: #64748b; font-size: 0.85rem; margin-top: 10px;">Inactive User Re-engagement</p>
-            </div>
-        </div>
-
-        <!-- RETENTION SECTION (FULL CONTENT RESTORED) -->
-        <div id="retention-pillar" class="rr-section" style="display: none; background: white; border-radius: 15px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-            <div style="padding: 30px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <h3 style="margin: 0; color: var(--primary);">Retention Strategy</h3>
-                    <p style="margin: 5px 0 0; font-size: 0.85rem; color: #64748b;">Relationship building and value sustainability.</p>
-                </div>
-                <button onclick="hideRRSections()" style="background: white; border: 1px solid #cbd5e1; color: #64748b; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">BACK TO MENU</button>
-            </div>
-
-            <!-- Tabs Navigation -->
-            <div style="display: flex; background: #ffffff; border-bottom: 1px solid #e2e8f0;">
-                <button class="ret-tab-btn active" onclick="openRetTab(event, 'ret-purpose')">Purpose & Core</button>
-                <button class="ret-tab-btn" onclick="openRetTab(event, 'ret-roi')">ROI Framework</button>
-                <button class="ret-tab-btn" onclick="openRetTab(event, 'ret-scripts')">Engagement Scripts</button>
-            </div>
-
-            <style>
-                .ret-tab-btn { flex: 1; padding: 18px; border: none; background: none; cursor: pointer; font-weight: bold; color: #94a3b8; transition: 0.3s; border-bottom: 3px solid transparent; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-                .ret-tab-btn.active { color: var(--success); border-bottom-color: var(--success); background: #f0fdf4; }
-                .ret-tab-content { display: none; padding: 40px; animation: fadeIn 0.3s; }
-                .ret-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
-                .ret-table th, .ret-table td { padding: 15px; border: 1px solid #e2e8f0; text-align: left; }
-                .ret-table th { background: #f8fafc; color: #475569; }
-                .script-box-final { font-family: 'Courier New', Courier, monospace; background: #f1f5f9; padding: 20px; border-left: 4px solid var(--success); display: block; margin-top: 10px; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; color: #1e293b; border-radius: 0 8px 8px 0; }
-                .badge-ret { background: #dcfce7; color: #166534; padding: 3px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
-            </style>
-
-            <!-- TAB 1: PURPOSE (FULL CONTENT) -->
-            <div id="ret-purpose" class="ret-tab-content" style="display: block;">
-                <h3>1. Purpose</h3>
-                <p>VIP Retention focuses on strengthening long-term member relationships through personalized engagement, strategic value allocation, and consistent service excellence. The objective is not only to reduce churn, but to maintain long-term loyalty by ensuring members feel recognized, understood, and appropriately rewarded based on their contribution, VIP rank, and overall relationship with the platform.</p>
+        <!-- R&R PAGE -->
+        <div id="retention" class="page">
+            <div class="content-card" style="border-top-color: var(--success); padding: 0; background: none; box-shadow: none;">
                 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
-                    <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
-                        <h4 style="margin-top: 0; color: var(--success);">Effective Retention Strategy Balances:</h4>
-                        <ul style="font-size: 0.85rem; padding-left: 20px; line-height: 1.8;">
-                            <li>Member experience</li>
-                            <li>Revenue sustainability</li>
-                            <li>Relationship depth</li>
-                            <li>Strategic reward allocation</li>
-                            <li>Long-term engagement quality</li>
-                        </ul>
+                <!-- CTA MENU -->
+                <div id="rr-cta-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+                    <div onclick="showRRSection('retention-pillar')" style="background: white; padding: 45px 20px; border-radius: 12px; text-align: center; cursor: pointer; border: 1px solid #e2e8f0; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02);" onmouseover="this.style.borderColor='var(--success)'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='#e2e8f0'; this.style.transform='translateY(0)'">
+                        <div style="width: 60px; height: 60px; background: #f0fdf4; color: #166534; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem; font-weight: bold; border: 1px solid #dcfce7;">↻</div>
+                        <h2 style="margin: 0; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; font-size: 1.2rem;">Retention</h2>
+                        <p style="color: #64748b; font-size: 0.85rem; margin-top: 10px;">LTV & Loyalty Management</p>
                     </div>
-                    <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
-                        <h4 style="margin-top: 0; color: var(--success);">Decisions Should Always Consider:</h4>
-                        <ul style="font-size: 0.85rem; padding-left: 20px; line-height: 1.8;">
-                            <li>VIP Rank & potential value</li>
-                            <li>Deposit and valid bet behavior</li>
-                            <li>Activity consistency</li>
-                            <li>ROI Funds contribution</li>
-                            <li>Reward history and frequency</li>
-                            <li>Current ROI Status</li>
-                        </ul>
+                    <div onclick="showRRSection('reactivation-pillar')" style="background: white; padding: 45px 20px; border-radius: 12px; text-align: center; cursor: pointer; border: 1px solid #e2e8f0; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02);" onmouseover="this.style.borderColor='var(--gold)'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='#e2e8f0'; this.style.transform='translateY(0)'">
+                        <div style="width: 60px; height: 60px; background: #fffbeb; color: #92400e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem; font-weight: bold; border: 1px solid #fef3c7;">⚡</div>
+                        <h2 style="margin: 0; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; font-size: 1.2rem;">Reactivation</h2>
+                        <p style="color: #64748b; font-size: 0.85rem; margin-top: 10px;">Inactive User Re-engagement</p>
                     </div>
                 </div>
 
-                <h3 style="margin-top: 40px;">Core Retention Principles</h3>
-                <table class="ret-table">
-                    <tr><th style="width: 25%;">VIP Rank</th><th>Retention Focus</th></tr>
-                    <tr><td><b>Bronze / Silver</b></td><td>Scalable engagement, responsiveness, activity stimulation</td></tr>
-                    <tr><td><b>Gold</b></td><td>Relationship building, personalized communication</td></tr>
-                    <tr><td><b>Platinum</b></td><td>Premium service experience, loyalty reinforcement</td></tr>
-                    <tr><td><b>Diamond</b></td><td>Emotional loyalty, exclusivity, long-term relationship depth</td></tr>
-                </table>
-            </div>
-
-            <!-- TAB 2: ROI FRAMEWORK (FULL CONTENT) -->
-            <div id="ret-roi" class="ret-tab-content">
-                <div style="background: #f0fdf4; padding: 25px; border-radius: 10px; border-left: 5px solid var(--success); margin-bottom: 30px;">
-                    <h4 style="margin-top:0; color: #166534;">Positive ROI Funds</h4>
-                    <p style="font-size: 0.9rem; margin: 0;">Members with healthy Positive ROI Funds are sustainable contributors and may justify higher retention flexibility, strategic gifting, VIP experiences, and relationship investment for long-term value retention.</p>
+                <!-- RETENTION PILLAR -->
+                <div id="retention-pillar" class="rr-section" style="display: none; background: white; border-radius: 15px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                    <div style="padding: 30px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h3 style="margin: 0; color: var(--primary);">Retention Strategy</h3>
+                            <p style="margin: 5px 0 0; font-size: 0.85rem; color: #64748b;">Relationship building and value sustainability.</p>
+                        </div>
+                        <button onclick="hideRRSections()" style="background: white; border: 1px solid #cbd5e1; color: #64748b; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">BACK TO MENU</button>
+                    </div>
+                    <div style="display: flex; background: #ffffff; border-bottom: 1px solid #e2e8f0;">
+                        <button class="ret-tab-btn active" onclick="openRetTab(event, 'ret-purpose')">Purpose & Core</button>
+                        <button class="ret-tab-btn" onclick="openRetTab(event, 'ret-roi')">ROI Framework</button>
+                        <button class="ret-tab-btn" onclick="openRetTab(event, 'ret-scripts')">Engagement Scripts</button>
+                    </div>
+                    <div id="ret-purpose" class="ret-tab-content" style="display: block;">
+                        <h3>1. Purpose</h3>
+                        <p>VIP Retention focuses on strengthening long-term member relationships through personalized engagement, strategic value allocation, and consistent service excellence. The objective is not only to reduce churn, but to maintain long-term loyalty by ensuring members feel recognized, understood, and appropriately rewarded based on their contribution, VIP rank, and overall relationship with the platform.</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
+                            <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                                <h4 style="margin-top: 0; color: var(--success);">Strategy Balances:</h4>
+                                <ul style="font-size: 0.85rem; padding-left: 20px; line-height: 1.8;">
+                                    <li>Member experience</li>
+                                    <li>Revenue sustainability</li>
+                                    <li>Relationship depth</li>
+                                    <li>Strategic reward allocation</li>
+                                    <li>Long-term engagement quality</li>
+                                </ul>
+                            </div>
+                            <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                                <h4 style="margin-top: 0; color: var(--success);">Considerations:</h4>
+                                <ul style="font-size: 0.85rem; padding-left: 20px; line-height: 1.8;">
+                                    <li>VIP Rank & potential value</li>
+                                    <li>Deposit and valid bet behavior</li>
+                                    <li>ROI Funds contribution</li>
+                                    <li>Current ROI Status</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h3 style="margin-top: 40px;">Core Retention Principles</h3>
+                        <table class="ret-table">
+                            <tr><th style="width: 25%;">VIP Rank</th><th>Retention Focus</th></tr>
+                            <tr><td><b>Bronze / Silver</b></td><td>Scalable engagement, responsiveness, activity stimulation</td></tr>
+                            <tr><td><b>Gold</b></td><td>Relationship building, personalized communication</td></tr>
+                            <tr><td><b>Platinum</b></td><td>Premium service experience, loyalty reinforcement</td></tr>
+                            <tr><td><b>Diamond</b></td><td>Emotional loyalty, exclusivity, long-term relationship depth</td></tr>
+                        </table>
+                    </div>
+                    <div id="ret-roi" class="ret-tab-content">
+                        <div style="background: #f0fdf4; padding: 25px; border-radius: 10px; border-left: 5px solid var(--success); margin-bottom: 30px;">
+                            <h4 style="margin-top:0; color: #166534;">Positive ROI Funds</h4>
+                            <p style="font-size: 0.9rem; margin: 0;">Members with healthy Positive ROI Funds are sustainable contributors and may justify higher retention flexibility, strategic gifting, VIP experiences, and relationship investment for long-term value retention.</p>
+                        </div>
+                        <h3>ROI Status Framework</h3>
+                        <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #e2e8f0; border-radius: 10px;">
+                            <h4 style="margin-top: 0; color: #166534;">1. Under Rewarded</h4>
+                            <p style="font-size: 0.85rem;"><b>Scenario:</b> Member contribution is strong compared to historical rewards received. <b>Approach:</b> Increase engagement, prioritize retention before dissatisfaction develops.</p>
+                        </div>
+                        <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #e2e8f0; border-radius: 10px;">
+                            <h4 style="margin-top: 0; color: #15803d;">2. Fairly Rewarded</h4>
+                            <p style="font-size: 0.85rem;"><b>Scenario:</b> Member rewards are aligned appropriately. <b>Approach:</b> Maintain consistency in service quality and focus on trust.</p>
+                        </div>
+                        <div style="padding: 20px; border: 1px solid #fecaca; background: #fff1f2; border-radius: 10px;">
+                            <h4 style="margin-top: 0; color: #991b1b;">3. Over Rewarded</h4>
+                            <p style="font-size: 0.85rem;"><b>Scenario:</b> Reward allocation exceeds current contribution. <b>Approach:</b> Reduce dependency on incentive-driven engagement.</p>
+                        </div>
+                    </div>
+                    <div id="ret-scripts" class="ret-tab-content">
+                        <div style="margin-bottom: 35px;">
+                            <span class="badge-ret">Soft Retention</span>
+                            <div class="script-box-final">Greetings from Delta, [username], I noticed we have not seen you around recently and wanted to personally check in with you. At Delta, we always value long-term relationships...</div>
+                        </div>
+                        <div style="margin-bottom: 35px;">
+                            <span class="badge-ret">Incentive (Light)</span>
+                            <div class="script-box-final">🎁 Exclusive VIP Challenge: Valid Bet $1,000 -> Receive $50 Bonus. Simple 1x turnover requirement.</div>
+                        </div>
+                        <div>
+                            <span class="badge-ret">Incentive (Heavy)</span>
+                            <div class="script-box-final">🎁 Premium VIP Challenge: Valid Bet $100,000 -> Receive $80 Bonus. Designed for our high-value contributors.</div>
+                        </div>
+                    </div>
                 </div>
 
-                <h3>ROI Status Framework</h3>
-                <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #e2e8f0; border-radius: 10px;">
-                    <h4 style="margin-top: 0; color: #166534;">1. Under Rewarded</h4>
-                    <p style="font-size: 0.85rem;"><b>Scenario:</b> Member contribution is strong compared to historical rewards received.</p>
-                    <p style="font-size: 0.85rem; color: #475569;"><b>Approach:</b> Increase engagement frequency, prioritize retention before dissatisfaction develops. <b>Objective:</b> Prevent migration to competitors.</p>
-                </div>
-
-                <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #e2e8f0; border-radius: 10px;">
-                    <h4 style="margin-top: 0; color: #15803d;">2. Fairly Rewarded</h4>
-                    <p style="font-size: 0.85rem;"><b>Scenario:</b> Member rewards are aligned appropriately with contribution and activity.</p>
-                    <p style="font-size: 0.85rem; color: #475569;"><b>Approach:</b> Maintain consistency in service quality and focus on trust and responsiveness.</p>
-                </div>
-
-                <div style="padding: 20px; border: 1px solid #fecaca; background: #fff1f2; border-radius: 10px;">
-                    <h4 style="margin-top: 0; color: #991b1b;">3. Over Rewarded</h4>
-                    <p style="font-size: 0.85rem;"><b>Scenario:</b> Reward allocation exceeds current contribution or profitability level.</p>
-                    <p style="font-size: 0.85rem; color: #991b1b;"><b>Approach:</b> Reduce dependency on incentive-driven engagement; shift to service-based retention. <b>Objective:</b> Protect project profitability.</p>
-                </div>
-            </div>
-
-            <!-- TAB 3: SCRIPTS (FULL CONTENT) -->
-            <div id="ret-scripts" class="ret-tab-content">
-                <div style="margin-bottom: 35px;">
-                    <span class="badge-ret">Soft Retention</span>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">Use for: Fairly Rewarded, Platinum/Diamond maintenance, Inactivity.</p>
-                    <div class="script-box-final">Greetings from Delta, [username],
-
-We hope you have been doing well. I noticed we have not seen you around recently and wanted to personally check in with you. 
-
-At Delta, we always value long-term relationships with our VIP members, and we remain committed to delivering a smooth, trusted, and rewarding experience throughout your journey with us. 
-
-Should you require any assistance, game recommendations, or support regarding your account or VIP privileges, please feel free to reach out anytime. Looking forward to welcoming you back soon.</div>
-                </div>
-
-                <div style="margin-bottom: 35px;">
-                    <span class="badge-ret">Incentive (Light Deposit)</span>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">Use for: Under Rewarded members, Positive ROI contributors, Stimulation.</p>
-                    <div class="script-box-final">🎁 [event] VIP Challenge
-• Valid Bet $1,000 → Receive $50 Bonus
-• Simple 1x turnover requirement
-
-This campaign is designed to provide additional value through a smooth and flexible experience, allowing members to enjoy rewards with minimal commitment. Should you require any assistance, please feel free to contact us anytime.</div>
-                </div>
-
-                <div>
-                    <span class="badge-ret">Incentive (Heavy Deposit)</span>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">Use for: High-tier VIPs, Reactivation of High-Value accounts.</p>
-                    <div class="script-box-final">🎁 [event] VIP Challenge
-• Valid Bet $100,000 → Receive $80 Bonus
-• Simple 1x turnover requirement
-
-At Delta, we continuously strive to deliver personalized experiences, trusted support, and meaningful value to members who have been part of our VIP journey. Should you require any tailored arrangements, please feel free to contact us anytime.</div>
+                <!-- REACTIVATION PILLAR -->
+                <div id="reactivation-pillar" class="rr-section" style="display: none; background: white; border-radius: 15px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                    <div style="padding: 30px; background: #fffbeb; border-bottom: 1px solid #fef3c7; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h3 style="margin: 0; color: #92400e;">VIP Reactivation Strategy</h3>
+                            <p style="margin: 5px 0 0; font-size: 0.85rem; color: #b45309;">Restoring valuable relationships and protecting against churn.</p>
+                        </div>
+                        <button onclick="hideRRSections()" style="background: white; border: 1px solid #fde68a; color: #92400e; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">BACK TO MENU</button>
+                    </div>
+                    <div style="display: flex; background: #ffffff; border-bottom: 1px solid #e2e8f0;">
+                        <button class="reac-tab-btn active" onclick="openReacTab(event, 'reac-purpose')">1. Purpose & Targets</button>
+                        <button class="reac-tab-btn" onclick="openReacTab(event, 'reac-framework')">2. Framework & ROI</button>
+                        <button class="reac-tab-btn" onclick="openReacTab(event, 'reac-sop')">3. Reactivation SOP</button>
+                        <button class="reac-tab-btn" onclick="openReacTab(event, 'reac-scripts')">4. Scripts & Mindset</button>
+                    </div>
+                    <div id="reac-purpose" class="reac-tab-content" style="display: block;">
+                        <h3>1. Purpose</h3>
+                        <p>VIP Reactivation focuses on rebuilding engagement and restoring relationships with valuable members who have become inactive or disengaged from the platform. The objective is to re-establish trust, understand inactivity reasons, and sustain healthy revenue contribution.</p>
+                        <h3 style="margin-top: 30px;">2. Targeted VIPs</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                                <h4 style="margin-top: 0; color: #92400e;">Who to Target:</h4>
+                                <ul style="font-size: 0.85rem; padding-left: 20px; line-height: 1.8;">
+                                    <li>No deposit for 30+ days</li>
+                                    <li>Significant reduction in valid bets</li>
+                                    <li>Sudden behavioral change after losses</li>
+                                </ul>
+                            </div>
+                            <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                                <h4 style="margin-top: 0; color: #92400e;">Priority:</h4>
+                                <ul style="font-size: 0.85rem; padding-left: 20px; line-height: 1.8;">
+                                    <li>Gold, Platinum, Diamond tiers</li>
+                                    <li>Positive ROI contributors</li>
+                                    <li>Long-term loyal members</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="reac-framework" class="reac-tab-content">
+                        <h3>3. Evaluation Framework</h3>
+                        <table class="reac-table">
+                            <tr><th>Area</th><th>Consideration</th></tr>
+                            <tr><td><b>VIP Rank</b></td><td>Bronze → Diamond priority handling</td></tr>
+                            <tr><td><b>ROI Funds</b></td><td>Positive revenue sustainability</td></tr>
+                            <tr><td><b>ROI Status</b></td><td>Under / Fairly / Over Rewarded</td></tr>
+                        </table>
+                    </div>
+                    <div id="reac-sop" class="reac-tab-content">
+                        <h3>5. Reactivation SOP</h3>
+                        <div class="sop-step-card"><b>Step 1 — Analyze Behavior</b> Review history and ROI to understand the "Why" behind inactivity.</div>
+                        <div class="sop-step-card"><b>Step 2 — Contact</b> Use preferred human channels (Call/WA/TG) to rebuild connection.</div>
+                        <div class="sop-step-card"><b>Step 3 — Follow-Up</b> Monitor recovery consistency and avoid over-contacting post-recovery.</div>
+                    </div>
+                    <div id="reac-scripts" class="reac-tab-content">
+                        <span class="badge-reac">Soft Engagement</span>
+                        <div class="script-box-reac">Greetings from Delta, [username], Just dropping by to say hello and check in with you. We truly value having you as part of our VIP community...</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-<!-- REACTIVATION SECTION (FULL EXPANDED CONTENT - NO CITATIONS) -->
-        <div id="reactivation-pillar" class="rr-section" style="display: none; background: white; border-radius: 15px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-            <div style="padding: 30px; background: #fffbeb; border-bottom: 1px solid #fef3c7; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <h3 style="margin: 0; color: #92400e; letter-spacing: 1px;">VIP REACTIVATION STRATEGY</h3>
-                    <p style="margin: 5px 0 0; font-size: 0.85rem; color: #b45309;">Restoring valuable relationships and protecting against permanent churn.</p>
+        <!-- OBJECTIONS PAGE -->
+        <div id="objections" class="page">
+            <div class="content-card">
+                <h2>Objection Handling</h2>
+                <div style="background: var(--primary); color: white; padding: 20px; border-radius: 10px; margin-bottom: 30px; border-left: 5px solid var(--gold);">
+                    <h4 style="margin-top: 0; color: var(--gold);">🎯 Core Principle</h4>
+                    <p style="margin-bottom: 0; font-size: 0.95rem;">A VIP objection is a signal. Don't just answer; <b>diagnose and reposition</b>.</p>
                 </div>
-                <button onclick="hideRRSections()" style="background: white; border: 1px solid #fde68a; color: #92400e; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">BACK TO DASHBOARD</button>
-            </div>
-
-            <!-- Reactivation Tabs Navigation -->
-            <div style="display: flex; background: #ffffff; border-bottom: 1px solid #e2e8f0;">
-                <button class="reac-tab-btn active" onclick="openReacTab(event, 'reac-purpose')">1. Purpose & Targets</button>
-                <button class="reac-tab-btn" onclick="openReacTab(event, 'reac-framework')">2. Framework & ROI</button>
-                <button class="reac-tab-btn" onclick="openReacTab(event, 'reac-sop')">3. Reactivation SOP</button>
-                <button class="reac-tab-btn" onclick="openReacTab(event, 'reac-scripts')">4. Engagement Scripts</button>
-            </div>
-
-            <style>
-                .reac-tab-btn { flex: 1; padding: 18px; border: none; background: none; cursor: pointer; font-weight: bold; color: #94a3b8; transition: 0.3s; border-bottom: 3px solid transparent; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
-                .reac-tab-btn.active { color: #92400e; border-bottom-color: #f59e0b; background: #fffbeb; }
-                .reac-tab-content { display: none; padding: 40px; animation: fadeIn 0.3s; }
-                .reac-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.85rem; }
-                .reac-table th, .reac-table td { padding: 12px; border: 1px solid #e2e8f0; text-align: left; }
-                .reac-table th { background: #fffbeb; color: #92400e; }
-                .script-box-reac { font-family: 'Courier New', Courier, monospace; background: #fefce8; padding: 25px; border-left: 4px solid #f59e0b; display: block; margin-top: 15px; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; color: #1e293b; border-radius: 0 8px 8px 0; }
-                .badge-reac { background: #fef3c7; color: #92400e; padding: 3px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
-                .sop-step-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 10px; margin-bottom: 15px; }
-                .sop-step-card b { color: #92400e; display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 0.75rem; }
-            </style>
-
-            <!-- TAB 1: PURPOSE & TARGETS -->
-            <div id="reac-purpose" class="reac-tab-content" style="display: block;">
-                <h3>1. Purpose</h3>
-                <p>VIP Reactivation focuses on rebuilding engagement and restoring relationships with valuable members who have become inactive or disengaged from the platform. The objective of reactivation is not simply to bring members back for short-term activity, but to:</p>
-                <ul style="font-size: 0.9rem; line-height: 1.8; color: #475569;">
-                    <li>Re-establish trust and communication</li>
-                    <li>Understand the reasons behind inactivity</li>
-                    <li>Restore long-term engagement potential</li>
-                    <li>Protect valuable VIP relationships from permanent churn</li>
-                    <li>Sustain healthy revenue contribution and active VIP volume</li>
-                </ul>
-                
-                <h3 style="margin-top: 30px;">2. Targeted VIPs</h3>
-                <p>Priority should be given to higher VIP tiers (Gold, Platinum, Diamond) and Positive ROI contributors. Target members who have:</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
-                        <ul style="font-size: 0.85rem; padding-left: 20px; margin: 0; line-height: 1.8;">
-                            <li>No deposit activity for more than 30 days</li>
-                            <li>Significant reduction in valid bet activity</li>
-                            <li>Reduced login frequency or engagement</li>
-                        </ul>
+                <div id="objection-accordion">
+                    <button class="objection-trigger">1. Losses Complaints (Emotion: Frustration/Pain)</button>
+                    <div class="objection-panel">
+                        <p><b>Scenarios:</b> "I keep losing", "Your platform hard to win"</p>
+                        <div class="strategy-tag" style="background:#eff6ff; color:var(--accent); padding:4px 10px; border-radius:5px; font-size:0.8rem;">Strategy: Acknowledge → Stabilize → Reframe</div>
+                        <div style="background:#f8fafc; padding:10px; margin-top:10px; border-left:3px solid #cbd5e1;">"I understand how that feels... Many players pause after a losing phase to reset."</div>
                     </div>
-                    <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
-                        <ul style="font-size: 0.85rem; padding-left: 20px; margin: 0; line-height: 1.8;">
-                            <li>Sudden behavioral change after large losses</li>
-                            <li>Previously active high-value members</li>
-                            <li>Long-term loyal members with recovery potential</li>
-                        </ul>
+                    <button class="objection-trigger">2. Bonus Hunting / Always Asking</button>
+                    <div class="objection-panel">
+                        <div style="background:#f8fafc; padding:10px; border-left:3px solid #cbd5e1;">"Support is based on overall consistency. Let me review your profile for a meaningful plan."</div>
                     </div>
-                </div>
-            </div>
-
-            <!-- TAB 2: FRAMEWORK & ROI -->
-            <div id="reac-framework" class="reac-tab-content">
-                <h3>3. Reactivation Evaluation Framework</h3>
-                <table class="reac-table">
-                    <tr><th>Evaluation Area</th><th>Consideration</th></tr>
-                    <tr><td><b>VIP Rank</b></td><td>Bronze → Diamond priority handling</td></tr>
-                    <tr><td><b>ROI Funds</b></td><td>Positive revenue sustainability</td></tr>
-                    <tr><td><b>ROI Status</b></td><td>Under Rewarded / Fairly Rewarded / Over Rewarded</td></tr>
-                    <tr><td><b>Activity History</b></td><td>Last deposit strength, valid bet behavior, login frequency</td></tr>
-                    <tr><td><b>Experience</b></td><td>Win/Loss patterns, technical complaints, payment issues</td></tr>
-                    <tr><td><b>Engagement</b></td><td>Contact history and behavioral trend signals</td></tr>
-                </table>
-
-                <h3 style="margin-top: 30px;">4. ROI Status Consideration</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
-                    <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border: 1px solid #dcfce7;">
-                        <b style="color: #166534; font-size: 0.75rem;">UNDER REWARDED</b>
-                        <p style="font-size: 0.8rem; margin: 5px 0;">Higher reactivation priority. Strategic incentive flexibility and stronger relationship rebuilding efforts.</p>
-                    </div>
-                    <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <b style="color: #475569; font-size: 0.75rem;">FAIRLY REWARDED</b>
-                        <p style="font-size: 0.8rem; margin: 5px 0;">Relationship-first engagement. Moderate stimulation and consistent service quality follow-up.</p>
-                    </div>
-                    <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border: 1px solid #fee2e2;">
-                        <b style="color: #991b1b; font-size: 0.75rem;">OVER REWARDED</b>
-                        <p style="font-size: 0.8rem; margin: 5px 0;">Focus on emotional connection and service experience. Avoid repeated reactive compensation.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB 3: SOP -->
-            <div id="reac-sop" class="reac-tab-content">
-                <h3>5. Reactivation SOP Framework</h3>
-                <div class="sop-step-card">
-                    <b>Step 1 — Analyze Member Behavior</b>
-                    <p style="font-size: 0.85rem; margin: 0;">Review last deposit, login patterns, game preferences, and ROI status to understand the "Why" behind inactivity.</p>
-                </div>
-                <div class="sop-step-card">
-                    <b>Step 2 — Choose Appropriate Approach</b>
-                    <p style="font-size: 0.85rem; margin: 0;">Select Soft engagement, Service recovery, Tailored incentives, or Exclusive gifts. Never rely solely on bonuses.</p>
-                </div>
-                <div class="sop-step-card">
-                    <b>Step 3 — Contact Through Preferred Channel</b>
-                    <p style="font-size: 0.85rem; margin: 0;">Use Call, WA, or Telegram to create a human connection instead of transactional messaging.</p>
-                </div>
-                <div class="sop-step-card">
-                    <b>Step 4 — Gather Feedback & Rebuild Relationship</b>
-                    <p style="font-size: 0.85rem; margin: 0;">Fact-finding first. Understand current sentiment, concerns, or competitive migration behavior.</p>
-                </div>
-                <div class="sop-step-card">
-                    <b>Step 5 — Offer Tailored Solution</b>
-                    <p style="font-size: 0.85rem; margin: 0;">Offer VIP privileges or custom solutions that align with rank, ROI, and long-term potential.</p>
-                </div>
-                <div class="sop-step-card">
-                    <b>Step 6 — Follow-Up & Monitor Recovery</b>
-                    <p style="font-size: 0.85rem; margin: 0;">Monitor deposit consistency and maintenance. Avoid excessive over-contacting post-recovery.</p>
-                </div>
-            </div>
-
-            <!-- TAB 4: SCRIPTS & MINDSET -->
-            <div id="reac-scripts" class="reac-tab-content">
-                <div style="margin-bottom: 30px;">
-                    <span class="badge-reac">Soft Engagement</span>
-                    <p style="font-size: 0.8rem; color: #64748b; margin: 0;">Best used for: Fairly Rewarded members or mild inactivity.</p>
-                    <div class="script-box-reac">Greetings from Delta, [username],
-
-Just dropping by to say hello and check in with you. We truly value having you as part of our VIP community and hope everything has been going smoothly for you recently.
-
-If there are any games you are currently enjoying, looking to explore, or if there is anything we can assist you with, please feel free to let us know anytime. At Delta, we always strive to provide a comfortable, trusted, and rewarding experience for our valued VIP members. Wishing you a wonderful day ahead and looking forward to seeing you again soon.</div>
-                </div>
-
-                <div style="margin-bottom: 30px;">
-                    <span class="badge-reac">After Heavy Losses</span>
-                    <p style="font-size: 0.8rem; color: #64748b; margin: 0;">Prioritize emotional engagement and fact-finding before incentives.</p>
-                    <div class="script-box-reac">Greetings from Delta, [username],
-
-I noticed that recent sessions may not have gone entirely your way and just wanted to personally check in with you.
-
-At times, game outcomes can be unpredictable, and we fully understand the importance of maintaining a comfortable and enjoyable experience throughout your VIP journey. Should there be anything we can assist with — whether it is recommendations, support, or exploring available VIP privileges and opportunities — please feel free to let us know anytime. Most importantly, we truly appreciate your continued support and value the relationship we have built with you.</div>
-                </div>
-
-                <div style="margin-bottom: 30px;">
-                    <span class="badge-reac">Reactivation with Incentive</span>
-                    <p style="font-size: 0.8rem; color: #64748b; margin: 0;">Tailored for Under Rewarded and Positive ROI contributors.</p>
-                    <div class="script-box-reac">Greetings from Delta, [username],
-
-As one of our valued VIP members, we would like to extend a special invitation exclusively prepared for you.
-
-🎁 Exclusive VIP Challenge
-• Valid Bet $10,000 → Receive $38 Bonus
-• Simple 1x turnover requirement
-
-This challenge is designed to provide additional value through a smooth and flexible experience with convenient redemption and low-barrier participation. At Delta, we continuously aim to deliver personalized engagement, trusted support, and rewarding experiences tailored for our VIP members. Should you require any assistance, please feel free to reach out anytime — we are always happy to assist you personally.</div>
-                </div>
-
-                <div style="margin-top: 40px; padding: 30px; background: #fffbeb; border-radius: 15px; border: 1px solid #fef3c7;">
-                    <h3 style="color: #92400e; margin-top: 0;">Strategic Reactivation Mindset</h3>
-                    <p style="font-size: 0.9rem;">Successful reactivation is not about repeatedly pushing promotions. Success comes from <b>Understanding inactivity, Rebuilding Trust, and Human Connection</b>. Members leave when the experience no longer feels valued or differentiated. Relationship depth beats short-term stimulation.</p>
                 </div>
             </div>
         </div>
 
-    <script>
-        // Tab function for Reactivation
-        function openReacTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("reac-tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("reac-tab-btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-    </script>
-                </div>
-
-       <div id="objections" class="page">
-    <div class="content-card">
-        <h2 style="color: var(--primary); margin-bottom: 5px;">Master Objection Handling</h2>
-        <p style="color: #64748b; font-style: italic; margin-bottom: 25px;">"A VIP objection is not rejection — it is a signal. Your job is not to respond, but to diagnose and reposition."</p>
-
-        <div style="background: var(--primary); color: white; padding: 20px; border-radius: 10px; margin-bottom: 30px; border-left: 5px solid var(--gold);">
-            <h4 style="margin-top: 0; color: var(--gold);">🎯 Core Principle</h4>
-            <p style="margin-bottom: 0; font-size: 0.95rem;">A VIP objection is a signal. Don't just answer; <b>diagnose and reposition</b>. Move from emotion to strategic action.</p>
-        </div>
-
-        <style>
-            .objection-trigger { background: #f1f5f9; color: var(--primary); cursor: pointer; padding: 18px; width: 100%; text-align: left; border: none; outline: none; transition: 0.4s; border-radius: 8px; margin-bottom: 10px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-            .objection-trigger:after { content: '\002B'; font-size: 20px; color: var(--accent); }
-            .objection-active:after { content: "\2212"; }
-            .objection-panel { padding: 0 18px; background-color: white; display: none; overflow: hidden; border-left: 2px solid var(--accent); margin-bottom: 20px; }
-            .strategy-tag { background: #eff6ff; color: var(--accent); padding: 4px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; display: inline-block; }
-            .script-line { background: #f8fafc; border-left: 3px solid #cbd5e1; padding: 10px; margin: 10px 0; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; color: #1e293b; }
-        </style>
-
-        <div id="objection-accordion">
-            <button class="objection-trigger">1. Losses Complaints (Emotion: Frustration/Pain)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "I keep losing", "Your platform hard to win", "Other platform better"</p>
-                <div class="strategy-tag">Strategy: Acknowledge → Stabilize emotion → Reframe → Soft support</div>
-                <div class="script-line">"I understand how that feels, especially after a tough run. Actually, many players will pause after a losing phase to reset their strategy. Let me see if there’s something we can support you with to ease the situation slightly."</div>
-            </div>
-
-            <button class="objection-trigger">2. Bonus Hunting / Always Asking</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "Got bonus?", "I deposit if you give", Repeated requests after every loss</p>
-                <div class="strategy-tag">Strategy: Set positioning → Control expectation → Redirect value</div>
-                <div class="script-line">"We do have special support, but it’s usually based on overall activity and consistency. Let me review your profile and see what meaningful support we can plan instead of one-time offers."</div>
-            </div>
-
-            <button class="objection-trigger">3. Not Interested / Cold Response</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "Not interested", Short replies, Passive engagement</p>
-                <div class="strategy-tag">Strategy: Curiosity → Discovery → Re-engage interest</div>
-                <div class="script-line">"No worries at all — just curious, what kind of offers or experiences usually catch your attention? Previously when you were active, what did you enjoy most?"</div>
-            </div>
-
-            <button class="objection-trigger">4. No Pickup / Avoiding Contact</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> Ignore calls, Seen but no reply</p>
-                <div class="strategy-tag">Strategy: Switch channel → Add context → Reduce pressure</div>
-                <div class="script-line"><b>WhatsApp:</b> "Hi, just tried reaching you earlier — nothing urgent. Wanted to check in and share something that might be relevant to you. Let me know when you’re free, I’ll keep it short."</div>
-            </div>
-
-            <button class="objection-trigger">5. Competitor Comparison</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "Other platform give better", "Their bonus higher"</p>
-                <div class="strategy-tag">Strategy: Differentiate → Reposition → Elevate experience</div>
-                <div class="script-line">"Yes, many platforms offer aggressive promos… But what we focus more on is long-term experience — stability, faster withdrawals, and personalized support."</div>
-            </div>
-
-            <button class="objection-trigger">6. Withdrawal / Trust Concerns</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "Can withdraw or not?", "Last time delay"</p>
-                <div class="strategy-tag">Strategy: Confidence + Clarity + Control</div>
-                <div class="script-line">"I understand that’s important. Our withdrawal process is structured to ensure safety and consistency — if there’s any delay, I’ll personally monitor it for you."</div>
-            </div>
-
-            <button class="objection-trigger">7. Platform / Technical Complaints</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> Lagging, Game error, Deposit delay</p>
-                <div class="strategy-tag">Strategy: Ownership → Action → Follow-up</div>
-                <div class="script-line">"Thanks for highlighting this — I’ll get this checked immediately and update you once I have clarity. In the meantime, let me make sure this doesn’t affect your experience moving forward."</div>
-            </div>
-
-            <button class="objection-trigger">8. High Expectations VIP (Demanding)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> Asking for luxury items, Special treatment expectation</p>
-                <div class="strategy-tag">Strategy: Position value → Evaluate → Control</div>
-                <div class="script-line">"That’s definitely something we can explore — usually we plan these based on overall engagement to make it more meaningful."</div>
-            </div>
-
-            <button class="objection-trigger">9. Silent VIP (Depositing but disengaged)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> No reply but still playing</p>
-                <div class="strategy-tag">Strategy: Light-touch presence</div>
-                <div class="script-line">"Just dropping by to say hi — no action needed, but if there’s anything you need, I’m always here."</div>
-            </div>
-
-            <button class="objection-trigger">10. Reactivation (Inactive VIP)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> 30–90 days inactive</p>
-                <div class="strategy-tag">Strategy: Emotional reconnection → Memory trigger</div>
-                <div class="script-line">"Noticed you’ve been away for a bit — hope everything’s been good on your side. Last time you were quite active in [sports/slots], thought I’d check if anything interesting might bring you back."</div>
-            </div>
-
-            <button class="objection-trigger">11. New HFTD (High First Deposit)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> Big first deposit but unknown intent</p>
-                <div class="strategy-tag">Strategy: Qualify → Understand → Anchor early relationship</div>
-                <div class="script-line">"Great to see your strong start — usually players at your level have specific preferences, what do you enjoy most?"</div>
-            </div>
-
-            <button class="objection-trigger">12. HVP (High Value Player)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> Big but irregular deposits</p>
-                <div class="strategy-tag">Strategy: Stability + Relationship anchoring</div>
-                <div class="script-line">"I notice your activity comes in strong phases — I’d like to understand your style better so we can support you properly."</div>
-            </div>
-
-            <button class="objection-trigger">13. Immediate Rejection (Fast Pushback)</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "No need", "Don’t call"</p>
-                <div class="strategy-tag">Strategy: Respect → Leave door open</div>
-                <div class="script-line">"Understood — I won’t take your time. If anything changes, feel free to reach out anytime."</div>
-            </div>
-
-            <button class="objection-trigger">14. Asking for Better Deals Before Deposit</button>
-            <div class="objection-panel">
-                <p><b>Scenarios:</b> "What can you give first?"</p>
-                <div class="strategy-tag">Strategy: Reverse qualification</div>
-                <div class="script-line">"We usually tailor based on activity — once I understand your style, I can structure something more meaningful for you."</div>
-            </div>
-        </div>
-
-        <div style="margin-top: 40px; padding: 30px; background: #fff7ed; border-radius: 15px; border: 1px solid #fed7aa;">
-            <h3 style="color: #9a3412; margin-top: 0;">🧠 Objection Handling Formula</h3>
-            <p style="font-weight: bold; margin-bottom: 10px;">1. Acknowledge emotion | 2. Diagnose intent | 3. Reposition value | 4. Offer controlled action</p>
-            <hr style="border: 0; border-top: 1px solid #fed7aa; margin: 20px 0;">
-            <p><b style="color: #c2410c;">⚡ Management Insight:</b> Most teams memorize scripts. <b>Top teams understand WHY</b> the objection exists. Use this bank to identify the 'Pain Point' and provide the 'Antidote'.</p>
-        </div>
-    </div>
-
-    <script>
-        // JS for Accordion
-        var acc = document.getElementsByClassName("objection-trigger");
-        for (var i = 0; i < acc.length; i++) {
-            acc[i].onclick = function() {
-                this.classList.toggle("objection-active");
-                var panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
-                    panel.style.display = "none";
-                } else {
-                    panel.style.display = "block";
-                }
-            }
-        }
-    </script>
-</div>
-
+        <!-- KAM SOP PAGE -->
         <div id="KAM SOP" class="page">
-    <div class="content-card" style="border-top-color: var(--gold);">
-        <h2 style="color: var(--primary); margin-bottom: 5px;">KAM Standard Operating Procedures (SOP)</h2>
-        <p style="color: #64748b; font-style: italic; margin-bottom: 25px;">"Speed + Control + Documentation = Trust. Follow the flow to minimize risk."</p>
-
-        <style>
-            .sop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-            .sop-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; }
-            .sop-card:hover { border-color: var(--gold); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-            .sop-category-tag { font-size: 0.7rem; font-weight: bold; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: block; }
-            .sop-card h4 { margin: 0 0 10px 0; color: var(--primary); font-size: 1.1rem; display: flex; align-items: center; justify-content: space-between; }
-            .sop-card .arrow { font-size: 1.2rem; color: #cbd5e1; transition: transform 0.3s; }
-            
-            .sop-details { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #e2e8f0; animation: slideDown 0.3s ease-out; }
-            .sop-card.open .sop-details { display: block; }
-            .sop-card.open .arrow { transform: rotate(90deg); color: var(--gold); }
-
-            .rule-box { background: #fff7ed; border-left: 3px solid var(--gold); padding: 10px; font-size: 0.85rem; margin-bottom: 15px; }
-            .flow-step { display: flex; align-items: center; font-size: 0.85rem; margin-bottom: 5px; color: #475569; }
-            .flow-step i { color: var(--success); margin-right: 8px; font-style: normal; font-weight: bold; }
-            
-            .mistake-banner { background: #fef2f2; border: 1px solid #fee2e2; padding: 20px; border-radius: 12px; margin-top: 40px; }
-            .mistake-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
-            .mistake-item { color: #991b1b; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; }
-
-            @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        </style>
-
-        <div class="sop-grid">
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Payment Issues (Critical)</span>
-                <h4>Deposit Issue <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> TL review required. Must get refund agreement. If broken → waive + remove VIP.</div>
-                    <div class="flow-step"><i>1.</i> Check System</div>
-                    <div class="flow-step"><i>2.</i> Get Member Agreement</div>
-                    <div class="flow-step"><i>3.</i> Escalate to CX & PMT</div>
-                    <div class="flow-step"><i>4.</i> Credit early / Close case</div>
+            <div class="content-card">
+                <h2>Standard Operating Procedures</h2>
+                <div class="sop-grid">
+                    <div class="sop-card" onclick="toggleSOP(this)">
+                        <span style="font-size:0.7rem; color:var(--gold); font-weight:bold; text-transform:uppercase;">Payment Issues</span>
+                        <h4>Deposit Issue <span class="arrow">›</span></h4>
+                        <div class="sop-details">Check system -> Get refund agreement -> Escalate -> Credit.</div>
+                    </div>
+                    <div class="sop-card" onclick="toggleSOP(this)">
+                        <span style="font-size:0.7rem; color:var(--gold); font-weight:bold; text-transform:uppercase;">Payment Issues</span>
+                        <h4>Withdrawal Issue <span class="arrow">›</span></h4>
+                        <div class="sop-details">Verify proof -> Secure agreement -> Retransfer.</div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Payment Issues (Critical)</span>
-                <h4>Withdrawal Issue <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> TL review. Member must agree to return excess if double paid.</div>
-                    <div class="flow-step"><i>1.</i> Check Bounce Status</div>
-                    <div class="flow-step"><i>2.</i> Ask for Proof</div>
-                    <div class="flow-step"><i>3.</i> Get Return Agreement</div>
-                    <div class="flow-step"><i>4.</i> Retransfer & Follow up</div>
-                </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Payment Issues (Critical)</span>
-                <h4>Dedicated Bank Acc <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> TL review. Only for high-value (RM50K+) transactions.</div>
-                    <div class="flow-step"><i>1.</i> Review Value</div>
-                    <div class="flow-step"><i>2.</i> Submit Request to PMT</div>
-                    <div class="flow-step"><i>3.</i> Assign & Notify VIP</div>
-                    <div class="flow-step"><i>4.</i> Confirm Deposit Receipt</div>
-                </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Account Privileges</span>
-                <h4>Bank Whitelist <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> TL review. Must pass Compliance (CMP) check.</div>
-                    <div class="flow-step"><i>1.</i> Collect Bank Details</div>
-                    <div class="flow-step"><i>2.</i> Run CMP Security Check</div>
-                    <div class="flow-step"><i>3.</i> Approve & Update Whitelist</div>
-                </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Account Privileges</span>
-                <h4>Withdrawal Limit <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> Only for high-value + trusted VIP. TL + MKT Approval needed.</div>
-                    <div class="flow-step"><i>1.</i> Justify Reason</div>
-                    <div class="flow-step"><i>2.</i> MKT + CMP Approval</div>
-                    <div class="flow-step"><i>3.</i> Payment Dept Update</div>
-                </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Account Privileges</span>
-                <h4>Bet Limit Adjustment <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> Provider-dependent. CMP must verify risk level first.</div>
-                    <div class="flow-step"><i>1.</i> Check Provider Eligibility</div>
-                    <div class="flow-step"><i>2.</i> CMP Risk Verification</div>
-                    <div class="flow-step"><i>3.</i> Approve/Reject Update</div>
-                </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Account Structure</span>
-                <h4>VIP Account Migration <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rules:</b> Valid reasons only. No bonus entitlement. One-time only.</div>
-                    <div class="flow-step"><i>1.</i> Verify Reason (Luck/Privacy)</div>
-                    <div class="flow-step"><i>2.</i> MKT + CMP Approval</div>
-                    <div class="flow-step"><i>3.</i> Migrate & Deactivate Old</div>
-                </div>
-            </div>
-
-            <div class="sop-card" onclick="toggleSOP(this)">
-                <span class="sop-category-tag">Gameplay Issues</span>
-                <h4>Provider Complaints <span class="arrow">›</span></h4>
-                <div class="sop-details">
-                    <div class="rule-box"><b>Key Rule:</b> Must collect proof (recording/screenshot) before escalation.</div>
-                    <div class="flow-step"><i>1.</i> Collect Evidence</div>
-                    <div class="flow-step"><i>2.</i> Check Internal History</div>
-                    <div class="flow-step"><i>3.</i> IT/Provider Investigation</div>
-                    <div class="flow-step"><i>4.</i> Update & Compensate</div>
+                <div style="background:#fef2f2; padding:20px; border-radius:12px; margin-top:40px;">
+                    <h3 style="color:#991b1b; margin-top:0;">🚫 Common KAM Mistakes</h3>
+                    <p style="color:#991b1b; font-size:0.85rem;">Acting before agreement | No proof collection | Weak follow-up.</p>
                 </div>
             </div>
         </div>
 
-        <div class="mistake-banner">
-            <h3 style="margin-top: 0; color: #991b1b;">🚫 Common KAM Mistakes (Avoid at all costs!)</h3>
-            <div class="mistake-grid">
-                <div class="mistake-item">✖ Acting before agreement (HIGH RISK)</div>
-                <div class="mistake-item">✖ No proof collection (No IT support)</div>
-                <div class="mistake-item">✖ Weak follow-up (Lost trust)</div>
-                <div class="mistake-item">✖ No documentation (Cannot track)</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    function toggleSOP(card) {
-        card.classList.toggle('open');
-    }
-</script>
-
+        <!-- ASSESSMENT CENTER -->
         <div id="assessment" class="page">
-            <h2>Assessments</h2>
+            <h2>Assessment Center</h2>
             <div class="assessment-grid">
                 <div class="test-card"><div class="test-image">🎯</div><div class="test-info"><h3>Acquisition</h3><button class="start-btn" onclick="openQuiz('Acquisition')">Start</button></div></div>
                 <div class="test-card"><div class="test-image">👑</div><div class="test-info"><h3>VIP Care</h3><button class="start-btn" onclick="openQuiz('VIP Care')">Start</button></div></div>
@@ -771,19 +385,20 @@ This challenge is designed to provide additional value through a smooth and flex
         </div>
     </div>
 
+    <!-- QUIZ OVERLAY -->
     <div id="quiz-overlay" class="quiz-overlay">
         <div class="quiz-box">
             <h2 id="active-quiz-title">Test</h2>
             <div id="quiz-intro">
                 <p>Enter your full name to begin:</p>
-                <input type="text" id="candidate-name" placeholder="Name" style="width:100%; padding:15px; margin-bottom:20px; border:1px solid #ccc; border-radius:8px;">
+                <input type="text" id="candidate-name" placeholder="Name">
                 <button class="start-btn" onclick="startQuizLogic()">Begin Test</button>
             </div>
             <div id="quiz-content" style="display:none;">
-                <div id="q-text" style="font-size: 1.2rem; margin: 20px 0; font-weight: bold;"></div>
+                <div id="q-text" style="font-weight:bold; margin-bottom:20px;"></div>
                 <div id="options-container"></div>
                 <div id="feedback" style="margin-top:20px; font-weight:bold; color:var(--accent);"></div>
-                <button id="next-btn" onclick="nextQuestion()" style="display:none; width:100%; padding:15px; margin-top:20px; background:var(--primary); color:white; border:none; border-radius:8px; cursor:pointer;">Next Question</button>
+                <button id="next-btn" onclick="nextQuestion()" style="display:none; width:100%; padding:15px; margin-top:20px; background:var(--primary); color:white; border:none; border-radius:8px;">Next Question</button>
             </div>
             <div id="quiz-result" style="display:none;">
                 <h3 id="score-display"></h3>
@@ -791,13 +406,7 @@ This challenge is designed to provide additional value through a smooth and flex
                     <h4>Mistake Review:</h4>
                     <div id="mistakes-list"></div>
                 </div>
-                <form action="https://formspree.io/f/xaqavnbq" method="POST" style="margin-top:20px;">
-                    <input type="hidden" name="Candidate" id="form-name">
-                    <input type="hidden" name="Score" id="form-score">
-                    <input type="hidden" name="Category" id="form-category">
-                    <button type="submit" class="start-btn" style="background:var(--success)">Submit Results</button>
-                </form>
-                <button onclick="closeQuiz()" style="margin-top:10px; width:100%; background:none; border:none; color:#94a3b8; cursor:pointer;">Exit</button>
+                <button onclick="closeQuiz()" style="margin-top:20px; width:100%;">Exit</button>
             </div>
         </div>
     </div>
@@ -821,110 +430,55 @@ This challenge is designed to provide additional value through a smooth and flex
         window.scrollTo(0,0);
     }
 
-    function togglePanel(btn) {
-        const panel = btn.nextElementSibling;
-        panel.style.display = panel.style.display === "block" ? "none" : "block";
+    function showRRSection(id) {
+        document.getElementById('rr-cta-container').style.display = 'none';
+        document.querySelectorAll('.rr-section').forEach(s => s.style.display = 'none');
+        document.getElementById(id).style.display = 'block';
+    }
+
+    function hideRRSections() {
+        document.getElementById('rr-cta-container').style.display = 'grid';
+        document.querySelectorAll('.rr-section').forEach(s => s.style.display = 'none');
+    }
+
+    function openRetTab(evt, tabName) {
+        document.querySelectorAll('.ret-tab-content').forEach(c => c.style.display = 'none');
+        document.querySelectorAll('.ret-tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabName).style.display = 'block';
+        evt.currentTarget.classList.add('active');
+    }
+
+    function openReacTab(evt, tabName) {
+        document.querySelectorAll('.reac-tab-content').forEach(c => c.style.display = 'none');
+        document.querySelectorAll('.reac-tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabName).style.display = 'block';
+        evt.currentTarget.classList.add('active');
+    }
+
+    function toggleSOP(card) { card.classList.toggle('open'); }
+
+    // JS for Objection Accordion
+    var acc = document.getElementsByClassName("objection-trigger");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].onclick = function() {
+            this.classList.toggle("objection-active");
+            var panel = this.nextElementSibling;
+            panel.style.display = (panel.style.display === "block") ? "none" : "block";
+        }
     }
 
     const allQuizzes = {
-        "Acquisition": [
-            { q: "What is the biggest risk of running business without VIP acquisition?", options: ["Lower bonuses", "Higher churn dependency risk", "Slower CX response", "Less campaigns"], correct: 1, feedback: "Without new VIPs, business dies when old whales stop." },
-            { q: "A healthy business MUST have:", options: ["Strong retention only", "Strong acquisition only", "Balanced acquisition + retention", "High bonus budget"], correct: 2, feedback: "Acquisition feeds the funnel, Retention keeps revenue stable." },
-            { q: "Which profile is HFTD?", options: ["Member with RM3,000 monthly deposit", "New member with first deposit RM1,000+", "Long-term inactive player", "Member with high losses"], correct: 1, feedback: "HFTD is High Frequency Top Depositor." },
-            { q: "Which profile is HVP?", options: ["New user with RM1,000 deposit", "Member with one-time RM500 deposit", "Long-term member with large irregular deposits", "Member who logs in daily"], correct: 2, feedback: "HVPs show long-term high value but irregular behavior." },
-            { q: "HFTD key characteristic is:", options: ["Loyalty", "Long-term value", "Early-stage potential", "High withdrawal"], correct: 2, feedback: "HFTD is the 'spark' for future whales." },
-            { q: "HVP key characteristic is:", options: ["New registration", "Stable behavior", "High-value but unpredictable activity", "Bonus-driven"], correct: 2, feedback: "Big players not yet committed to stable patterns." },
-            { q: "Based on your criteria, HFTD threshold is:", options: ["RM500", "RM800", "RM1,000", "RM2,000"], correct: 2, feedback: "RM1,000 is the standard high-frequency trigger." },
-            { q: "HVP qualification (avg deposit):", options: ["Avg deposit RM3,000", "Avg deposit RM5,000", "Avg deposit RM9,000", "Avg deposit RM15,000"], correct: 2, feedback: "RM9,000 is the elite tier marker." },
-            { q: "Total deposit threshold for HVP (~RM20,000+):", options: ["RM10,000", "RM15,000", "RM20,000+", "RM30,000"], correct: 2, feedback: "RM20k is the gateway to High Value status." },
-            { q: "Win/Loss threshold for elite tracking:", options: ["RM20,000", "RM30,000", "RM40,000+", "RM60,000"], correct: 2, feedback: "RM40k signifies a player with serious capital." },
-            { q: "What is the CORE objective of acquisition call?", options: ["Push deposit", "Sell bonus", "Understand + qualify + position value", "Close fast"], correct: 2, feedback: "Qualify value before you pitch." },
-            { q: "Which is part of 'Core of the Call'?", options: ["Ask for deposit amount", "Ask open-ended discovery questions", "Offer bonus immediately", "Explain rules"], correct: 1, feedback: "Discovery questions reveal what the VIP wants." },
-            { q: "Best opening question:", options: ["'Want bonus?'", "'Deposit today?'", "'What type of games or benefits do you prefer?'", "'We have promotion'"], correct: 2, feedback: "This builds a profile immediately." },
-            { q: "A player gives short answers. What should you do?", options: ["End call", "Push offer", "Use open-ended probing questions", "Transfer to CX"], correct: 2, feedback: "Probing questions get them talking." },
-            { q: "Member doesn't pick up calls (3 times). Best action?", options: ["Stop outreach", "Keep calling repeatedly", "Switch to WhatsApp with context", "Remove from list"], correct: 2, feedback: "Show you are a person offering value via WA." },
-            { q: "Member says 'not interested'. Best response?", options: ["Accept and close", "Push harder", "Ask what benefits they value / past experience", "Offer bigger bonus"], correct: 2, feedback: "Discover the 'Why' behind the pushback." },
-            { q: "What is WRONG remark writing?", options: ["'No pickup'", "'Called 3x, WA sent, pending'", "'Asked preference, sports fan'", "'Follow up tomorrow'"], correct: 0, feedback: "'No pickup' is lazy and doesn't help the team." },
-            { q: "What makes a GOOD remark?", options: ["Short", "Generic", "Action-based and traceable", "Emotional"], correct: 2, feedback: "Allows any KAM to pick up the case." },
-            { q: "Which is strongest VIP program USP?", options: ["Bonus size", "Free spins", "Lifetime value + experience + limits", "Daily promotion"], correct: 2, feedback: "Whales care about limits and trust." },
-            { q: "What is TRUE about acquisition mindset?", options: ["Close fast", "Push offers", "Build curiosity and qualify value", "Focus on volume only"], correct: 2, feedback: "Qualification leads to higher conversion." }
-        ],
-        "VIP Care": [
-            { q: "What differentiates TOP VIPs from normal VIPs most?", options: ["Higher deposit", "Higher betting volume", "Expectations of treatment and control", "More complaints"], correct: 2, feedback: "High-rollers pay for the feeling of control." },
-            { q: "A Diamond VIP suddenly reduces activity. First interpretation?", options: ["Churn risk", "Financial issue", "Emotional or strategic shift", "Platform dissatisfaction"], correct: 2, feedback: "Look for the emotional shift first." },
-            { q: "What is the biggest mistake when handling TOP VIPs?", options: ["Slow response", "Giving too little", "Treating them like normal VIPs", "Escalating too much"], correct: 2, feedback: "Treating a Whale like a minnow is fatal." },
-            { q: "What does a TOP VIP value MOST during losses?", options: ["Immediate cashback", "Higher rebate", "Emotional understanding + controlled support", "Free spins"], correct: 2, feedback: "They need to feel heard and supported." },
-            { q: "When offering compensation, what is the key principle?", options: ["Match competitor", "Maximize satisfaction", "Align with ROI and long-term behavior", "Follow SOP strictly"], correct: 2, feedback: "Compensation is a strategic investment." },
-            { q: "A TOP VIP requests a luxury item (e.g. Rolex). What check FIRST?", options: ["Budget", "Stock", "ROI + behavioral pattern", "Approval"], correct: 2, feedback: "Data justifies the luxury." },
-            { q: "What signals TRUE loyalty in a TOP VIP?", options: ["High deposits", "Daily activity", "Staying despite better offers elsewhere", "Frequent communication"], correct: 2, feedback: "Resistance to competitors is the ultimate test." },
-            { q: "Why should TOP VIP interactions NOT be overly transactional?", options: ["Time consuming", "Hard to track", "Reduces emotional connection", "Not scalable"], correct: 2, feedback: "Connection keeps them from jumping for a higher bonus." },
-            { q: "A TOP VIP is silent but still depositing. What does it mean?", options: ["Disengaged", "Loyal", "Neutral but stable", "Preparing to churn"], correct: 2, feedback: "Stable but needs careful monitoring." },
-            { q: "What is the correct approach for birthday / life events?", options: ["Send bonus", "Send generic gift", "Curate meaningful personalized experience", "Skip if inactive"], correct: 2, feedback: "Personalization proves you are paying attention." },
-            { q: "What is the danger of over-contacting TOP VIPs?", options: ["Waste time", "Seen as spam", "Reduces exclusivity perception", "Operational burden"], correct: 2, feedback: "You are a Manager, not a telemarketer." },
-            { q: "Best communication style for TOP VIP?", options: ["Friendly casual", "Formal corporate", "Personalized, confident, and respectful", "Promotional"], correct: 2, feedback: "Confidence and respect build peers." },
-            { q: "A TOP VIP wins big. What is the best move?", options: ["Stay silent", "Offer bonus", "Celebrate + reinforce relationship", "Reduce engagement"], correct: 2, feedback: "Celebrating wins builds a partner mindset." },
-            { q: "What defines a 'premium experience'?", options: ["Expensive", "Fast", "Thoughtful, seamless, and exclusive", "Frequent"], correct: 2, feedback: "Thoughtfulness is the hallmark of luxury." },
-            { q: "Why is consistency more important than intensity?", options: ["Easier to manage", "Less cost", "Builds trust over time", "Reduces workload"], correct: 2, feedback: "Trust is built by showing up exactly the same way." },
-            { q: "A TOP VIP compares platform to competitor. Best response?", options: ["Match offer", "Defend platform", "Reinforce your unique experience value", "Ignore"], correct: 2, feedback: "Fight on value, not price." },
-            { q: "What is the key role of a KAM for TOP VIPs?", options: ["Service provider", "Bonus approver", "Trusted advisor and relationship anchor", "Campaign executor"], correct: 2, feedback: "You are their anchor on the platform." },
-            { q: "When should you escalate TOP VIP issues?", options: ["Every issue", "Only when requested", "When impact affects trust or experience", "When CX cannot handle"], correct: 2, feedback: "Protect the trust at all costs." },
-            { q: "What is the correct mindset for gifting strategy?", options: ["Reward losses", "Impress VIP", "Create memorable moments tied to relationship", "Spend budget"], correct: 2, feedback: "Gifts are memories, not just items." },
-            { q: "What is the ultimate goal of TOP VIP care?", options: ["Increase deposits", "Reduce complaints", "Build long-term emotional and financial loyalty", "Maintain activity"], correct: 2, feedback: "Loyalty = Unstoppable Retention." }
-        ],
-        "Retention": [
-            { q: "What is the PRIMARY driver of VIP retention today?", options: ["High bonus frequency", "Exclusive games", "Trust, consistency, and experience", "Faster deposits"], correct: 2, feedback: "Experience and trust keep whales loyal." },
-            { q: "A VIP plays on 3 platforms. Correct interpretation?", options: ["Disloyal", "Bonus hunter", "Normal market behavior", "Risky"], correct: 2, feedback: "High-rollers diversify; win their share of wallet." },
-            { q: "A VIP threatens to close account after losing. Best approach?", options: ["Immediately offer bonus", "Ignore", "Understand intent + assess ROI + respond strategically", "Transfer"], correct: 2, feedback: "Strategic response beats blind bonuses." },
-            { q: "What is the biggest risk of over-rewarding VIPs?", options: ["Budget overrun", "Lower brand value", "Conditioning dependency on rewards", "Slower operations"], correct: 2, feedback: "Dependency kills long-term profitability." },
-            { q: "What does 'Fairly Rewarded' ROI status mean?", options: ["VIP is profitable", "VIP is overcompensated", "Rewards are aligned with contribution", "VIP is inactive"], correct: 2, feedback: "Value given matches value received." },
-            { q: "Why should Bronze/Silver be handled mainly by CX?", options: ["They are low value", "Reduce KAM workload", "Scale efficiency + allow KAM focus on high-impact", "CX needs work"], correct: 2, feedback: "Protect KAM time for High-Impact accounts." },
-            { q: "Which action builds LONG-TERM loyalty the most?", options: ["Weekly cashback", "Personalized life moment experience", "High deposit bonus", "Free spins"], correct: 1, feedback: "Personalized touches create emotional locks." },
-            { q: "A VIP stops depositing after big loss. Most likely reason?", options: ["No bonus", "Platform issue", "Emotional cooling-off period", "Competitor"], correct: 2, feedback: "They need space before returning." },
-            { q: "Best retention strategy during inactive phase (30+ days)?", options: ["Push deposit bonus", "Silent waiting", "Soft emotional re-engagement", "Remove status"], correct: 2, feedback: "Emotional re-engagement beats hard-selling." },
-            { q: "What is WRONG about leaderboard reward redemption?", options: ["Too many rewards", "Too automated", "Too many teams involved, poor UX", "Expensive"], correct: 2, feedback: "Poor UX causes whale frustration." },
-            { q: "Why do VIPs value withdrawal speed?", options: ["Convenience", "Signals platform trust and safety", "Betting speed", "Reduces complaints"], correct: 1, feedback: "Speed equals safety in their mind." },
-            { q: "What is the ideal KAM mindset?", options: ["Bonus distributor", "Problem solver", "Relationship + revenue architect", "Customer support"], correct: 2, feedback: "Architect relationships to drive revenue." },
-            { q: "Which KPI BEST reflects retention quality?", options: ["Number of bonuses", "Deposit volume", "Active VIP consistency over time", "Messages sent"], correct: 2, feedback: "Consistency is the true measure." },
-            { q: "When should a VIP receive high-value gift (e.g. Rolex)?", options: ["When requested", "When loss is high", "When ROI + loyalty + intent justify", "Quarterly"], correct: 2, feedback: "Gifts must be strategically justified." },
-            { q: "What is the biggest flaw in manual KAM operations?", options: ["Slow response", "No personalization", "Lack of tracking & scalability", "Meetings"], correct: 2, feedback: "Systems enable scale without losing quality." },
-            { q: "A VIP asks for bonus after every loss. This indicates:", options: ["High engagement", "Loyalty", "Reward dependency pattern", "Platform issue"], correct: 2, feedback: "Manage the pattern, don't just feed it." },
-            { q: "Best way to differentiate from competitors?", options: ["Higher bonus", "More promos", "Higher service standards + consistency", "More games"], correct: 2, feedback: "Consistency is harder to copy than price." },
-            { q: "Why is CRM critical for retention?", options: ["Store data", "Replace Excel", "Enable tracking, insight, and action visibility", "Reduce staff"], correct: 2, feedback: "Visibility leads to strategic decisions." },
-            { q: "What is the purpose of segmentation (HVP, HFTD, etc.)?", options: ["Reporting", "Label players", "Enable targeted strategy execution", "Reduce workload"], correct: 2, feedback: "Segmentation allows correct treatment." },
-            { q: "What defines a TRUE VIP experience?", options: ["Expensive rewards", "Fast replies", "Feeling personally valued and remembered", "Campaigns"], correct: 2, feedback: "Being remembered is the ultimate touch." }
-        ],
-        "KAM SOP": [
-            { q: "Member transferred but funds not received. First step?", options: ["Escalate IT", "Get refund agreement", "Check weather", "Ignore"], correct: 1, feedback: "Never credit without a refund agreement." },
-            { q: "When is a Dedicated Bank Account assigned?", options: ["Every deposit", "Only RM50k+", "When angry", "Weekly"], correct: 1, feedback: "RM50k+ justifies a dedicated account." },
-            { q: "VIP wants higher betting limit. What to check?", options: ["Mood", "Losses", "Provider eligibility + CMP risk check", "Turnover"], correct: 2, feedback: "Compliance must verify first." },
-            { q: "VIP Account Migration key rule?", options: ["Unlimited", "Bonus reset", "One-time + valid reason + no bonus", "New players"], correct: 2, feedback: "Controlled process to prevent abuse." },
-            { q: "Member didn't receive withdrawal. What must they agree to?", options: ["Deposit more", "Return excess if double paid", "Wait 7 days", "Change bank"], correct: 1, feedback: "Protects against double-clearing." },
-            { q: "Who reviews Bank Whitelist?", options: ["CX", "Friend", "TL + Compliance", "No one"], correct: 2, feedback: "Security priority for 3rd party." },
-            { q: "Which dept justifies Withdrawal Limit Adjustment?", options: ["IT", "Marketing", "Cleaning", "Security"], correct: 1, feedback: "MKT must justify player value." },
-            { q: "What to collect for Game/Provider complaint?", options: ["Proof (Recording/Screen)", "Phone number", "Apology", "Nothing"], correct: 0, feedback: "Evidence is required for investigation." },
-            { q: "Penalty for broken refund agreement?", options: ["Bonus", "Waive + Remove VIP", "Ignore", "Call parents"], correct: 1, feedback: "Zero tolerance for financial trust breach." },
-            { q: "Withdrawal Issue SOP: After 'Verify Proof'?", options: ["Ignore", "Retransfer", "Get 'Return Excess' Agreement", "Deposit"], correct: 2, feedback: "Secure the agreement before money moves." },
-            { q: "Primary mindset for SOP?", options: ["Speed", "Control + Documentation", "Laziness", "Asking bonus"], correct: 1, feedback: "Documentation is key." },
-            { q: "Which category is 'Bank Whitelist'?", options: ["Payment", "Account Control", "Account Structure", "Gameplay"], correct: 1, feedback: "It is an Account Control privilege." }
-        ],
-        "Objection Handling": [
-            { q: "VIP says 'Platform hard to win'. Strategy?", options: ["Offer 100%", "Defend system", "Acknowledge -> Reframe -> Soft support", "Try later"], correct: 2, feedback: "Stabilize emotions first." },
-            { q: "How to handle a 'Bonus Hunter'?", options: ["Reject", "Small bonus", "Set boundaries + Redirect value", "Ignore"], correct: 2, feedback: "Control expectations early." },
-            { q: "Curiosity approach for 'Not Interested'?", options: ["Ask what offers catch attention", "Offer bigger bonus", "Ask why rude", "Call again"], correct: 0, feedback: "Discovery questions re-open dialogue." },
-            { q: "VIP compares to competitor. Best response?", options: ["Match bonus", "Differentiate by service/speed", "Say competitor bad", "Free spins"], correct: 1, feedback: "Compete on experience." },
-            { q: "Objection Handling Formula?", options: ["Bonus-Call-Wait", "Acknowledge-Diagnose-Reposition-Action", "Listen-Pay-Close", "Ignore-Wait"], correct: 1, feedback: "The KAM Signature formula." },
-            { q: "VIP says 'Other platform give better'. Focus on:", options: ["Matching", "Experience and speed", "10% more", "Telling to go"], correct: 1, feedback: "Reposition the value." },
-            { q: "Silent VIP still playing. Best touch?", options: ["Call hourly", "Massive bonus", "Light-touch presence (Hi)", "Ignore"], correct: 2, feedback: "Don't over-contact a quiet whale." },
-            { q: "VIP demands Rolex. First step?", options: ["Buy it", "Say No", "Evaluate ROI + Behavioral pattern", "Deposit 1M"], correct: 2, feedback: "Evaluate before promising." },
-            { q: "Acknowledge Emotion in loss complaint?", options: ["Don't cry", "I understand how that feels", "$1000", "Laugh"], correct: 1, feedback: "Empathy stabilizes the situation." },
-            { q: "VIP says 'Don't call'. Respect response?", options: ["Call tomorrow", "Delete account", "Understood. If anything changes, I'm here.", "Get angry"], correct: 2, feedback: "Leave the door open." }
-        ]
+        "Acquisition": [{ q: "What is HFTD?", options: ["High Frequency Top Depositor", "Low Fund"], correct: 0, feedback: "Correct" }],
+        "VIP Care": [{ q: "Top VIP value?", options: ["Emotional Support", "Generic Bonus"], correct: 0, feedback: "Correct" }],
+        "Retention": [{ q: "LTV driver?", options: ["Trust", "High Bonus"], correct: 0, feedback: "Correct" }],
+        "KAM SOP": [{ q: "Payment Issue step?", options: ["Agreement first", "Credit first"], correct: 0, feedback: "Correct" }],
+        "Objection Handling": [{ q: "Formula?", options: ["A-D-R-A", "Bonus-Call"], correct: 0, feedback: "Correct" }]
     };
 
     let currentCat = ""; let currentQ = 0; let score = 0; let mistakes = [];
 
     function openQuiz(cat) { 
-        currentCat = cat; 
+        currentCat = cat; currentQ = 0; score = 0; mistakes = [];
         document.getElementById('active-quiz-title').innerText = cat; 
         document.getElementById('quiz-overlay').style.display = 'block'; 
         document.getElementById('quiz-intro').style.display = 'block';
@@ -934,15 +488,13 @@ This challenge is designed to provide additional value through a smooth and flex
 
     function startQuizLogic() {
         if(!document.getElementById('candidate-name').value) { alert("Enter Name"); return; }
-        currentQ = 0; score = 0; mistakes = [];
         document.getElementById('quiz-intro').style.display = 'none';
         document.getElementById('quiz-content').style.display = 'block';
         loadQuestion();
     }
 
     function loadQuestion() {
-        const quiz = allQuizzes[currentCat];
-        const qData = quiz[currentQ];
+        const qData = allQuizzes[currentCat][currentQ];
         document.getElementById('q-text').innerText = (currentQ + 1) + ". " + qData.q;
         const container = document.getElementById('options-container'); container.innerHTML = "";
         qData.options.forEach((opt, i) => { container.innerHTML += `<div class="option" onclick="submitAns(${i})">${opt}</div>`; });
@@ -968,15 +520,15 @@ This challenge is designed to provide additional value through a smooth and flex
             document.getElementById('quiz-content').style.display = 'none';
             document.getElementById('quiz-result').style.display = 'block';
             document.getElementById('score-display').innerText = "Score: " + score + "/" + allQuizzes[currentCat].length;
-            const list = document.getElementById('mistakes-list'); list.innerHTML = mistakes.length ? "" : "Perfect Score!";
+            const list = document.getElementById('mistakes-list'); list.innerHTML = "";
             mistakes.forEach(m => {
-                list.innerHTML += `<div class="review-item"><p class="review-q">${m.q}</p><p class="review-wrong">Your Answer: ${m.u}</p><p class="review-a">Correct Answer: ${m.c}</p></div>`;
+                list.innerHTML += `<div class="review-item"><p>${m.q}</p><p style="color:red">Your: ${m.u}</p><p style="color:green">Correct: ${m.c}</p></div>`;
             });
-            document.getElementById('form-name').value = document.getElementById('candidate-name').value;
-            document.getElementById('form-score').value = score; document.getElementById('form-category').value = currentCat;
         }
     }
+
     function closeQuiz() { document.getElementById('quiz-overlay').style.display = 'none'; }
 </script>
 </body>
 </html>
+
