@@ -292,119 +292,151 @@ At Delta, we continuously strive to deliver personalized experiences, trusted su
             </div>
         </div>
 
-        <!-- REACTIVATION SECTION (FULL CONTENT) -->
+<!-- REACTIVATION SECTION (FULL EXPANDED CONTENT) -->
         <div id="reactivation-pillar" class="rr-section" style="display: none; background: white; border-radius: 15px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
             <div style="padding: 30px; background: #fffbeb; border-bottom: 1px solid #fef3c7; display: flex; justify-content: space-between; align-items: center;">
                 <div>
-                    <h3 style="margin: 0; color: #92400e;">Reactivation Strategy</h3>
-                    <p style="margin: 5px 0 0; font-size: 0.85rem; color: #b45309;">Rebuilding engagement and restoring high-value relationships.</p>
+                    <h3 style="margin: 0; color: #92400e; letter-spacing: 1px;">VIP REACTIVATION STRATEGY</h3>
+                    <p style="margin: 5px 0 0; font-size: 0.85rem; color: #b45309;">Restoring valuable relationships and protecting against permanent churn.</p>
                 </div>
-                <button onclick="hideRRSections()" style="background: white; border: 1px solid #fde68a; color: #92400e; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">BACK TO MENU</button>
+                <button onclick="hideRRSections()" style="background: white; border: 1px solid #fde68a; color: #92400e; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">BACK TO DASHBOARD</button>
             </div>
 
             <!-- Reactivation Tabs Navigation -->
             <div style="display: flex; background: #ffffff; border-bottom: 1px solid #e2e8f0;">
-                <button class="reac-tab-btn active" onclick="openReacTab(event, 'reac-purpose')">Purpose & Targets</button>
-                <button class="reac-tab-btn" onclick="openReacTab(event, 'reac-framework')">Framework & SOP</button>
-                <button class="reac-tab-btn" onclick="openReacTab(event, 'reac-scripts')">Reactivation Scripts</button>
+                <button class="reac-tab-btn active" onclick="openReacTab(event, 'reac-purpose')">1. Purpose & Targets</button>
+                <button class="reac-tab-btn" onclick="openReacTab(event, 'reac-framework')">2. Framework & ROI</button>
+                <button class="reac-tab-btn" onclick="openReacTab(event, 'reac-sop')">3. Reactivation SOP</button>
+                <button class="reac-tab-btn" onclick="openReacTab(event, 'reac-scripts')">4. Scripts & Mindset</button>
             </div>
 
             <style>
-                .reac-tab-btn { flex: 1; padding: 18px; border: none; background: none; cursor: pointer; font-weight: bold; color: #94a3b8; transition: 0.3s; border-bottom: 3px solid transparent; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+                .reac-tab-btn { flex: 1; padding: 18px; border: none; background: none; cursor: pointer; font-weight: bold; color: #94a3b8; transition: 0.3s; border-bottom: 3px solid transparent; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
                 .reac-tab-btn.active { color: #92400e; border-bottom-color: #f59e0b; background: #fffbeb; }
                 .reac-tab-content { display: none; padding: 40px; animation: fadeIn 0.3s; }
-                .reac-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
-                .reac-table th, .reac-table td { padding: 15px; border: 1px solid #e2e8f0; text-align: left; }
+                .reac-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.85rem; }
+                .reac-table th, .reac-table td { padding: 12px; border: 1px solid #e2e8f0; text-align: left; }
                 .reac-table th { background: #fffbeb; color: #92400e; }
-                .script-box-reac { font-family: 'Courier New', Courier, monospace; background: #fefce8; padding: 20px; border-left: 4px solid #f59e0b; display: block; margin-top: 10px; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; color: #1e293b; border-radius: 0 8px 8px 0; }
+                .script-box-reac { font-family: 'Courier New', Courier, monospace; background: #fefce8; padding: 25px; border-left: 4px solid #f59e0b; display: block; margin-top: 15px; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; color: #1e293b; border-radius: 0 8px 8px 0; }
                 .badge-reac { background: #fef3c7; color: #92400e; padding: 3px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+                .sop-step-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 10px; margin-bottom: 15px; }
+                .sop-step-card b { color: #92400e; display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 0.75rem; }
             </style>
 
             <!-- TAB 1: PURPOSE & TARGETS -->
             <div id="reac-purpose" class="reac-tab-content" style="display: block;">
                 <h3>1. Purpose</h3>
-                <p>VIP Reactivation focuses on rebuilding engagement and restoring relationships with valuable members who have become inactive or disengaged. The objective is to re-establish trust, understand inactivity reasons, and protect valuable relationships from permanent churn.</p>
+                <p>VIP Reactivation focuses on rebuilding engagement and restoring relationships with valuable members who have become inactive or disengaged from the platform[cite: 1]. The objective is not simply short-term activity, but to:[cite: 1]</p>
+                <ul style="font-size: 0.9rem; line-height: 1.8; color: #475569;">
+                    <li>Re-establish trust and communication[cite: 1]</li>
+                    <li>Understand the reasons behind inactivity[cite: 1]</li>
+                    <li>Restore long-term engagement potential[cite: 1]</li>
+                    <li>Protect valuable VIP relationships from permanent churn[cite: 1]</li>
+                    <li>Sustain healthy revenue contribution and active VIP volume[cite: 1]</li>
+                </ul>
                 
-                <h3 style="margin-top: 30px;">Targeted VIPs</h3>
+                <h3 style="margin-top: 30px;">2. Targeted VIPs</h3>
+                <p>Focus on VIPs who have no deposit activity for 30+ days, significant valid bet reduction, or sudden behavioral changes after losses[cite: 1]. Priority is given to:</p>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
-                        <h4 style="margin-top: 0; color: #92400e;">Who to Target:</h4>
-                        <ul style="font-size: 0.85rem; padding-left: 20px; line-height: 1.8;">
-                            <li>No deposit activity for 30+ days</li>
-                            <li>Significant reduction in valid bets</li>
-                            <li>Reduced login frequency</li>
-                            <li>Sudden behavioral changes after losses</li>
+                        <ul style="font-size: 0.85rem; padding-left: 20px; margin: 0; line-height: 1.8;">
+                            <li>Higher VIP tiers (Gold, Platinum, Diamond)[cite: 1]</li>
+                            <li>Positive ROI contributors[cite: 1]</li>
                         </ul>
                     </div>
                     <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
-                        <h4 style="margin-top: 0; color: #92400e;">Priority Handling:</h4>
-                        <ul style="font-size: 0.85rem; padding-left: 20px; line-height: 1.8;">
-                            <li>Higher VIP tiers (Gold, Platinum, Diamond)</li>
-                            <li>Positive ROI contributors</li>
-                            <li>Long-term loyal members</li>
-                            <li>High-value members with recovery potential</li>
+                        <ul style="font-size: 0.85rem; padding-left: 20px; margin: 0; line-height: 1.8;">
+                            <li>Long-term loyal members[cite: 1]</li>
+                            <li>Previously active high-value members[cite: 1]</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 2: FRAMEWORK & SOP -->
+            <!-- TAB 2: FRAMEWORK & ROI -->
             <div id="reac-framework" class="reac-tab-content">
-                <h3>Reactivation Evaluation Framework</h3>
+                <h3>3. Reactivation Evaluation Framework</h3>
                 <table class="reac-table">
-                    <tr><th style="width: 30%;">Evaluation Area</th><th>Consideration</th></tr>
-                    <tr><td><b>VIP Rank</b></td><td>Bronze → Diamond priority handling</td></tr>
-                    <tr><td><b>ROI Funds</b></td><td>Positive revenue sustainability</td></tr>
-                    <tr><td><b>Activity History</b></td><td>Last deposit, valid bet, and login behavior</td></tr>
-                    <tr><td><b>Experience</b></td><td>Complaints, technical issues, or heavy loss patterns</td></tr>
+                    <tr><th>Area</th><th>Consideration</th></tr>
+                    <tr><td><b>VIP Rank</b></td><td>Bronze → Diamond priority handling[cite: 1]</td></tr>
+                    <tr><td><b>ROI Funds</b></td><td>Positive revenue sustainability[cite: 1]</td></tr>
+                    <tr><td><b>ROI Status</b></td><td>Under Rewarded / Fairly Rewarded / Over Rewarded[cite: 1]</td></tr>
+                    <tr><td><b>Activity History</b></td><td>Last deposit strength, valid bet behavior, login frequency[cite: 1]</td></tr>
+                    <tr><td><b>Experience</b></td><td>Win/Loss patterns, technical complaints, payment issues[cite: 1]</td></tr>
+                    <tr><td><b>Engagement</b></td><td>Contact history and behavioral trend signals[cite: 1]</td></tr>
                 </table>
 
-                <h3 style="margin-top: 40px;">Reactivation SOP Framework</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                    <div style="padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <small style="color: #f59e0b; font-weight: bold;">STEP 1</small>
-                        <p style="margin: 5px 0; font-size: 0.85rem;"><b>Analyze:</b> Review history, ROI, and likely reasons for inactivity.</p>
+                <h3 style="margin-top: 30px;">4. ROI Status Consideration</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                    <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border: 1px solid #dcfce7;">
+                        <b style="color: #166534; font-size: 0.75rem;">UNDER REWARDED</b>
+                        <p style="font-size: 0.8rem; margin: 5px 0;">Higher priority. Strategic incentive flexibility and stronger rebuilding efforts[cite: 1].</p>
                     </div>
-                    <div style="padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <small style="color: #f59e0b; font-weight: bold;">STEP 2</small>
-                        <p style="margin: 5px 0; font-size: 0.85rem;"><b>Approach:</b> Choose soft engagement, recovery, or tailored incentives.</p>
+                    <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                        <b style="color: #475569; font-size: 0.75rem;">FAIRLY REWARDED</b>
+                        <p style="font-size: 0.8rem; margin: 5px 0;">Relationship-first. Moderate stimulation and consistent service quality[cite: 1].</p>
                     </div>
-                    <div style="padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <small style="color: #f59e0b; font-weight: bold;">STEP 3</small>
-                        <p style="margin: 5px 0; font-size: 0.85rem;"><b>Contact:</b> Use preferred channels (Call/WA/Telegram) for human connection.</p>
-                    </div>
-                    <div style="padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <small style="color: #f59e0b; font-weight: bold;">STEP 4</small>
-                        <p style="margin: 5px 0; font-size: 0.85rem;"><b>Gather:</b> Fact-finding first. Understand sentiment and frustrations.</p>
+                    <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border: 1px solid #fee2e2;">
+                        <b style="color: #991b1b; font-size: 0.75rem;">OVER REWARDED</b>
+                        <p style="font-size: 0.8rem; margin: 5px 0;">Focus on emotional connection. Avoid aggressive bonus dependency[cite: 1].</p>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 3: REACTIVATION SCRIPTS -->
+            <!-- TAB 3: SOP -->
+            <div id="reac-sop" class="reac-tab-content">
+                <h3>5. Reactivation SOP Framework</h3>
+                <div class="sop-step-card">
+                    <b>Step 1 — Analyze Member Behavior</b>
+                    <p style="font-size: 0.85rem; margin: 0;">Review last deposit, login patterns, game preferences, and ROI status to understand the "Why" behind inactivity[cite: 1].</p>
+                </div>
+                <div class="sop-step-card">
+                    <b>Step 2 — Choose Appropriate Approach</b>
+                    <p style="font-size: 0.85rem; margin: 0;">Select Soft engagement, Service recovery, Tailored incentives, or Exclusive gifts[cite: 1]. Never rely solely on bonuses[cite: 1].</p>
+                </div>
+                <div class="sop-step-card">
+                    <b>Step 3 — Contact Through Preferred Channel</b>
+                    <p style="font-size: 0.85rem; margin: 0;">Use Call, WA, or Telegram to create a human connection instead of transactional messaging[cite: 1].</p>
+                </div>
+                <div class="sop-step-card">
+                    <b>Step 4 — Gather Feedback & Rebuild</b>
+                    <p style="font-size: 0.85rem; margin: 0;">Fact-finding first. Understand sentiment, concerns, or competitive migration behavior[cite: 1].</p>
+                </div>
+                <div class="sop-step-card">
+                    <b>Step 5 — Offer Tailored Solution</b>
+                    <p style="font-size: 0.85rem; margin: 0;">Align custom offers or privileges with VIP rank, ROI, and long-term retention potential[cite: 1].</p>
+                </div>
+                <div class="sop-step-card">
+                    <b>Step 6 — Follow-Up & Monitor</b>
+                    <p style="font-size: 0.85rem; margin: 0;">Monitor recovery consistency and avoid excessive over-contacting[cite: 1].</p>
+                </div>
+            </div>
+
+            <!-- TAB 4: SCRIPTS & MINDSET -->
             <div id="reac-scripts" class="reac-tab-content">
-                <div style="margin-bottom: 35px;">
+                <div style="margin-bottom: 30px;">
                     <span class="badge-reac">Soft Engagement</span>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">For: Fairly Rewarded, Platinum/Diamond maintenance, mild inactivity.</p>
+                    <p style="font-size: 0.8rem; color: #64748b; margin: 0;">Focus on comfort and relationship. Best for Fairly Rewarded or mild inactivity[cite: 1].</p>
                     <div class="script-box-reac">Greetings from Delta, [username],
 
 Just dropping by to say hello and check in with you. We truly value having you as part of our VIP community and hope everything has been going smoothly for you recently.
 
-Should you require any assistance, game recommendations, or support, please feel free to let us know anytime. At Delta, we always strive to provide a comfortable, trusted, and rewarding experience for our valued VIP members. Wishing you a wonderful day ahead.</div>
+If there are any games you are currently enjoying, looking to explore, or if there is anything we can assist you with, please feel free to let us know anytime. At Delta, we always strive to provide a comfortable, trusted, and rewarding experience for our valued VIP members. Wishing you a wonderful day ahead and looking forward to seeing you again soon.[cite: 1]</div>
                 </div>
 
-                <div style="margin-bottom: 35px;">
+                <div style="margin-bottom: 30px;">
                     <span class="badge-reac">After Heavy Losses</span>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">For: Emotional disengagement and frustration-driven inactivity.</p>
+                    <p style="font-size: 0.8rem; color: #64748b; margin: 0;">Prioritize emotional engagement and fact-finding before incentives[cite: 1].</p>
                     <div class="script-box-reac">Greetings from Delta, [username],
 
-I noticed that recent sessions may not have gone entirely your way and just wanted to personally check in with you. At times, game outcomes can be unpredictable, and we fully understand the importance of maintaining a comfortable experience throughout your VIP journey.
+I noticed that recent sessions may not have gone entirely your way and just wanted to personally check in with you.
 
-Should there be anything we can assist with — whether it is recommendations, support, or available privileges — please feel free to reach out. We truly appreciate your continued support.</div>
+At times, game outcomes can be unpredictable, and we fully understand the importance of maintaining a comfortable and enjoyable experience throughout your VIP journey. Should there be anything we can assist with — whether it is recommendations, support, or exploring available VIP privileges and opportunities — please feel free to let us know anytime. Most importantly, we truly appreciate your continued support and value the relationship we have built with you.[cite: 1]</div>
                 </div>
 
-                <div>
-                    <span class="badge-reac">Incentive-Based Reactivation</span>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">For: Under Rewarded, Positive ROI contributors, recovery potential.</p>
+                <div style="margin-bottom: 30px;">
+                    <span class="badge-reac">Reactivation with Incentive</span>
+                    <p style="font-size: 0.8rem; color: #64748b; margin: 0;">Tailored for Under Rewarded and Positive ROI contributors[cite: 1].</p>
                     <div class="script-box-reac">Greetings from Delta, [username],
 
 As one of our valued VIP members, we would like to extend a special invitation exclusively prepared for you.
@@ -413,18 +445,17 @@ As one of our valued VIP members, we would like to extend a special invitation e
 • Valid Bet $10,000 → Receive $38 Bonus
 • Simple 1x turnover requirement
 
-This challenge is designed to provide additional value through a smooth and flexible experience. If you require any assistance or wish to explore additional privileges, please feel free to reach out anytime.</div>
+This challenge is designed to provide additional value through a smooth and flexible experience with convenient redemption and low-barrier participation. At Delta, we continuously aim to deliver personalized engagement, trusted support, and rewarding experiences tailored for our VIP members. Should you require any assistance, please feel free to reach out anytime.[cite: 1]</div>
                 </div>
 
                 <div style="margin-top: 40px; padding: 30px; background: #fffbeb; border-radius: 15px; border: 1px solid #fef3c7;">
                     <h3 style="color: #92400e; margin-top: 0;">Strategic Reactivation Mindset</h3>
-                    <p style="font-size: 0.9rem;">Success comes from <b>Understanding, Rebuilding Trust, and Human Connection</b>. Reactivated VIPs should feel welcomed back, understood, and confident in the relationship with the platform.</p>
+                    <p style="font-size: 0.9rem;">True reactivation success comes from <b>Understanding, Rebuilding Trust, and Human Connection</b>[cite: 1]. Members leave when the experience no longer feels valued or differentiated[cite: 1]. Relationship depth beats short-term stimulation[cite: 1].</p>
                 </div>
             </div>
         </div>
 
     <script>
-        // Separate logic for Reactivation Tabs
         function openReacTab(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("reac-tab-content");
