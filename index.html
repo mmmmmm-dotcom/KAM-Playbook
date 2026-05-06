@@ -130,16 +130,119 @@
             </div>
         </div>
 
-        <div id="acquisition" class="page">
-            <div class="content-card">
-                <h2>Acquisition Mastery</h2>
-                <p>Strategies for identifying and onboarding new High-Value Accounts.</p>
-                <ul>
-                    <li>Spotting HFTD and HVP profiles.</li>
-                    <li>Open-ended discovery questions.</li>
-                    <li>Qualifying value before the pitch.</li>
+<!-- ACQUISITION MASTERY PAGE -->
+<div id="acquisition" class="page">
+    <div class="content-card" style="border-top-color: var(--accent); padding: 0; background: none; box-shadow: none;">
+        
+        <!-- HEADER & STRATEGIC IMPORTANCE -->
+        <div style="background: white; padding: 40px; border-radius: 15px; border: 1px solid #e2e8f0; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+            <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                <div style="width: 50px; height: 50px; background: #eff6ff; color: var(--accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-right: 15px; border: 1px solid #dbeafe;">🎯</div>
+                <h2 style="margin: 0; color: var(--primary);">VIP Acquisition Mastery</h2>
+            </div>
+            <h3>1. Purpose</h3>
+            <p style="color: #475569; font-size: 1rem; line-height: 1.7;">
+                VIP Acquisition focuses on identifying, engaging, and nurturing potential high-value members into long-term VIP relationships. The objective is to discover high-potential members early, build strong first impressions, and introduce the long-term value of the VIP program.
+            </p>
+
+            <h3 style="margin-top: 30px;">2. Strategic Importance</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div style="background: #fef2f2; padding: 20px; border-radius: 10px; border-left: 4px solid var(--danger);">
+                    <h4 style="margin: 0 0 10px 0; color: #991b1b;">Without Proper Acquisition:</h4>
+                    <ul style="font-size: 0.85rem; padding-left: 20px; color: #991b1b; line-height: 1.6;">
+                        <li>Over-reliance on existing VIPs</li>
+                        <li>Churn impact becomes more significant</li>
+                        <li>Future VIP pipeline weakens</li>
+                        <li>Competitor migration risk increases</li>
+                    </ul>
+                </div>
+                <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; border-left: 4px solid var(--success);">
+                    <h4 style="margin: 0 0 10px 0; color: #166534;">With Strong Acquisition:</h4>
+                    <ul style="font-size: 0.85rem; padding-left: 20px; color: #166534; line-height: 1.6;">
+                        <li>Sustainable growth improves</li>
+                        <li>Long-term VIP pool expands</li>
+                        <li>Brand trust and loyalty strengthen</li>
+                        <li>Revenue sustainability becomes stable</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACQUISITION CATEGORIES SELECTOR -->
+        <div id="acq-selector-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+            <div onclick="showAcqSection('hftd-path')" style="background: white; padding: 40px; border-radius: 12px; text-align: center; cursor: pointer; border: 1px solid #e2e8f0; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                <div style="font-size: 2.5rem; margin-bottom: 15px;">💎</div>
+                <h3 style="margin: 0; color: var(--primary);">HFTD</h3>
+                <p style="color: #64748b; font-size: 0.85rem; margin-top: 10px;">High First-Time Depositors</p>
+            </div>
+            <div onclick="showAcqSection('hvp-path')" style="background: white; padding: 40px; border-radius: 12px; text-align: center; cursor: pointer; border: 1px solid #e2e8f0; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                <div style="font-size: 2.5rem; margin-bottom: 15px;">👑</div>
+                <h3 style="margin: 0; color: var(--primary);">HVP</h3>
+                <p style="color: #64748b; font-size: 0.85rem; margin-top: 10px;">High Value Players</p>
+            </div>
+        </div>
+
+        <!-- HFTD DETAILS -->
+        <div id="hftd-path" class="acq-detail-section" style="display: none; background: white; border-radius: 15px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+            <div style="padding: 25px; background: #eff6ff; border-bottom: 1px solid #dbeafe; display: flex; justify-content: space-between;">
+                <h3 style="margin: 0; color: #1e40af;">HFTD Path: High First Time Depositor</h3>
+                <button onclick="hideAcqSections()">BACK</button>
+            </div>
+            <div style="padding: 40px;">
+                <p><b>Definition:</b> Newly registered members showing strong early-stage deposit behavior[cite: 1].</p>
+                <p><b>Criteria:</b> First deposit above RM1,000[cite: 1].</p>
+                <h4 style="color: #1e40af;">Engagement Script:</h4>
+                <div style="font-family: monospace; background: #f8fafc; padding: 20px; border-left: 4px solid #1e40af; white-space: pre-wrap;">"Greetings from Delta, Mr/Ms [username], I noticed you recently made your first deposit and wanted to check in. We truly appreciate your support. Once members achieve RM50,000 total deposit within a month, they qualify for Lifetime Bronze VIP status..."[cite: 1]</div>
+            </div>
+        </div>
+
+        <!-- HVP DETAILS -->
+        <div id="hvp-path" class="acq-detail-section" style="display: none; background: white; border-radius: 15px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+            <div style="padding: 25px; background: #fffbeb; border-bottom: 1px solid #fef3c7; display: flex; justify-content: space-between;">
+                <h3 style="margin: 0; color: #92400e;">HVP Path: High Value Player</h3>
+                <button onclick="hideAcqSections()">BACK</button>
+            </div>
+            <div style="padding: 40px;">
+                <p><b>Definition:</b> Existing or long-term members showing strong contribution through current activity or deposit trends[cite: 1].</p>
+                <h4 style="color: #92400e;">Engagement Script:</h4>
+                <div style="font-family: monospace; background: #fffcf0; padding: 20px; border-left: 4px solid #92400e; white-space: pre-wrap;">"Greetings from Delta, Mr/Ms [username], I noticed you have been quite active recently and wanted to personally check in. Based on your activity, you are very close to qualifying for our VIP Program..."[cite: 1]</div>
+            </div>
+        </div>
+
+        <!-- EVALUATION & FACT FINDING (ALWAYS VISIBLE BOTTOM) -->
+        <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="background: white; padding: 30px; border-radius: 15px; border: 1px solid #e2e8f0;">
+                <h3 style="margin-top: 0; color: var(--accent);">Evaluation Framework</h3>
+                <ul style="font-size: 0.85rem; line-height: 1.8;">
+                    <li><b>Member Type:</b> HFTD or HVP[cite: 1]</li>
+                    <li><b>Deposit Behavior:</b> First / Avg / Current month[cite: 1]</li>
+                    <li><b>Behavioral Signals:</b> Curiosity or migration risk[cite: 1]</li>
                 </ul>
             </div>
+            <div style="background: white; padding: 30px; border-radius: 15px; border: 1px solid #e2e8f0;">
+                <h3 style="margin-top: 0; color: var(--accent);">Core Fact-Finding Areas</h3>
+                <ul style="font-size: 0.85rem; line-height: 1.8;">
+                    <li><b>Player Background:</b> Which platform previously?[cite: 1]</li>
+                    <li><b>Competitor Insights:</b> What do you like elsewhere?[cite: 1]</li>
+                    <li><b>Player Preference:</b> Preferred games or benefits[cite: 1]</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Logic for Acquisition sub-sections
+    function showAcqSection(id) {
+        document.getElementById('acq-selector-container').style.display = 'none';
+        document.querySelectorAll('.acq-detail-section').forEach(s => s.style.display = 'none');
+        document.getElementById(id).style.display = 'block';
+    }
+    function hideAcqSections() {
+        document.getElementById('acq-selector-container').style.display = 'grid';
+        document.querySelectorAll('.acq-detail-section').forEach(s => s.style.display = 'none');
+    }
+</script>
         </div>
 
 <div id="retention" class="page">
