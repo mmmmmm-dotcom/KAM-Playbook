@@ -162,132 +162,154 @@
             </div>
         </div>
 
-        <!-- RETENTION SECTION (FULL CONTENT RESTORED) -->
+  <!-- RETENTION SECTION (FULL EXPANDED CONTENT - NO CITATIONS) -->
         <div id="retention-pillar" class="rr-section" style="display: none; background: white; border-radius: 15px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-            <div style="padding: 30px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+            <div style="padding: 30px; background: #f0fdf4; border-bottom: 1px solid #dcfce7; display: flex; justify-content: space-between; align-items: center;">
                 <div>
-                    <h3 style="margin: 0; color: var(--primary);">Retention Strategy</h3>
-                    <p style="margin: 5px 0 0; font-size: 0.85rem; color: #64748b;">Relationship building and value sustainability.</p>
+                    <h3 style="margin: 0; color: #166534; letter-spacing: 1px;">VIP RETENTION STRATEGY</h3>
+                    <p style="margin: 5px 0 0; font-size: 0.85rem; color: #15803d;">Strengthening long-term loyalty through consistent excellence.</p>
                 </div>
-                <button onclick="hideRRSections()" style="background: white; border: 1px solid #cbd5e1; color: #64748b; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">BACK TO MENU</button>
+                <button onclick="hideRRSections()" style="background: white; border: 1px solid #b91c1c; color: #b91c1c; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">BACK TO DASHBOARD</button>
             </div>
 
-            <!-- Tabs Navigation -->
+            <!-- Retention Tabs Navigation -->
             <div style="display: flex; background: #ffffff; border-bottom: 1px solid #e2e8f0;">
                 <button class="ret-tab-btn active" onclick="openRetTab(event, 'ret-purpose')">Purpose & Core</button>
-                <button class="ret-tab-btn" onclick="openRetTab(event, 'ret-roi')">ROI Framework</button>
+                <button class="ret-tab-btn" onclick="openRetTab(event, 'ret-framework')">Framework & ROI</button>
                 <button class="ret-tab-btn" onclick="openRetTab(event, 'ret-scripts')">Engagement Scripts</button>
             </div>
 
             <style>
                 .ret-tab-btn { flex: 1; padding: 18px; border: none; background: none; cursor: pointer; font-weight: bold; color: #94a3b8; transition: 0.3s; border-bottom: 3px solid transparent; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-                .ret-tab-btn.active { color: var(--success); border-bottom-color: var(--success); background: #f0fdf4; }
+                .ret-tab-btn.active { color: #166534; border-bottom-color: #22c55e; background: #f0fdf4; }
                 .ret-tab-content { display: none; padding: 40px; animation: fadeIn 0.3s; }
-                .ret-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
-                .ret-table th, .ret-table td { padding: 15px; border: 1px solid #e2e8f0; text-align: left; }
-                .ret-table th { background: #f8fafc; color: #475569; }
-                .script-box-final { font-family: 'Courier New', Courier, monospace; background: #f1f5f9; padding: 20px; border-left: 4px solid var(--success); display: block; margin-top: 10px; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; color: #1e293b; border-radius: 0 8px 8px 0; }
+                .ret-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.85rem; }
+                .ret-table th, .ret-table td { padding: 12px; border: 1px solid #e2e8f0; text-align: left; }
+                .ret-table th { background: #f0fdf4; color: #166534; }
+                .script-box-ret { font-family: 'Courier New', Courier, monospace; background: #f0fdf4; padding: 25px; border-left: 4px solid #22c55e; display: block; margin-top: 15px; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; color: #1e293b; border-radius: 0 8px 8px 0; }
                 .badge-ret { background: #dcfce7; color: #166534; padding: 3px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+                .sop-step-card-ret { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 10px; margin-bottom: 15px; }
+                .sop-step-card-ret b { color: #166534; display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 0.75rem; }
             </style>
 
-            <!-- TAB 1: PURPOSE (FULL CONTENT) -->
+            <!-- TAB 1: PURPOSE & CORE -->
             <div id="ret-purpose" class="ret-tab-content" style="display: block;">
                 <h3>1. Purpose</h3>
-                <p>VIP Retention focuses on strengthening long-term member relationships through personalized engagement, strategic value allocation, and consistent service excellence. The objective is not only to reduce churn, but to maintain long-term loyalty by ensuring members feel recognized, understood, and appropriately rewarded based on their contribution, VIP rank, and overall relationship with the platform.</p>
+                <p>VIP Retention focuses on strengthening long-term relationships with existing members through personalized engagement, consistent service quality, and strategic value management. The objective of retention is not simply to maintain short-term activity, but to:</p>
+                <ul style="font-size: 0.9rem; line-height: 1.8; color: #475569;">
+                    <li>Build long-term loyalty and trust</li>
+                    <li>Sustain healthy member engagement</li>
+                    <li>Strengthen emotional connection with the platform</li>
+                    <li>Reduce churn and competitor migration</li>
+                    <li>Increase customer lifetime value and revenue sustainability</li>
+                </ul>
                 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
+                <h3 style="margin-top: 30px;">2. Targeted VIPs</h3>
+                <p>Priority should be given to higher VIP tiers (Gold, Platinum, Diamond) and Positive ROI contributors. Focus on VIPs who:</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
-                        <h4 style="margin-top: 0; color: var(--success);">Effective Retention Strategy Balances:</h4>
-                        <ul style="font-size: 0.85rem; padding-left: 20px; line-height: 1.8;">
-                            <li>Member experience</li>
-                            <li>Revenue sustainability</li>
-                            <li>Relationship depth</li>
-                            <li>Strategic reward allocation</li>
-                            <li>Long-term engagement quality</li>
+                        <ul style="font-size: 0.85rem; padding-left: 20px; margin: 0; line-height: 1.8;">
+                            <li>Remain active and engaged on the platform</li>
+                            <li>Show healthy deposit and valid bet activity</li>
+                            <li>Demonstrate long-term contribution potential</li>
                         </ul>
                     </div>
                     <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
-                        <h4 style="margin-top: 0; color: var(--success);">Decisions Should Always Consider:</h4>
-                        <ul style="font-size: 0.85rem; padding-left: 20px; line-height: 1.8;">
-                            <li>VIP Rank & potential value</li>
-                            <li>Deposit and valid bet behavior</li>
-                            <li>Activity consistency</li>
-                            <li>ROI Funds contribution</li>
-                            <li>Reward history and frequency</li>
-                            <li>Current ROI Status</li>
+                        <ul style="font-size: 0.85rem; padding-left: 20px; margin: 0; line-height: 1.8;">
+                            <li>Require relationship maintenance and loyalty reinforcement</li>
+                            <li>Show early signs of reduced engagement or activity decline</li>
+                            <li>Demonstrate activity consistency and sustainability</li>
                         </ul>
                     </div>
                 </div>
 
-                <h3 style="margin-top: 40px;">Core Retention Principles</h3>
+                <div style="margin-top: 30px; padding: 30px; background: #f0fdf4; border-radius: 15px; border: 1px solid #dcfce7;">
+                    <h3 style="color: #166534; margin-top: 0;">Strategic Retention Mindset</h3>
+                    <p style="font-size: 0.9rem;">Successful retention is not about repeatedly pushing promotions. True retention success comes from consistent relationship management, delivering trusted service quality, and creating meaningful VIP experiences. Relationship depth beats short-term stimulation.</p>
+                </div>
+            </div>
+
+            <!-- TAB 2: FRAMEWORK & ROI -->
+            <div id="ret-framework" class="ret-tab-content">
+                <h3>3. Retention Evaluation Framework</h3>
                 <table class="ret-table">
-                    <tr><th style="width: 25%;">VIP Rank</th><th>Retention Focus</th></tr>
-                    <tr><td><b>Bronze / Silver</b></td><td>Scalable engagement, responsiveness, activity stimulation</td></tr>
-                    <tr><td><b>Gold</b></td><td>Relationship building, personalized communication</td></tr>
-                    <tr><td><b>Platinum</b></td><td>Premium service experience, loyalty reinforcement</td></tr>
-                    <tr><td><b>Diamond</b></td><td>Emotional loyalty, exclusivity, long-term relationship depth</td></tr>
+                    <tr><th>Evaluation Area</th><th>Consideration</th></tr>
+                    <tr><td><b>VIP Rank</b></td><td>Bronze → Diamond priority handling</td></tr>
+                    <tr><td><b>ROI Funds Contribution</b></td><td>Positive revenue sustainability</td></tr>
+                    <tr><td><b>ROI Status</b></td><td>Under Rewarded / Fairly Rewarded / Over Rewarded</td></tr>
+                    <tr><td><b>Deposit & Valid Bet Trend</b></td><td>Activity consistency and engagement</td></tr>
+                    <tr><td><b>Reward History</b></td><td>Previous incentive frequency and value</td></tr>
+                    <tr><td><b>Platform Experience</b></td><td>Complaints, technical concerns, satisfaction level</td></tr>
+                    <tr><td><b>Behavioral Trend</b></td><td>Changes in engagement patterns or activity decline</td></tr>
                 </table>
+
+                <h3 style="margin-top: 40px;">4. ROI Status Consideration</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                    <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border: 1px solid #dcfce7;">
+                        <b style="color: #166534; font-size: 0.75rem;">UNDER REWARDED</b>
+                        <p style="font-size: 0.8rem; margin: 5px 0;">Increase personalized engagement. Prioritize relationship strengthening and consider strategic rewards or VIP experiences before dissatisfaction develops.</p>
+                    </div>
+                    <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                        <b style="color: #475569; font-size: 0.75rem;">FAIRLY REWARDED</b>
+                        <p style="font-size: 0.8rem; margin: 5px 0;">Maintain service consistency. Continue healthy communication rhythm and focus on long-term relationship stability without unnecessary overcompensation.</p>
+                    </div>
+                    <div style="background: #fef2f2; padding: 15px; border-radius: 8px; border: 1px solid #fee2e2;">
+                        <b style="color: #991b1b; font-size: 0.75rem;">OVER REWARDED</b>
+                        <p style="font-size: 0.8rem; margin: 5px 0;">Reduce excessive incentive dependency. Shift focus toward service quality and relationship experience. Avoid frequent reactive rewarding behavior.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">5. Retention SOP Framework</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="sop-step-card-ret"><b>STEP 1 — Analyze</b> Review deposits, preferred games, VIP rank, and historical engagement pattern.</div>
+                    <div class="sop-step-card-ret"><b>STEP 2 — Approach</b> Choose soft engagement, maintenance, tailored campaigns, or strategic gifting.</div>
+                    <div class="sop-step-card-ret"><b>STEP 3 — Contact</b> Reach out via Phone, WhatsApp, Telegram, or Email to maintain connection.</div>
+                    <div class="sop-step-card-ret"><b>STEP 4 — Gather</b> Understand member sentiment, satisfaction, and competitor behavior.</div>
+                    <div class="sop-step-card-ret"><b>STEP 5 — Deliver</b> Provide VIP privileges, exclusive challenges, or personalized arrangements.</div>
+                    <div class="sop-step-card-ret"><b>STEP 6 — Follow-Up</b> Monitor consistency and observe trends while maintaining healthy rhythm.</div>
+                </div>
             </div>
 
-            <!-- TAB 2: ROI FRAMEWORK (FULL CONTENT) -->
-            <div id="ret-roi" class="ret-tab-content">
-                <div style="background: #f0fdf4; padding: 25px; border-radius: 10px; border-left: 5px solid var(--success); margin-bottom: 30px;">
-                    <h4 style="margin-top:0; color: #166534;">Positive ROI Funds</h4>
-                    <p style="font-size: 0.9rem; margin: 0;">Members with healthy Positive ROI Funds are sustainable contributors and may justify higher retention flexibility, strategic gifting, VIP experiences, and relationship investment for long-term value retention.</p>
-                </div>
-
-                <h3>ROI Status Framework</h3>
-                <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #e2e8f0; border-radius: 10px;">
-                    <h4 style="margin-top: 0; color: #166534;">1. Under Rewarded</h4>
-                    <p style="font-size: 0.85rem;"><b>Scenario:</b> Member contribution is strong compared to historical rewards received.</p>
-                    <p style="font-size: 0.85rem; color: #475569;"><b>Approach:</b> Increase engagement frequency, prioritize retention before dissatisfaction develops. <b>Objective:</b> Prevent migration to competitors.</p>
-                </div>
-
-                <div style="margin-bottom: 25px; padding: 20px; border: 1px solid #e2e8f0; border-radius: 10px;">
-                    <h4 style="margin-top: 0; color: #15803d;">2. Fairly Rewarded</h4>
-                    <p style="font-size: 0.85rem;"><b>Scenario:</b> Member rewards are aligned appropriately with contribution and activity.</p>
-                    <p style="font-size: 0.85rem; color: #475569;"><b>Approach:</b> Maintain consistency in service quality and focus on trust and responsiveness.</p>
-                </div>
-
-                <div style="padding: 20px; border: 1px solid #fecaca; background: #fff1f2; border-radius: 10px;">
-                    <h4 style="margin-top: 0; color: #991b1b;">3. Over Rewarded</h4>
-                    <p style="font-size: 0.85rem;"><b>Scenario:</b> Reward allocation exceeds current contribution or profitability level.</p>
-                    <p style="font-size: 0.85rem; color: #991b1b;"><b>Approach:</b> Reduce dependency on incentive-driven engagement; shift to service-based retention. <b>Objective:</b> Protect project profitability.</p>
-                </div>
-            </div>
-
-            <!-- TAB 3: SCRIPTS (FULL CONTENT) -->
+            <!-- TAB 3: ENGAGEMENT SCRIPTS -->
             <div id="ret-scripts" class="ret-tab-content">
                 <div style="margin-bottom: 35px;">
                     <span class="badge-ret">Soft Retention</span>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">Use for: Fairly Rewarded, Platinum/Diamond maintenance, Inactivity.</p>
-                    <div class="script-box-final">Greetings from Delta, [username],
+                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">For: Fairly Rewarded members, Platinum/Diamond maintenance, and active long-term VIPs.</p>
+                    <div class="script-box-ret">Greetings from Delta, [username],
 
-We hope you have been doing well. I noticed we have not seen you around recently and wanted to personally check in with you. 
+We hope you have been doing well. I noticed we have not seen you around as frequently recently and wanted to personally check in with you.
 
-At Delta, we always value long-term relationships with our VIP members, and we remain committed to delivering a smooth, trusted, and rewarding experience throughout your journey with us. 
+At Delta, we always value long-term relationships with our VIP members and remain committed to providing a smooth, trusted, and rewarding experience throughout your journey with us.
 
-Should you require any assistance, game recommendations, or support regarding your account or VIP privileges, please feel free to reach out anytime. Looking forward to welcoming you back soon.</div>
+Should there be anything we can assist you with — whether it is game recommendations, VIP privileges, or platform support — please feel free to let us know anytime. We truly appreciate your continued support and look forward to seeing you again soon.</div>
                 </div>
 
                 <div style="margin-bottom: 35px;">
                     <span class="badge-ret">Incentive (Light Deposit)</span>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">Use for: Under Rewarded members, Positive ROI contributors, Stimulation.</p>
-                    <div class="script-box-final">🎁 [event] VIP Challenge
+                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">For: Under Rewarded members, Positive ROI contributors, and stimulation campaigns.</p>
+                    <div class="script-box-ret">Greetings from Delta, [username],
+
+We are pleased to invite you to participate in our exclusive [event] VIP Challenge, specially prepared for selected VIP members.
+
+🎁 [event] VIP Challenge
 • Valid Bet $1,000 → Receive $50 Bonus
 • Simple 1x turnover requirement
 
-This campaign is designed to provide additional value through a smooth and flexible experience, allowing members to enjoy rewards with minimal commitment. Should you require any assistance, please feel free to contact us anytime.</div>
+This challenge is designed to provide additional value through a smooth and flexible experience, allowing members to enjoy rewards with minimal commitment and convenient redemption. At Delta, we continuously strive to deliver rewarding experiences and personalized engagement tailored for our valued VIP members.</div>
                 </div>
 
                 <div>
                     <span class="badge-ret">Incentive (Heavy Deposit)</span>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">Use for: High-tier VIPs, Reactivation of High-Value accounts.</p>
-                    <div class="script-box-final">🎁 [event] VIP Challenge
+                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">For: High-tier VIPs and members with significant contribution potential.</p>
+                    <div class="script-box-ret">Greetings from Delta, [username],
+
+As one of our valued VIP members, we are pleased to extend an exclusive invitation to participate in our [event] VIP Challenge.
+
+🎁 [event] VIP Challenge
 • Valid Bet $100,000 → Receive $80 Bonus
 • Simple 1x turnover requirement
 
-At Delta, we continuously strive to deliver personalized experiences, trusted support, and meaningful value to members who have been part of our VIP journey. Should you require any tailored arrangements, please feel free to contact us anytime.</div>
+This campaign is specially designed to provide additional value while maintaining a smooth and comfortable gaming experience through a straightforward and flexible reward structure. At Delta, we continuously aim to deliver personalized engagement, trusted support, and rewarding VIP experiences tailored for our long-term valued members.</div>
                 </div>
             </div>
         </div>
