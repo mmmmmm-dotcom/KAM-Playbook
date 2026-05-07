@@ -1169,5 +1169,30 @@ Should you require any assistance or wish to explore additional VIP privileges, 
         document.querySelectorAll('.acq-section-sub').forEach(s => s.style.display = 'none');
     }
 </script>
+    <section style="max-width:800px;margin:40px auto;padding:24px;border:1px solid #ddd;border-radius:18px;">
+  <h2>KAM Copilot</h2>
+  <textarea id="question" rows="5" style="width:100%;padding:12px;border-radius:12px;" placeholder="Ask KAM Copilot..."></textarea>
+  <br><br>
+  <button onclick="askAI()">Ask KAM Copilot</button>
+  <div id="answer" style="white-space:pre-wrap;margin-top:20px;padding:16px;background:#f7f7f7;border-radius:12px;"></div>
+</section>
+
+<script>
+async function askAI() {
+  const answerBox = document.getElementById("answer");
+  answerBox.innerText = "Thinking...";
+
+  const res = await fetch("/.netlify/functions/kam-ai", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      question: document.getElementById("question").value
+    })
+  });
+
+  const data = await res.json();
+  answerBox.innerText = data.answer;
+}
+</script>
 </body>
 </html>
