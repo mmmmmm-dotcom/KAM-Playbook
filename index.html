@@ -1252,12 +1252,16 @@ async function askAI() {
   try {
     const res = await fetch("/.netlify/functions/kam-ai", {
       method: "POST",
+      headers: { "Content-Type": "application/json" }, // Important header
       body: JSON.stringify({ question })
     });
+    
     const data = await res.json();
+    
+    // This looks for the 'answer' key we defined in the function above
     document.getElementById(loadingId).querySelector(".bot-msg").innerText = data.answer || "No response generated.";
   } catch (e) {
-    document.getElementById(loadingId).querySelector(".bot-msg").innerText = "Error connecting to AI. Please check Netlify settings.";
+    document.getElementById(loadingId).querySelector(".bot-msg").innerText = "Connection lost. Check your internet or Netlify logs.";
   }
   messages.scrollTop = messages.scrollHeight;
 }
