@@ -47,13 +47,6 @@ Formula: Acknowledge emotion -> Diagnose intent -> Reposition value -> Controlle
 - NEVER SAY: "Cannot", "Not my department", "No update", "You wait", "System problem", "You deposited too little", "Top up more then can".
 - ALWAYS: Maintain dignity, avoid dependency culture, protect Delta's ROI, sound human.
 `;
-    
-6. BRAND PHILOSOPHY:
-- "Beyond Every Expectation": Every reply must offer a solution, not just an answer.
-- "Bespoke Service": Treat Diamond members like they are in a 5-star hotel (concierge style).
-- "Street-Smart": Use localized humor for Bronze/Gold members to build "Kaki" (friendship) feel.
-- "ROI Protection": Never give a bonus just because a VIP is noisy. Validate their activity first.
-`;
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
