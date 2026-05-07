@@ -1169,30 +1169,218 @@ Should you require any assistance or wish to explore additional VIP privileges, 
         document.querySelectorAll('.acq-section-sub').forEach(s => s.style.display = 'none');
     }
 </script>
-    <section style="max-width:800px;margin:40px auto;padding:24px;border:1px solid #ddd;border-radius:18px;">
-  <h2>KAM Copilot</h2>
-  <textarea id="question" rows="5" style="width:100%;padding:12px;border-radius:12px;" placeholder="Ask KAM Copilot..."></textarea>
-  <br><br>
-  <button onclick="askAI()">Ask KAM Copilot</button>
-  <div id="answer" style="white-space:pre-wrap;margin-top:20px;padding:16px;background:#f7f7f7;border-radius:12px;"></div>
-</section>
+<!-- Floating KAM Copilot -->
+<div id="kamCopilotLauncher" onclick="toggleKamCopilot()">
+  <div class="kam-icon">🤖</div>
+  <div class="kam-label">KAM Copilot</div>
+</div>
+
+<div id="kamCopilotWindow">
+  <div class="kam-header">
+    <div>
+      <strong>KAM Copilot</strong>
+      <small>VIP SOP Assistant</small>
+    </div>
+    <button onclick="toggleKamCopilot()">×</button>
+  </div>
+
+  <div id="kamMessages" class="kam-messages">
+    <div class="bot-msg">
+      Hi, I’m your KAM Copilot. Ask me about SOP, objection handling, campaign ideas or VIP cases.
+    </div>
+  </div>
+
+  <div class="kam-input-area">
+    <textarea id="question" placeholder="Ask a KAM question..."></textarea>
+    <button onclick="askAI()">Ask</button>
+  </div>
+</div>
+
+<style>
+  #kamCopilotLauncher {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9999;
+    text-align: center;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+  }
+
+  .kam-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #111827, #374151);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    margin: 0 auto 6px;
+  }
+
+  .kam-label {
+    font-size: 12px;
+    color: #111827;
+    background: white;
+    padding: 4px 8px;
+    border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+
+  #kamCopilotWindow {
+    display: none;
+    position: fixed;
+    right: 24px;
+    bottom: 100px;
+    width: 340px;
+    height: 460px;
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+    z-index: 9999;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    border: 1px solid #e5e7eb;
+  }
+
+  .kam-header {
+    background: linear-gradient(135deg, #111827, #374151);
+    color: white;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .kam-header strong {
+    display: block;
+    font-size: 16px;
+  }
+
+  .kam-header small {
+    font-size: 11px;
+    opacity: 0.75;
+  }
+
+  .kam-header button {
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+  }
+
+  .kam-messages {
+    height: 300px;
+    padding: 14px;
+    overflow-y: auto;
+    background: #f9fafb;
+  }
+
+  .bot-msg, .user-msg {
+    max-width: 85%;
+    padding: 10px 12px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+  }
+
+  .bot-msg {
+    background: white;
+    color: #111827;
+    border: 1px solid #e5e7eb;
+  }
+
+  .user-msg {
+    background: #111827;
+    color: white;
+    margin-left: auto;
+  }
+
+  .kam-input-area {
+    padding: 12px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    gap: 8px;
+    background: white;
+  }
+
+  .kam-input-area textarea {
+    flex: 1;
+    height: 48px;
+    resize: none;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    padding: 10px;
+    font-size: 13px;
+    outline: none;
+  }
+
+  .kam-input-area button {
+    background: #111827;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 0 14px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  @media (max-width: 480px) {
+    #kamCopilotWindow {
+      right: 12px;
+      left: 12px;
+      width: auto;
+      bottom: 90px;
+    }
+
+    #kamCopilotLauncher {
+      right: 18px;
+      bottom: 18px;
+    }
+  }
+</style>
 
 <script>
-async function askAI() {
-  const answerBox = document.getElementById("answer");
-  answerBox.innerText = "Thinking...";
-
-  const res = await fetch("/.netlify/functions/kam-ai", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      question: document.getElementById("question").value
-    })
-  });
-
-  const data = await res.json();
-  answerBox.innerText = data.answer;
+function toggleKamCopilot() {
+  const windowBox = document.getElementById("kamCopilotWindow");
+  windowBox.style.display = windowBox.style.display === "block" ? "none" : "block";
 }
-</script>
+
+async function askAI() {
+  const input = document.getElementById("question");
+  const messages = document.getElementById("kamMessages");
+  const question = input.value.trim();
+
+  if (!question) return;
+
+  messages.innerHTML += `<div class="user-msg">${question}</div>`;
+  input.value = "";
+
+  const loadingId = "loading-" + Date.now();
+  messages.innerHTML += `<div id="${loadingId}" class="bot-msg">Thinking...</div>`;
+  messages.scrollTop = messages.scrollHeight;
+
+  try {
+    const res = await fetch("/.netlify/functions/kam-ai", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question })
+    });
+
+    const data = await res.json();
+    document.getElementById(loadingId).innerText = data.answer || "No answer received.";
+  } catch (error) {
+    document.getElementById(loadingId).innerText = "Connection error. Please try again.";
+  }
+
+  messages.scrollTop = messages.scrollHeight;
+}
+</script>    
 </body>
 </html>
