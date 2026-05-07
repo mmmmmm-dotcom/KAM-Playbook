@@ -1171,199 +1171,173 @@ Should you require any assistance or wish to explore additional VIP privileges, 
 </script>
 <!-- Floating KAM Copilot -->
 <div id="kamCopilotLauncher" onclick="toggleKamCopilot()">
-  <div class="kam-icon">🤖</div>
-  <div class="kam-label">KAM Copilot</div>
+  <div class="kam-pulse"></div>
+  <div class="kam-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px;"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12L2.7 7.3"></path><path d="M12 12V22"></path><path d="M12 12L21.3 7.3"></path><path d="M11.7 3.3l10.3 5.7"></path></svg>
+  </div>
+  <div class="kam-label">COMMAND CENTER</div>
 </div>
 
 <div id="kamCopilotWindow">
   <div class="kam-header">
-    <div>
-      <strong>KAM Copilot</strong>
-      <small>VIP SOP Assistant</small>
+    <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 10px; height: 10px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e;"></div>
+        <div>
+          <strong>KAM Strategic Copilot</strong>
+          <small>AI-Powered Intelligence</small>
+        </div>
     </div>
     <button onclick="toggleKamCopilot()">×</button>
   </div>
 
   <div id="kamMessages" class="kam-messages">
-    <div class="bot-msg">
-      Hi, I’m your KAM Copilot. Ask me about SOP, objection handling, campaign ideas or VIP cases.
+    <div class="bot-msg-container">
+        <div class="bot-avatar">🤖</div>
+        <div class="bot-msg">
+          Greetings KAM Elite. I am synced with your 2026 Strategy Guide. Ask me about <b>SOPs</b>, <b>HVP Identification</b>, <b>Retention Scripts</b>, or <b>Objection Handling</b>.
+        </div>
     </div>
   </div>
 
   <div class="kam-input-area">
-    <textarea id="question" placeholder="Ask a KAM question..."></textarea>
-    <button onclick="askAI()">Ask</button>
+    <textarea id="ai-question" placeholder="Enter inquiry... (e.g. How to handle RM50k deposit SOP?)"></textarea>
+    <button id="ask-btn" onclick="askAI()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px;"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </button>
   </div>
 </div>
 
 <style>
   #kamCopilotLauncher {
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    z-index: 9999;
-    text-align: center;
-    cursor: pointer;
-    font-family: Arial, sans-serif;
+    position: fixed; right: 30px; bottom: 30px; z-index: 10001;
+    text-align: center; cursor: pointer; font-family: 'Inter', sans-serif;
+  }
+
+  .kam-pulse {
+    position: absolute; width: 64px; height: 64px; background: rgba(59, 130, 246, 0.4);
+    border-radius: 50%; z-index: -1; left: -3px; top: -3px;
+    animation: kam-pulse-anim 2s infinite;
+  }
+
+  @keyframes kam-pulse-anim {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
   }
 
   .kam-icon {
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #111827, #374151);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 26px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-    margin: 0 auto 6px;
+    width: 60px; height: 60px; border-radius: 18px;
+    background: #0f172a; color: white;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3); transition: 0.3s;
   }
 
+  #kamCopilotLauncher:hover .kam-icon { transform: translateY(-5px); background: #1e293b; }
+
   .kam-label {
-    font-size: 12px;
-    color: #111827;
-    background: white;
-    padding: 4px 8px;
-    border-radius: 999px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    font-size: 10px; font-weight: 800; color: #0f172a; letter-spacing: 1px;
+    background: white; padding: 4px 10px; border-radius: 6px;
+    margin-top: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   }
 
   #kamCopilotWindow {
-    display: none;
-    position: fixed;
-    right: 24px;
-    bottom: 100px;
-    width: 340px;
-    height: 460px;
-    background: white;
-    border-radius: 22px;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.25);
-    z-index: 9999;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    border: 1px solid #e5e7eb;
+    display: none; position: fixed; right: 30px; bottom: 110px;
+    width: 380px; height: 550px; background: white; border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.3); z-index: 10001;
+    overflow: hidden; font-family: 'Inter', sans-serif; border: 1px solid rgba(229, 231, 235, 0.5);
+    flex-direction: column; animation: slideIn 0.3s ease-out;
   }
+
+  @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
   .kam-header {
-    background: linear-gradient(135deg, #111827, #374151);
-    color: white;
-    padding: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: #0f172a; color: white; padding: 20px;
+    display: flex; justify-content: space-between; align-items: center;
   }
 
-  .kam-header strong {
-    display: block;
-    font-size: 16px;
-  }
+  .kam-header strong { display: block; font-size: 15px; letter-spacing: 0.5px; }
+  .kam-header small { font-size: 11px; color: #94a3b8; }
+  .kam-header button { background: transparent; color: white; border: none; font-size: 24px; cursor: pointer; opacity: 0.7; }
+  .kam-header button:hover { opacity: 1; }
 
-  .kam-header small {
-    font-size: 11px;
-    opacity: 0.75;
-  }
+  .kam-messages { flex: 1; padding: 20px; overflow-y: auto; background: #f8fafc; display: flex; flex-direction: column; gap: 15px; }
 
-  .kam-header button {
-    background: transparent;
-    color: white;
-    border: none;
-    font-size: 26px;
-    cursor: pointer;
-  }
+  .bot-msg-container { display: flex; gap: 10px; align-items: flex-start; }
+  .bot-avatar { width: 30px; height: 30px; background: #0f172a; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
 
-  .kam-messages {
-    height: 300px;
-    padding: 14px;
-    overflow-y: auto;
-    background: #f9fafb;
-  }
-
-  .bot-msg, .user-msg {
-    max-width: 85%;
-    padding: 10px 12px;
-    border-radius: 14px;
-    margin-bottom: 10px;
-    font-size: 13px;
-    line-height: 1.4;
-    white-space: pre-wrap;
-  }
-
-  .bot-msg {
-    background: white;
-    color: #111827;
-    border: 1px solid #e5e7eb;
+  .bot-msg { 
+    background: white; color: #1e293b; padding: 12px 16px; border-radius: 4px 18px 18px 18px;
+    font-size: 13.5px; line-height: 1.5; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02);
   }
 
   .user-msg {
-    background: #111827;
-    color: white;
-    margin-left: auto;
+    align-self: flex-end; max-width: 80%; background: #3b82f6; color: white;
+    padding: 12px 16px; border-radius: 18px 18px 4px 18px; font-size: 13.5px; line-height: 1.5;
   }
 
-  .kam-input-area {
-    padding: 12px;
-    border-top: 1px solid #e5e7eb;
-    display: flex;
-    gap: 8px;
-    background: white;
-  }
+  .kam-input-area { padding: 20px; background: white; border-top: 1px solid #f1f5f9; display: flex; gap: 10px; }
 
   .kam-input-area textarea {
-    flex: 1;
-    height: 48px;
-    resize: none;
-    border: 1px solid #d1d5db;
-    border-radius: 12px;
-    padding: 10px;
-    font-size: 13px;
-    outline: none;
+    flex: 1; height: 50px; resize: none; border: 1px solid #e2e8f0; border-radius: 12px;
+    padding: 12px; font-size: 13px; outline: none; transition: 0.2s; background: #f8fafc;
   }
+
+  .kam-input-area textarea:focus { border-color: #3b82f6; background: white; }
 
   .kam-input-area button {
-    background: #111827;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 0 14px;
-    cursor: pointer;
-    font-size: 13px;
+    width: 50px; height: 50px; background: #0f172a; color: white; border: none;
+    border-radius: 12px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center;
   }
 
-  @media (max-width: 480px) {
-    #kamCopilotWindow {
-      right: 12px;
-      left: 12px;
-      width: auto;
-      bottom: 90px;
-    }
+  .kam-input-area button:hover { background: #3b82f6; transform: scale(1.05); }
 
-    #kamCopilotLauncher {
-      right: 18px;
-      bottom: 18px;
-    }
+  /* Loading Dots */
+  .typing { display: flex; gap: 4px; padding: 5px 0; }
+  .typing span { width: 6px; height: 6px; background: #94a3b8; border-radius: 50%; animation: blink 1.4s infinite both; }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes blink { 0% { opacity: .2; } 20% { opacity: 1; } 100% { opacity: .2; } }
+
+  @media (max-width: 480px) {
+    #kamCopilotWindow { right: 10px; left: 10px; width: auto; bottom: 100px; height: 80vh; }
   }
 </style>
 
 <script>
 function toggleKamCopilot() {
   const windowBox = document.getElementById("kamCopilotWindow");
-  windowBox.style.display = windowBox.style.display === "block" ? "none" : "block";
+  windowBox.style.display = (windowBox.style.display === "flex") ? "none" : "flex";
+  if(windowBox.style.display === "flex") {
+      document.getElementById("ai-question").focus();
+  }
 }
 
 async function askAI() {
-  const input = document.getElementById("question");
+  const input = document.getElementById("ai-question");
   const messages = document.getElementById("kamMessages");
   const question = input.value.trim();
+  const btn = document.getElementById("ask-btn");
 
   if (!question) return;
 
+  // Disable UI
+  input.disabled = true;
+  btn.disabled = true;
+
+  // Add User Message
   messages.innerHTML += `<div class="user-msg">${question}</div>`;
   input.value = "";
+  messages.scrollTop = messages.scrollHeight;
 
+  // Add Thinking Animation
   const loadingId = "loading-" + Date.now();
-  messages.innerHTML += `<div id="${loadingId}" class="bot-msg">Thinking...</div>`;
+  messages.innerHTML += `
+    <div id="${loadingId}" class="bot-msg-container">
+        <div class="bot-avatar">🤖</div>
+        <div class="bot-msg">
+            <div class="typing"><span></span><span></span><span></span></div>
+        </div>
+    </div>`;
   messages.scrollTop = messages.scrollHeight;
 
   try {
@@ -1374,13 +1348,28 @@ async function askAI() {
     });
 
     const data = await res.json();
-    document.getElementById(loadingId).innerText = data.answer || "No answer received.";
-  } catch (error) {
-    document.getElementById(loadingId).innerText = "Connection error. Please try again.";
-  }
+    
+    // Replace typing with actual answer
+    const botContainer = document.getElementById(loadingId);
+    botContainer.querySelector(".bot-msg").innerHTML = data.answer || "I'm sorry, I couldn't generate a response. Please try again.";
 
-  messages.scrollTop = messages.scrollHeight;
+  } catch (error) {
+    document.getElementById(loadingId).querySelector(".bot-msg").innerText = "Network error. Ensure Netlify function is deployed.";
+  } finally {
+    input.disabled = false;
+    btn.disabled = false;
+    input.focus();
+    messages.scrollTop = messages.scrollHeight;
+  }
 }
+
+// Allow Enter key to send
+document.getElementById("ai-question")?.addEventListener("keydown", function(e) {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    askAI();
+  }
+});
 </script>    
 </body>
 </html>
